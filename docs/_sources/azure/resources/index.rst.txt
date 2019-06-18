@@ -1,0 +1,63 @@
+.. _AZURE:
+
+Azure Reference
+------------------------------------
+
+Reference information about provider resources and their actions and filters.
+See the :ref:`Generic Filters reference <filters>` for filters that can
+be applies for all resources.
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
+
+   azure-common-actions.rst
+
+   azure-common-filters.rst
+
+   azure.keyvault.rst
+
+   azure.mgmt.authorization.rst
+
+   azure.mgmt.batch.rst
+
+   azure.mgmt.cdn.rst
+
+   azure.mgmt.cognitiveservices.rst
+
+   azure.mgmt.compute.rst
+
+   azure.mgmt.containerregistry.rst
+
+   azure.mgmt.containerservice.rst
+
+   azure.mgmt.cosmosdb.rst
+
+   azure.mgmt.databricks.databricks_client.rst
+
+   azure.mgmt.datafactory.rst
+
+   azure.mgmt.datalake.store.rst
+
+   azure.mgmt.eventgrid.rst
+
+   azure.mgmt.iothub.rst
+
+   azure.mgmt.keyvault.rst
+
+   azure.mgmt.network.rst
+
+   azure.mgmt.redis.rst
+
+   azure.mgmt.resource.rst
+
+   azure.mgmt.resource.policy.rst
+
+   azure.mgmt.sql.rst
+
+   azure.mgmt.storage.rst
+
+   azure.mgmt.web.rst
+
+   subscription.rst

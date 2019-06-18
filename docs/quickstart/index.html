@@ -13,7 +13,7 @@
 
   
   
-    <link rel="shortcut icon" href="../_static/c1_labs.ico"/>
+    <link rel="shortcut icon" href="../_static/icon.ico"/>
   
   
   
@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Generic Filters" href="../filters.html" />
-    <link rel="prev" title="Basic concepts and terms" href="../overview/glossary.html" /> 
+    <link rel="prev" title="Cloud Custodian Documentation" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,8 +86,6 @@
             
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Cloud Custodian</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-cloud-custodian">Install Cloud Custodian</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#explore-cloud-custodian">Explore Cloud Custodian</a></li>
@@ -106,8 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../actions.html">Generic Actions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="policyStructure.html">Example tag compliance policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/glossary.html">Basic concepts and terms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/deployment.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Deployment</a></li>
 </ul>
 <p class="caption"><span class="caption-text">AWS</span></p>
 <ul>
@@ -116,8 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../aws/aws-modes.html">AWS Modes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aws/usage.html">Monitoring your environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aws/lambda.html">Lambda Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aws/mu.html">Mu - Lambda Lifecycle Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aws/policy/index.html">Filters and Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/resources/index.html">AWS Reference</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Azure</span></p>
 <ul>
@@ -131,6 +127,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../azure/contribute.html">Developer Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../azure/contribute.html#adding-new-azure-resources">Adding New Azure Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../azure/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../azure/resources/index.html">Azure Reference</a></li>
 </ul>
 <p class="caption"><span class="caption-text">GCP</span></p>
 <ul>
@@ -141,6 +138,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../gcp/contribute.html">Developer Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gcp/contribute.html#adding-new-gcp-resources">Adding New GCP Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gcp/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gcp/resources/index.html">GCP Reference</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
@@ -246,7 +244,7 @@ about policy schema details, run <code class="docutils literal notranslate"><spa
 <p>Run <code class="docutils literal notranslate"><span class="pre">custodian</span> <span class="pre">schema</span> <span class="pre">&lt;cloud-provider&gt;</span></code> to see the available resources for a
 specific cloud provider: <code class="docutils literal notranslate"><span class="pre">custodian</span> <span class="pre">schema</span> <span class="pre">aws</span></code></p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">custodian</span> <span class="pre">schema</span> <span class="pre">&lt;cloud-provider&gt;.&lt;resource&gt;</span></code> to see the available
-<a class="reference internal" href="../aws/policy/index.html#policy"><span class="std std-ref">filters and actions</span></a> for each resource.</p>
+filters and actions for each resource.</p>
 <p>Drill down to get more information about available policy settings for each
 resource, where the model for the command is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ custodian schema &lt;cloud&gt;.&lt;resource&gt;.&lt;category&gt;.&lt;item&gt;
@@ -365,7 +363,7 @@ You must invoke <cite>custodian</cite> directly.</p>
         <a href="../filters.html" class="btn btn-neutral float-right" title="Generic Filters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../overview/glossary.html" class="btn btn-neutral float-left" title="Basic concepts and terms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Cloud Custodian Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

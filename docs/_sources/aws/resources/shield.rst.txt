@@ -1,0 +1,85 @@
+aws.shield resources
+####################
+
+
+
+  - :ref:`aws.shield-attack <aws.shield-attack>`
+
+  - :ref:`aws.shield-protection <aws.shield-protection>`
+
+
+
+
+.. _aws.shield-attack:
+
+aws.shield-attack
+=================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.shield-protection:
+
+aws.shield-protection
+=====================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+

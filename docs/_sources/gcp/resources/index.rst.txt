@@ -1,0 +1,57 @@
+.. _GCP:
+
+GCP Reference
+------------------------------------
+
+Reference information about provider resources and their actions and filters.
+See the :ref:`Generic Filters reference <filters>` for filters that can
+be applies for all resources.
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
+
+   gcp-common-actions.rst
+
+   gcp-common-filters.rst
+
+   appengine.rst
+
+   bigquery.rst
+
+   cloudbilling.rst
+
+   cloudbuild.rst
+
+   cloudfunctions.rst
+
+   cloudresourcemanager.rst
+
+   compute.rst
+
+   container.rst
+
+   dataflow.rst
+
+   deploymentmanager.rst
+
+   dns.rst
+
+   iam.rst
+
+   logging.rst
+
+   ml.rst
+
+   pubsub.rst
+
+   servicemanagement.rst
+
+   sourcerepo.rst
+
+   spanner.rst
+
+   sqladmin.rst
+
+   storage.rst

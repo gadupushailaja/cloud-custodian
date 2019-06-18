@@ -1,0 +1,73 @@
+gcp.dns resources
+#################
+
+
+
+  - :ref:`gcp.dns-managed-zone <gcp.dns-managed-zone>`
+
+  - :ref:`gcp.dns-policy <gcp.dns-policy>`
+
+
+
+
+.. _gcp.dns-managed-zone:
+
+gcp.dns-managed-zone
+====================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.dns-policy:
+
+gcp.dns-policy
+==============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+

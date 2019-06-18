@@ -1,0 +1,112 @@
+gcp.cloudresourcemanager resources
+##################################
+
+
+
+  - :ref:`gcp.folder <gcp.folder>`
+
+  - :ref:`gcp.organization <gcp.organization>`
+
+  - :ref:`gcp.project <gcp.project>`
+
+
+
+
+.. _gcp.folder:
+
+gcp.folder
+==========
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.organization:
+
+gcp.organization
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.project:
+
+gcp.project
+===========
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+

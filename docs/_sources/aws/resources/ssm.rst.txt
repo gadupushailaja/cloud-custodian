@@ -1,0 +1,220 @@
+aws.ssm resources
+#################
+
+
+
+  - :ref:`aws.ssm-activation <aws.ssm-activation>`
+
+  - :ref:`aws.ssm-managed-instance <aws.ssm-managed-instance>`
+
+  - :ref:`aws.ssm-parameter <aws.ssm-parameter>`
+
+
+
+
+.. _aws.ssm-activation:
+
+aws.ssm-activation
+==================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`delete <aws.ssm-activation.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.ssm-activation.actions.delete:
+
+delete
+++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+
+.. _aws.ssm-managed-instance:
+
+aws.ssm-managed-instance
+========================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`send-command <aws.ssm-managed-instance.actions.send-command>`
+
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.ssm-managed-instance.actions.send-command:
+
+send-command
+++++++++++++
+Run an SSM Automation Document on an instance.
+
+:Example:
+
+Find ubuntu 18.04 instances are active with ssm.
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-osquery-install
+        resource: ec2
+        filters:
+          - type: ssm
+            key: PingStatus
+            value: Online
+          - type: ssm
+            key: PlatformName
+            value: Ubuntu
+          - type: ssm
+            key: PlatformVersion
+            value: 18.04
+        actions:
+          - type: send-command
+            command:
+              DocumentName: AWS-RunShellScript
+              Parameters:
+                commands:
+                  - wget https://pkg.osquery.io/deb/osquery_3.3.0_1.linux.amd64.deb
+                  - dpkg -i osquery_3.3.0_1.linux.amd64.deb
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      command:
+        type: object
+      type:
+        enum:
+        - send-command
+    required:
+    - command
+
+
+
+.. _aws.ssm-parameter:
+
+aws.ssm-parameter
+=================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+

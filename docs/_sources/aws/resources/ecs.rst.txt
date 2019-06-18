@@ -1,0 +1,822 @@
+aws.ecs resources
+#################
+
+
+
+  - :ref:`aws.ecs <aws.ecs>`
+
+  - :ref:`aws.ecs-container-instance <aws.ecs-container-instance>`
+
+  - :ref:`aws.ecs-service <aws.ecs-service>`
+
+  - :ref:`aws.ecs-task <aws.ecs-task>`
+
+  - :ref:`aws.ecs-task-definition <aws.ecs-task-definition>`
+
+
+
+
+.. _aws.ecs:
+
+aws.ecs
+=======
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.ecs-container-instance:
+
+aws.ecs-container-instance
+==========================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`taggable <aws.ecs-container-instance.filters.taggable>`
+
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.ecs-container-instance.filters.taggable:
+
+taggable
+++++++++
+Filter ECS resources on arn-format
+https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-resource-ids.html
+:example:
+
+    .. code-block:: yaml
+
+        policies:
+            - name: taggable
+              resource: ecs-service
+              filters:
+                - type: taggable
+                  state: True
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      state:
+        type: boolean
+      type:
+        enum:
+        - taggable
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`set-state <aws.ecs-container-instance.actions.set-state>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`update-agent <aws.ecs-container-instance.actions.update-agent>`
+
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.ecs-container-instance.actions.set-state:
+
+set-state
++++++++++
+Updates a container instance to either ACTIVE or DRAINING
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+        - name: drain-container-instances
+          resource: ecs-container-instance
+          actions:
+            - type: set-state
+              state: DRAINING
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      state:
+        enum:
+        - DRAINING
+        - ACTIVE
+        type: string
+      type:
+        enum:
+        - set-state
+    required:
+    - type
+
+
+.. _aws.ecs-container-instance.actions.update-agent:
+
+update-agent
+++++++++++++
+Updates the agent on a container instance
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - update-agent
+    required:
+    - type
+
+
+
+.. _aws.ecs-service:
+
+aws.ecs-service
+===============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
+  - :ref:`taggable <aws.ecs-service.filters.taggable>`
+
+  - :ref:`task-definition <aws.ecs-service.filters.task-definition>`
+
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.ecs-service.filters.taggable:
+
+taggable
+++++++++
+Filter ECS resources on arn-format
+https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-resource-ids.html
+:example:
+
+    .. code-block:: yaml
+
+        policies:
+            - name: taggable
+              resource: ecs-service
+              filters:
+                - type: taggable
+                  state: True
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      state:
+        type: boolean
+      type:
+        enum:
+        - taggable
+    required:
+    - type
+
+
+.. _aws.ecs-service.filters.task-definition:
+
+task-definition
++++++++++++++++
+Filter services by their task definitions.
+
+:Example:
+
+ Find any fargate services that are running with a particular
+ image in the task and stop them.
+
+.. code-block:: yaml
+
+   policies:
+     - name: fargate-readonly-tasks
+       resource: ecs-task
+       filters:
+         - launchType: FARGATE
+         - type: task-definition
+           key: "containerDefinitions[].image"
+           value: "elasticsearch/elasticsearch:6.4.3"
+           value_type: swap
+           op: contains
+       actions:
+         - type: stop
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - task-definition
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <aws.ecs-service.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`modify <aws.ecs-service.actions.modify>`
+
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.ecs-service.actions.delete:
+
+delete
+++++++
+Delete service(s).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.ecs-service.actions.modify:
+
+modify
+++++++
+Action to update service
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: no-public-ips-services
+            resource: ecs-service
+            filters:
+              - 'networkConfiguration.awsvpcConfiguration.assignPublicIp': 'ENABLED'
+            actions:
+              - type: modify
+                update:
+                  networkConfiguration:
+                    awsvpcConfiguration:
+                      assignPublicIp: DISABLED
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - modify
+      update:
+        deploymentConfiguration:
+          properties:
+            maximumPercent:
+              type: integer
+            minimumHealthyPercent:
+              type: integer
+          type: object
+        desiredCount:
+          type: integer
+        forceNewDeployment:
+          default: false
+          type: boolean
+        healthCheckGracePeriodSeconds:
+          type: integer
+        networkConfiguration:
+          properties:
+            awsvpcConfiguration:
+              properties:
+                assignPublicIp:
+                  enum:
+                  - ENABLED
+                  - DISABLED
+                  type: string
+                securityGroups:
+                  items:
+                    type: string
+                subnets:
+                  items:
+                    type: string
+                  minItems: 1
+                  type: array
+              type: object
+          type: object
+        platformVersion:
+          type: string
+        taskDefinition:
+          type: string
+    required:
+    - type
+
+
+
+.. _aws.ecs-task:
+
+aws.ecs-task
+============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`taggable <aws.ecs-task.filters.taggable>`
+
+  - :ref:`task-definition <aws.ecs-task.filters.task-definition>`
+
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.ecs-task.filters.taggable:
+
+taggable
+++++++++
+Filter ECS resources on arn-format
+https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-resource-ids.html
+:example:
+
+    .. code-block:: yaml
+
+        policies:
+            - name: taggable
+              resource: ecs-service
+              filters:
+                - type: taggable
+                  state: True
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      state:
+        type: boolean
+      type:
+        enum:
+        - taggable
+    required:
+    - type
+
+
+.. _aws.ecs-task.filters.task-definition:
+
+task-definition
++++++++++++++++
+Filter tasks by their task definition.
+
+:Example:
+
+ Find any fargate tasks that are running without read only root
+ and stop them.
+
+.. code-block:: yaml
+
+   policies:
+     - name: fargate-readonly-tasks
+       resource: ecs-task
+       filters:
+         - launchType: FARGATE
+         - type: task-definition
+           key: "containerDefinitions[].readonlyRootFilesystem"
+           value: None
+           value_type: swap
+           op: contains
+       actions:
+         - type: stop
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - task-definition
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`stop <aws.ecs-task.actions.stop>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.ecs-task.actions.stop:
+
+stop
+++++
+Stop/Delete a currently running task.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      reason:
+        type: string
+      type:
+        enum:
+        - stop
+    required:
+    - type
+
+
+
+.. _aws.ecs-task-definition:
+
+aws.ecs-task-definition
+=======================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <aws.ecs-task-definition.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.ecs-task-definition.actions.delete:
+
+delete
+++++++
+Delete/DeRegister a task definition.
+
+The definition will be marked as InActive. Currently running
+services and task can still reference, new services & tasks
+can't.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+

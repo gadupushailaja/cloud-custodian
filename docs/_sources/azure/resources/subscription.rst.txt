@@ -1,0 +1,104 @@
+azure.subscription resources
+############################
+
+
+
+
+.. _azure.subscription:
+
+azure.subscription
+==================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <azure.common.filters.event>`
+  
+  - :ref:`missing <azure.subscription.filters.missing>`
+
+  - :ref:`value <azure.common.filters.value>`
+  
+
+
+.. _azure.subscription.filters.missing:
+
+missing
++++++++
+Assert the absence of a particular resource.
+
+Intended for use at a logical account/subscription/project level
+
+This works as an effectively an embedded policy thats evaluated.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      policy:
+        type: object
+      type:
+        enum:
+        - missing
+    required:
+    - policy
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`add-policy <azure.subscription.actions.add-policy>`
+
+  - :ref:`logic-app <azure.common.actions.logic-app>`
+  
+  - :ref:`notify <azure.common.actions.notify>`
+  
+  - :ref:`webhook <azure.common.actions.webhook>`
+  
+
+
+
+.. _azure.subscription.actions.add-policy:
+
+add-policy
+++++++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      definition_name:
+        type: string
+      display_name:
+        type: string
+      name:
+        type: string
+      scope:
+        type: string
+      type:
+        enum:
+        - add-policy
+    required:
+    - name
+    - display_name
+    - definition_name
+    - type
+
+

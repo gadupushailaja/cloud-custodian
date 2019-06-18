@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aws.iot resources &mdash; Cloud Custodian  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/js/expand.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/expand.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="aws.kafka resources" href="kafka.html" />
+    <link rel="prev" title="aws.iam resources" href="iam.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Cloud Custodian
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filters.html">Generic Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../actions.html">Generic Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/advanced.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/policyStructure.html">Example tag compliance policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deployment.html">Deployment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">AWS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws-modes.html">AWS Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Monitoring your environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lambda.html">Lambda Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AWS Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aws-common-actions.html">AWS Common Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aws-common-filters.html">AWS Common Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="account.html">aws.account resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acm.html">aws.acm resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apigateway.html">aws.apigateway resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoscaling.html">aws.autoscaling resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup.html">aws.backup resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch.html">aws.batch resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clouddirectory.html">aws.clouddirectory resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudformation.html">aws.cloudformation resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudfront.html">aws.cloudfront resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudhsm.html">aws.cloudhsm resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudhsmv2.html">aws.cloudhsmv2 resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudsearch.html">aws.cloudsearch resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudtrail.html">aws.cloudtrail resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudwatch.html">aws.cloudwatch resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codebuild.html">aws.codebuild resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codecommit.html">aws.codecommit resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codepipeline.html">aws.codepipeline resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cognito-identity.html">aws.cognito-identity resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cognito-idp.html">aws.cognito-idp resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">aws.config resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datapipeline.html">aws.datapipeline resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dax.html">aws.dax resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="directconnect.html">aws.directconnect resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dlm.html">aws.dlm resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dms.html">aws.dms resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ds.html">aws.ds resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamodb.html">aws.dynamodb resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamodbstreams.html">aws.dynamodbstreams resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ec2.html">aws.ec2 resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecr.html">aws.ecr resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecs.html">aws.ecs resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efs.html">aws.efs resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eks.html">aws.eks resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elasticache.html">aws.elasticache resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elasticbeanstalk.html">aws.elasticbeanstalk resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elb.html">aws.elb resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elbv2.html">aws.elbv2 resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emr.html">aws.emr resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="es.html">aws.es resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">aws.events resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firehose.html">aws.firehose resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fsx.html">aws.fsx resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gamelift.html">aws.gamelift resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glacier.html">aws.glacier resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glue.html">aws.glue resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html">aws.health resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iam.html">aws.iam resources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">aws.iot resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aws-iot">aws.iot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#filters">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actions">Actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">aws.kafka resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinesis.html">aws.kinesis resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinesisanalytics.html">aws.kinesisanalytics resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kms.html">aws.kms resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lambda.html">aws.lambda resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightsail.html">aws.lightsail resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logs.html">aws.logs resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machinelearning.html">aws.machinelearning resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">aws.mq resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opsworks.html">aws.opsworks resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opsworkscm.html">aws.opsworkscm resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rds.html">aws.rds resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redshift.html">aws.redshift resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="route53.html">aws.route53 resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="route53domains.html">aws.route53domains resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s3.html">aws.s3 resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sagemaker.html">aws.sagemaker resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdb.html">aws.sdb resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secretsmanager.html">aws.secretsmanager resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shield.html">aws.shield resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snowball.html">aws.snowball resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sns.html">aws.sns resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqs.html">aws.sqs resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssm.html">aws.ssm resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stepfunctions.html">aws.stepfunctions resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storagegateway.html">aws.storagegateway resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html">aws.support resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="waf.html">aws.waf resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="waf-regional.html">aws.waf-regional resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspaces.html">aws.workspaces resources</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Azure</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/authentication.html#azure-storage-access">Azure Storage access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/policy/index.html">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/azure-modes.html">Azure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/advanced/index.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html#adding-new-azure-resources">Adding New Azure Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/resources/index.html">Azure Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GCP</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/gcp-modes.html">GCP Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/policy/index.html">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/contribute.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/contribute.html#adding-new-gcp-resources">Adding New GCP Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/resources/index.html">GCP Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-org.html">c7n-org: Multi Account Custodian Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-policystream.html">c7n-policystream: Policy Changes from Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-mailer.html">c7n-mailer: Custodian Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-trailcreator.html">AWS Retroactive Tagging Resource Creators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing to Cloud Custodian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/installing.html">Installing for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/tests.html">Testing for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/documentation.html">Documentation For Developers</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cloud Custodian</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">AWS Reference</a> &raquo;</li>
+        
+      <li>aws.iot resources</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aws-iot-resources">
+<h1>aws.iot resources<a class="headerlink" href="#aws-iot-resources" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aws-iot">
+<span id="id1"></span><h2>aws.iot<a class="headerlink" href="#aws-iot" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="filters">
+<h3>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="aws-common-filters.html#aws-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-filters.html#aws-common-filters-finding"><span class="std std-ref">finding</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-filters.html#aws-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="actions">
+<h3>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-put-metric"><span class="std std-ref">put-metric</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kafka.html" class="btn btn-neutral float-right" title="aws.kafka resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="iam.html" class="btn btn-neutral float-left" title="aws.iam resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Capital One Services, LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

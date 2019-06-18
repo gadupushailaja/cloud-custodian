@@ -1,0 +1,109 @@
+gcp.pubsub resources
+####################
+
+
+
+  - :ref:`gcp.pubsub-snapshot <gcp.pubsub-snapshot>`
+
+  - :ref:`gcp.pubsub-subscription <gcp.pubsub-subscription>`
+
+  - :ref:`gcp.pubsub-topic <gcp.pubsub-topic>`
+
+
+
+
+.. _gcp.pubsub-snapshot:
+
+gcp.pubsub-snapshot
+===================
+
+GCP resource: https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.snapshots
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.pubsub-subscription:
+
+gcp.pubsub-subscription
+=======================
+
+GCP resource: https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.pubsub-topic:
+
+gcp.pubsub-topic
+================
+
+GCP resource: https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+

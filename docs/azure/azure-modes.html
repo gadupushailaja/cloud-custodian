@@ -13,7 +13,7 @@
 
   
   
-    <link rel="shortcut icon" href="../_static/c1_labs.ico"/>
+    <link rel="shortcut icon" href="../_static/icon.ico"/>
   
   
   
@@ -86,15 +86,12 @@
             
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Cloud Custodian</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filters.html">Generic Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../actions.html">Generic Actions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/advanced.html">Advanced Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/policyStructure.html">Example tag compliance policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/glossary.html">Basic concepts and terms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/deployment.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Deployment</a></li>
 </ul>
 <p class="caption"><span class="caption-text">AWS</span></p>
 <ul>
@@ -103,8 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../aws/aws-modes.html">AWS Modes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aws/usage.html">Monitoring your environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aws/lambda.html">Lambda Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aws/mu.html">Mu - Lambda Lifecycle Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aws/policy/index.html">Filters and Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/resources/index.html">AWS Reference</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Azure</span></p>
 <ul class="current">
@@ -118,6 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">Developer Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html#adding-new-azure-resources">Adding New Azure Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources/index.html">Azure Reference</a></li>
 </ul>
 <p class="caption"><span class="caption-text">GCP</span></p>
 <ul>
@@ -128,6 +125,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../gcp/contribute.html">Developer Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gcp/contribute.html#adding-new-gcp-resources">Adding New GCP Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gcp/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gcp/resources/index.html">GCP Reference</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
@@ -217,14 +215,12 @@
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">type</span><span class="p">:</span>
     <span class="nt">enum</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pull</span>
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>
@@ -237,8 +233,7 @@
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">execution-options</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
   <span class="nt">provision-options</span><span class="p">:</span>
@@ -290,7 +285,6 @@
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">azure-periodic</span>
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>
@@ -304,8 +298,7 @@ you to apply your policies as soon as events occur. See <a class="reference exte
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">events</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">oneOf</span><span class="p">:</span>
@@ -370,7 +363,6 @@ you to apply your policies as soon as events occur. See <a class="reference exte
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">events</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>

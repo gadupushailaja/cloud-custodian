@@ -1,0 +1,932 @@
+aws.apigateway resources
+########################
+
+
+
+  - :ref:`aws.rest-account <aws.rest-account>`
+
+  - :ref:`aws.rest-api <aws.rest-api>`
+
+  - :ref:`aws.rest-resource <aws.rest-resource>`
+
+  - :ref:`aws.rest-stage <aws.rest-stage>`
+
+  - :ref:`aws.rest-vpclink <aws.rest-vpclink>`
+
+
+
+
+.. _aws.rest-account:
+
+aws.rest-account
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`update <aws.rest-account.actions.update>`
+
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rest-account.actions.update:
+
+update
+++++++
+Update the cloudwatch role associated to a rest account
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: correct-rest-account-log-role
+        resource: rest-account
+        filters:
+          - cloudwatchRoleArn: arn:aws:iam::000000000000:role/GatewayLogger
+        actions:
+          - type: update
+            patch:
+              - op: replace
+                path: /cloudwatchRoleArn
+                value: arn:aws:iam::000000000000:role/BetterGatewayLogger
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      patch:
+        items:
+          additonalProperties: false
+          properties:
+            from:
+              type: string
+            op:
+              enum:
+              - add
+              - remove
+              - update
+              - copy
+              - replace
+              - test
+            path:
+              type: string
+            value:
+              type: string
+          required:
+          - op
+          - path
+          type: object
+        type: array
+      type:
+        enum:
+        - update
+    required:
+    - patch
+    - type
+
+
+
+.. _aws.rest-api:
+
+aws.rest-api
+============
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`cross-account <aws.rest-api.filters.cross-account>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.rest-api.filters.cross-account:
+
+cross-account
++++++++++++++
+Check a resource's embedded iam policy for cross account access.
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      actions:
+        items:
+          type: string
+        type: array
+      everyone_only:
+        type: boolean
+      type:
+        enum:
+        - cross-account
+      whitelist:
+        items:
+          type: string
+        type: array
+      whitelist_conditions:
+        items:
+          type: string
+        type: array
+      whitelist_from: &id001
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      whitelist_orgids:
+        items:
+          type: string
+        type: array
+      whitelist_orgids_from: *id001
+      whitelist_vpc:
+        items:
+          type: string
+        type: array
+      whitelist_vpc_from: *id001
+      whitelist_vpce:
+        items:
+          type: string
+        type: array
+      whitelist_vpce_from: *id001
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`update <aws.rest-api.actions.update>`
+
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rest-api.actions.update:
+
+update
+++++++
+Update configuration of a REST API.
+
+Non-exhaustive list of updateable attributes.
+https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/#remarks
+
+:example:
+
+contrived example to update description on api gateways
+
+.. code-block:: yaml
+
+   policies:
+     - name: apigw-description
+       resource: rest-api
+       filters:
+         - description: empty
+       actions:
+         - type: update
+           patch:
+            - op: replace
+              path: /description
+              value: "not empty :-)"
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      patch:
+        items:
+          additonalProperties: false
+          properties:
+            from:
+              type: string
+            op:
+              enum:
+              - add
+              - remove
+              - update
+              - copy
+              - replace
+              - test
+            path:
+              type: string
+            value:
+              type: string
+          required:
+          - op
+          - path
+          type: object
+        type: array
+      type:
+        enum:
+        - update
+    required:
+    - patch
+    - type
+
+
+
+.. _aws.rest-resource:
+
+aws.rest-resource
+=================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`rest-integration <aws.rest-resource.filters.rest-integration>`
+
+  - :ref:`rest-method <aws.rest-resource.filters.rest-method>`
+
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.rest-resource.filters.rest-integration:
+
+rest-integration
+++++++++++++++++
+Filter rest resources based on a key value for the rest method integration of the api
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: api-method-integrations-with-type-aws
+        resource: rest-resource
+        filters:
+          - type: rest-integration
+            key: type
+            value: AWS
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      method:
+        enum:
+        - all
+        - ANY
+        - PUT
+        - GET
+        - POST
+        - DELETE
+        - OPTIONS
+        - HEAD
+        - PATCH
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - rest-integration
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.rest-resource.filters.rest-method:
+
+rest-method
++++++++++++
+Filter rest resources based on a key value for the rest method of the api
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: api-without-key-required
+        resource: rest-resource
+        filters:
+          - type: rest-method
+            key: apiKeyRequired
+            value: false
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      method:
+        enum:
+        - all
+        - ANY
+        - PUT
+        - GET
+        - POST
+        - DELETE
+        - OPTIONS
+        - HEAD
+        - PATCH
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - rest-method
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`delete-integration <aws.rest-resource.actions.delete-integration>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`update-integration <aws.rest-resource.actions.update-integration>`
+
+  - :ref:`update-method <aws.rest-resource.actions.update-method>`
+
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rest-resource.actions.delete-integration:
+
+delete-integration
+++++++++++++++++++
+Delete an api integration. Useful if the integration type is a security risk.
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: enforce-no-resource-integration-with-type-aws
+        resource: rest-resource
+        filters:
+          - type: rest-integration
+            key: type
+            value: AWS
+        actions:
+          - type: delete-integration
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete-integration
+    required:
+    - type
+
+
+.. _aws.rest-resource.actions.update-integration:
+
+update-integration
+++++++++++++++++++
+Change or remove api integration properties based on key value
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: enforce-timeout-on-api-integration
+        resource: rest-resource
+        filters:
+          - type: rest-integration
+            key: timeoutInMillis
+            value: 29000
+        actions:
+          - type: update-integration
+            patch:
+              - op: replace
+                path: /timeoutInMillis
+                value: "3000"
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      patch:
+        items:
+          additonalProperties: false
+          properties:
+            from:
+              type: string
+            op:
+              enum:
+              - add
+              - remove
+              - update
+              - copy
+              - replace
+              - test
+            path:
+              type: string
+            value:
+              type: string
+          required:
+          - op
+          - path
+          type: object
+        type: array
+      type:
+        enum:
+        - update-integration
+    required:
+    - patch
+    - type
+
+
+.. _aws.rest-resource.actions.update-method:
+
+update-method
++++++++++++++
+Change or remove api method behaviors based on key value
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: enforce-iam-permissions-on-api
+        resource: rest-resource
+        filters:
+          - type: rest-method
+            key: authorizationType
+            value: NONE
+            op: eq
+        actions:
+          - type: update-method
+            patch:
+              - op: replace
+                path: /authorizationType
+                value: AWS_IAM
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      patch:
+        items:
+          additonalProperties: false
+          properties:
+            from:
+              type: string
+            op:
+              enum:
+              - add
+              - remove
+              - update
+              - copy
+              - replace
+              - test
+            path:
+              type: string
+            value:
+              type: string
+          required:
+          - op
+          - path
+          type: object
+        type: array
+      type:
+        enum:
+        - update-method
+    required:
+    - patch
+    - type
+
+
+
+.. _aws.rest-stage:
+
+aws.rest-stage
+==============
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`delete <aws.rest-stage.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`update <aws.rest-stage.actions.update>`
+
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rest-stage.actions.delete:
+
+delete
+++++++
+Delete an api stage
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: delete-rest-stage
+        resource: rest-stage
+        filters:
+          - methodSettings."*/*".cachingEnabled: true
+        actions:
+          - type: delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.rest-stage.actions.update:
+
+update
+++++++
+Update/remove values of an api stage
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: disable-stage-caching
+        resource: rest-stage
+        filters:
+          - methodSettings."*/*".cachingEnabled: true
+        actions:
+          - type: update
+            patch:
+              - op: replace
+                path: /*/*/caching/enabled
+                value: 'false'
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      patch:
+        items:
+          additonalProperties: false
+          properties:
+            from:
+              type: string
+            op:
+              enum:
+              - add
+              - remove
+              - update
+              - copy
+              - replace
+              - test
+            path:
+              type: string
+            value:
+              type: string
+          required:
+          - op
+          - path
+          type: object
+        type: array
+      type:
+        enum:
+        - update
+    required:
+    - patch
+    - type
+
+
+
+.. _aws.rest-vpclink:
+
+aws.rest-vpclink
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+

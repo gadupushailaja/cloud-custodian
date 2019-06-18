@@ -13,7 +13,7 @@
 
   
   
-    <link rel="shortcut icon" href="../_static/c1_labs.ico"/>
+    <link rel="shortcut icon" href="../_static/icon.ico"/>
   
   
   
@@ -86,15 +86,12 @@
             
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Cloud Custodian</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filters.html">Generic Filters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../actions.html">Generic Actions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/advanced.html">Advanced Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/policyStructure.html">Example tag compliance policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/glossary.html">Basic concepts and terms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/deployment.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Deployment</a></li>
 </ul>
 <p class="caption"><span class="caption-text">AWS</span></p>
 <ul class="current">
@@ -103,8 +100,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">AWS Modes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Monitoring your environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lambda.html">Lambda Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mu.html">Mu - Lambda Lifecycle Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="policy/index.html">Filters and Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources/index.html">AWS Reference</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Azure</span></p>
 <ul>
@@ -118,6 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../azure/contribute.html">Developer Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../azure/contribute.html#adding-new-azure-resources">Adding New Azure Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../azure/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../azure/resources/index.html">Azure Reference</a></li>
 </ul>
 <p class="caption"><span class="caption-text">GCP</span></p>
 <ul>
@@ -128,6 +125,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../gcp/contribute.html">Developer Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gcp/contribute.html#adding-new-gcp-resources">Adding New GCP Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gcp/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gcp/resources/index.html">GCP Reference</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
@@ -217,14 +215,12 @@
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">type</span><span class="p">:</span>
     <span class="nt">enum</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pull</span>
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>
@@ -237,8 +233,7 @@
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">concurrency</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
   <span class="nt">dead_letter_config</span><span class="p">:</span>
@@ -287,7 +282,6 @@
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">periodic</span>
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>
@@ -302,8 +296,7 @@ and guidance to help quickly diagnose and resolve issues. See <a class="referenc
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">categories</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">enum</span><span class="p">:</span>
@@ -369,7 +362,6 @@ and guidance to help quickly diagnose and resolve issues. See <a class="referenc
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">events</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>
@@ -385,8 +377,7 @@ for more details.</p>
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">concurrency</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
   <span class="nt">dead_letter_config</span><span class="p">:</span>
@@ -450,7 +441,6 @@ for more details.</p>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cloudtrail</span>
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>
@@ -464,8 +454,7 @@ have policies that are specific to ec2. See <a class="reference external" href="
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">concurrency</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
   <span class="nt">dead_letter_config</span><span class="p">:</span>
@@ -522,7 +511,6 @@ have policies that are specific to ec2. See <a class="reference external" href="
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ec2-instance-state</span>
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>
@@ -536,8 +524,7 @@ have policies that are specific to asg. See <a class="reference external" href="
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">concurrency</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
   <span class="nt">dead_letter_config</span><span class="p">:</span>
@@ -592,7 +579,6 @@ have policies that are specific to asg. See <a class="reference external" href="
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">asg-instance-state</span>
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>
@@ -610,8 +596,7 @@ allows you to execute polcies when various alerts are created by AWS Guard Duty.
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">concurrency</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
   <span class="nt">dead_letter_config</span><span class="p">:</span>
@@ -658,7 +643,6 @@ allows you to execute polcies when various alerts are created by AWS Guard Duty.
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">guard-duty</span>
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>
@@ -674,8 +658,7 @@ want to get notified based on certain configuration changes. See <a class="refer
 <div class="header docutils container">
 <p>Schema:</p>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">properties</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">concurrency</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
   <span class="nt">dead_letter_config</span><span class="p">:</span>
@@ -722,7 +705,6 @@ want to get notified based on certain configuration changes. See <a class="refer
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">config-rule</span>
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
 </pre></div>
 </div>
 </div>

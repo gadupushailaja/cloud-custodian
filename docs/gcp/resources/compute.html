@@ -1,0 +1,1280 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gcp.compute resources &mdash; Cloud Custodian  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/js/expand.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/expand.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="gcp.container resources" href="container.html" />
+    <link rel="prev" title="gcp.cloudresourcemanager resources" href="cloudresourcemanager.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Cloud Custodian
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filters.html">Generic Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../actions.html">Generic Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/advanced.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/policyStructure.html">Example tag compliance policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deployment.html">Deployment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">AWS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/examples/index.html">Example Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/aws-modes.html">AWS Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/usage.html">Monitoring your environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/lambda.html">Lambda Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/resources/index.html">AWS Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Azure</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/authentication.html#azure-storage-access">Azure Storage access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/policy/index.html">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/azure-modes.html">Azure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/advanced/index.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html#adding-new-azure-resources">Adding New Azure Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/resources/index.html">Azure Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GCP</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gcp-modes.html">GCP Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../policy/index.html">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html#adding-new-gcp-resources">Adding New GCP Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html#testing">Testing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">GCP Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gcp-common-actions.html">GCP Common Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcp-common-filters.html">GCP Common Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appengine.html">gcp.appengine resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigquery.html">gcp.bigquery resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudbilling.html">gcp.cloudbilling resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudbuild.html">gcp.cloudbuild resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudfunctions.html">gcp.cloudfunctions resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudresourcemanager.html">gcp.cloudresourcemanager resources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gcp.compute resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-disk">gcp.disk</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#filters">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actions">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-firewall">gcp.firewall</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-image">gcp.image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-instance">gcp.instance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-interconnect">gcp.interconnect</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-interconnect-attachment">gcp.interconnect-attachment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-address">gcp.loadbalancer-address</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-backend-bucket">gcp.loadbalancer-backend-bucket</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id21">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-backend-service">gcp.loadbalancer-backend-service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id24">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-forwarding-rule">gcp.loadbalancer-forwarding-rule</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id27">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-global-address">gcp.loadbalancer-global-address</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id30">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-global-forwarding-rule">gcp.loadbalancer-global-forwarding-rule</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id33">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id34">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-health-check">gcp.loadbalancer-health-check</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id36">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id37">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-http-health-check">gcp.loadbalancer-http-health-check</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id39">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id40">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-https-health-check">gcp.loadbalancer-https-health-check</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id42">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id43">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-ssl-certificate">gcp.loadbalancer-ssl-certificate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id45">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id46">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-ssl-policy">gcp.loadbalancer-ssl-policy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id48">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id49">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-target-http-proxy">gcp.loadbalancer-target-http-proxy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id51">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id52">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-target-https-proxy">gcp.loadbalancer-target-https-proxy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id54">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id55">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-target-instance">gcp.loadbalancer-target-instance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id57">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id58">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-target-pool">gcp.loadbalancer-target-pool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id60">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id61">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-target-ssl-proxy">gcp.loadbalancer-target-ssl-proxy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id63">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id64">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-target-tcp-proxy">gcp.loadbalancer-target-tcp-proxy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id66">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id67">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-loadbalancer-url-map">gcp.loadbalancer-url-map</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id69">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id70">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-route">gcp.route</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id72">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id73">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-router">gcp.router</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id75">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id76">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-snapshot">gcp.snapshot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id78">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id79">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-subnet">gcp.subnet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id82">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id83">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-vpc">gcp.vpc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id85">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id86">Actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="container.html">gcp.container resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflow.html">gcp.dataflow resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploymentmanager.html">gcp.deploymentmanager resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dns.html">gcp.dns resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iam.html">gcp.iam resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">gcp.logging resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml.html">gcp.ml resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pubsub.html">gcp.pubsub resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servicemanagement.html">gcp.servicemanagement resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sourcerepo.html">gcp.sourcerepo resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spanner.html">gcp.spanner resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqladmin.html">gcp.sqladmin resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage.html">gcp.storage resources</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-org.html">c7n-org: Multi Account Custodian Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-policystream.html">c7n-policystream: Policy Changes from Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-mailer.html">c7n-mailer: Custodian Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-trailcreator.html">AWS Retroactive Tagging Resource Creators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing to Cloud Custodian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/installing.html">Installing for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/tests.html">Testing for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/documentation.html">Documentation For Developers</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cloud Custodian</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">GCP Reference</a> &raquo;</li>
+        
+      <li>gcp.compute resources</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gcp-compute-resources">
+<h1>gcp.compute resources<a class="headerlink" href="#gcp-compute-resources" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#gcp-disk"><span class="std std-ref">gcp.disk</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-firewall"><span class="std std-ref">gcp.firewall</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-image"><span class="std std-ref">gcp.image</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-instance"><span class="std std-ref">gcp.instance</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-interconnect"><span class="std std-ref">gcp.interconnect</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-interconnect-attachment"><span class="std std-ref">gcp.interconnect-attachment</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-address"><span class="std std-ref">gcp.loadbalancer-address</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-backend-bucket"><span class="std std-ref">gcp.loadbalancer-backend-bucket</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-backend-service"><span class="std std-ref">gcp.loadbalancer-backend-service</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-forwarding-rule"><span class="std std-ref">gcp.loadbalancer-forwarding-rule</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-global-address"><span class="std std-ref">gcp.loadbalancer-global-address</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-global-forwarding-rule"><span class="std std-ref">gcp.loadbalancer-global-forwarding-rule</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-health-check"><span class="std std-ref">gcp.loadbalancer-health-check</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-http-health-check"><span class="std std-ref">gcp.loadbalancer-http-health-check</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-https-health-check"><span class="std std-ref">gcp.loadbalancer-https-health-check</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-ssl-certificate"><span class="std std-ref">gcp.loadbalancer-ssl-certificate</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-ssl-policy"><span class="std std-ref">gcp.loadbalancer-ssl-policy</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-target-http-proxy"><span class="std std-ref">gcp.loadbalancer-target-http-proxy</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-target-https-proxy"><span class="std std-ref">gcp.loadbalancer-target-https-proxy</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-target-instance"><span class="std std-ref">gcp.loadbalancer-target-instance</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-target-pool"><span class="std std-ref">gcp.loadbalancer-target-pool</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-target-ssl-proxy"><span class="std std-ref">gcp.loadbalancer-target-ssl-proxy</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-target-tcp-proxy"><span class="std std-ref">gcp.loadbalancer-target-tcp-proxy</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-loadbalancer-url-map"><span class="std std-ref">gcp.loadbalancer-url-map</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-route"><span class="std std-ref">gcp.route</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-router"><span class="std std-ref">gcp.router</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-snapshot"><span class="std std-ref">gcp.snapshot</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-subnet"><span class="std std-ref">gcp.subnet</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-vpc"><span class="std std-ref">gcp.vpc</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="gcp-disk">
+<span id="id1"></span><h2>gcp.disk<a class="headerlink" href="#gcp-disk" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="filters">
+<h3>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="actions">
+<h3>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-disk-actions-snapshot"><span class="std std-ref">snapshot</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="snapshot">
+<span id="gcp-disk-actions-snapshot"></span><h4>snapshot<a class="headerlink" href="#snapshot" title="Permalink to this headline">¶</a></h4>
+<p>Invoke an api call on each resource.</p>
+<p>Quite a number of procedural actions are simply invoking an api
+call on a filtered set of resources. The exact handling is mostly
+boilerplate at that point following an 80/20 rule. This class is
+an encapsulation of the 80%.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">snapshot</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="gcp-firewall">
+<span id="id2"></span><h2>gcp.firewall<a class="headerlink" href="#gcp-firewall" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Filters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h3>Actions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-image">
+<span id="id5"></span><h2>gcp.image<a class="headerlink" href="#gcp-image" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Filters<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h3>Actions<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-instance">
+<span id="id8"></span><h2>gcp.instance<a class="headerlink" href="#gcp-instance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>Filters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-offhour"><span class="std std-ref">offhour</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-onhour"><span class="std std-ref">onhour</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h3>Actions<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#gcp-instance-actions-delete"><span class="std std-ref">delete</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-instance-actions-start"><span class="std std-ref">start</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-instance-actions-stop"><span class="std std-ref">stop</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="delete">
+<span id="gcp-instance-actions-delete"></span><h4>delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h4>
+<p>Invoke an api call on each resource.</p>
+<p>Quite a number of procedural actions are simply invoking an api
+call on a filtered set of resources. The exact handling is mostly
+boilerplate at that point following an 80/20 rule. This class is
+an encapsulation of the 80%.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">delete</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="start">
+<span id="gcp-instance-actions-start"></span><h4>start<a class="headerlink" href="#start" title="Permalink to this headline">¶</a></h4>
+<p>Invoke an api call on each resource.</p>
+<p>Quite a number of procedural actions are simply invoking an api
+call on a filtered set of resources. The exact handling is mostly
+boilerplate at that point following an 80/20 rule. This class is
+an encapsulation of the 80%.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">start</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="stop">
+<span id="gcp-instance-actions-stop"></span><h4>stop<a class="headerlink" href="#stop" title="Permalink to this headline">¶</a></h4>
+<p>Invoke an api call on each resource.</p>
+<p>Quite a number of procedural actions are simply invoking an api
+call on a filtered set of resources. The exact handling is mostly
+boilerplate at that point following an 80/20 rule. This class is
+an encapsulation of the 80%.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stop</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="gcp-interconnect">
+<span id="id11"></span><h2>gcp.interconnect<a class="headerlink" href="#gcp-interconnect" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3>Filters<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h3>Actions<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-interconnect-attachment">
+<span id="id14"></span><h2>gcp.interconnect-attachment<a class="headerlink" href="#gcp-interconnect-attachment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h3>Filters<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id16">
+<h3>Actions<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-address">
+<span id="id17"></span><h2>gcp.loadbalancer-address<a class="headerlink" href="#gcp-loadbalancer-address" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/addresses">https://cloud.google.com/compute/docs/reference/rest/v1/addresses</a></p>
+<div class="section" id="id18">
+<h3>Filters<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id19">
+<h3>Actions<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-backend-bucket">
+<span id="id20"></span><h2>gcp.loadbalancer-backend-bucket<a class="headerlink" href="#gcp-loadbalancer-backend-bucket" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets">https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets</a></p>
+<div class="section" id="id21">
+<h3>Filters<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id22">
+<h3>Actions<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-backend-service">
+<span id="id23"></span><h2>gcp.loadbalancer-backend-service<a class="headerlink" href="#gcp-loadbalancer-backend-service" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/backendServices">https://cloud.google.com/compute/docs/reference/rest/v1/backendServices</a></p>
+<div class="section" id="id24">
+<h3>Filters<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id25">
+<h3>Actions<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-forwarding-rule">
+<span id="id26"></span><h2>gcp.loadbalancer-forwarding-rule<a class="headerlink" href="#gcp-loadbalancer-forwarding-rule" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/addresses">https://cloud.google.com/compute/docs/reference/rest/v1/addresses</a></p>
+<div class="section" id="id27">
+<h3>Filters<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id28">
+<h3>Actions<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-global-address">
+<span id="id29"></span><h2>gcp.loadbalancer-global-address<a class="headerlink" href="#gcp-loadbalancer-global-address" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/globalAddresses">https://cloud.google.com/compute/docs/reference/rest/v1/globalAddresses</a></p>
+<div class="section" id="id30">
+<h3>Filters<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id31">
+<h3>Actions<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-global-forwarding-rule">
+<span id="id32"></span><h2>gcp.loadbalancer-global-forwarding-rule<a class="headerlink" href="#gcp-loadbalancer-global-forwarding-rule" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/forwardingRules">https://cloud.google.com/compute/docs/reference/rest/v1/forwardingRules</a></p>
+<div class="section" id="id33">
+<h3>Filters<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id34">
+<h3>Actions<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-health-check">
+<span id="id35"></span><h2>gcp.loadbalancer-health-check<a class="headerlink" href="#gcp-loadbalancer-health-check" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks">https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks</a></p>
+<div class="section" id="id36">
+<h3>Filters<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id37">
+<h3>Actions<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-http-health-check">
+<span id="id38"></span><h2>gcp.loadbalancer-http-health-check<a class="headerlink" href="#gcp-loadbalancer-http-health-check" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/httpHealthChecks">https://cloud.google.com/compute/docs/reference/rest/v1/httpHealthChecks</a></p>
+<div class="section" id="id39">
+<h3>Filters<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id40">
+<h3>Actions<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-https-health-check">
+<span id="id41"></span><h2>gcp.loadbalancer-https-health-check<a class="headerlink" href="#gcp-loadbalancer-https-health-check" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/httpsHealthChecks">https://cloud.google.com/compute/docs/reference/rest/v1/httpsHealthChecks</a></p>
+<div class="section" id="id42">
+<h3>Filters<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id43">
+<h3>Actions<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-ssl-certificate">
+<span id="id44"></span><h2>gcp.loadbalancer-ssl-certificate<a class="headerlink" href="#gcp-loadbalancer-ssl-certificate" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates">https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates</a></p>
+<div class="section" id="id45">
+<h3>Filters<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id46">
+<h3>Actions<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-ssl-policy">
+<span id="id47"></span><h2>gcp.loadbalancer-ssl-policy<a class="headerlink" href="#gcp-loadbalancer-ssl-policy" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies">https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies</a></p>
+<div class="section" id="id48">
+<h3>Filters<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id49">
+<h3>Actions<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-target-http-proxy">
+<span id="id50"></span><h2>gcp.loadbalancer-target-http-proxy<a class="headerlink" href="#gcp-loadbalancer-target-http-proxy" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/targetHttpProxies">https://cloud.google.com/compute/docs/reference/rest/v1/targetHttpProxies</a></p>
+<div class="section" id="id51">
+<h3>Filters<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id52">
+<h3>Actions<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-target-https-proxy">
+<span id="id53"></span><h2>gcp.loadbalancer-target-https-proxy<a class="headerlink" href="#gcp-loadbalancer-target-https-proxy" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/targetHttpsProxies">https://cloud.google.com/compute/docs/reference/rest/v1/targetHttpsProxies</a></p>
+<div class="section" id="id54">
+<h3>Filters<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id55">
+<h3>Actions<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-target-instance">
+<span id="id56"></span><h2>gcp.loadbalancer-target-instance<a class="headerlink" href="#gcp-loadbalancer-target-instance" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/targetInstances">https://cloud.google.com/compute/docs/reference/rest/v1/targetInstances</a></p>
+<div class="section" id="id57">
+<h3>Filters<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id58">
+<h3>Actions<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-target-pool">
+<span id="id59"></span><h2>gcp.loadbalancer-target-pool<a class="headerlink" href="#gcp-loadbalancer-target-pool" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/targetPools">https://cloud.google.com/compute/docs/reference/rest/v1/targetPools</a></p>
+<div class="section" id="id60">
+<h3>Filters<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id61">
+<h3>Actions<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-target-ssl-proxy">
+<span id="id62"></span><h2>gcp.loadbalancer-target-ssl-proxy<a class="headerlink" href="#gcp-loadbalancer-target-ssl-proxy" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/targetSslProxies">https://cloud.google.com/compute/docs/reference/rest/v1/targetSslProxies</a></p>
+<div class="section" id="id63">
+<h3>Filters<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id64">
+<h3>Actions<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-target-tcp-proxy">
+<span id="id65"></span><h2>gcp.loadbalancer-target-tcp-proxy<a class="headerlink" href="#gcp-loadbalancer-target-tcp-proxy" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/targetTcpProxies">https://cloud.google.com/compute/docs/reference/rest/v1/targetTcpProxies</a></p>
+<div class="section" id="id66">
+<h3>Filters<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id67">
+<h3>Actions<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-loadbalancer-url-map">
+<span id="id68"></span><h2>gcp.loadbalancer-url-map<a class="headerlink" href="#gcp-loadbalancer-url-map" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource: <a class="reference external" href="https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps">https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps</a></p>
+<div class="section" id="id69">
+<h3>Filters<a class="headerlink" href="#id69" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id70">
+<h3>Actions<a class="headerlink" href="#id70" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-route">
+<span id="id71"></span><h2>gcp.route<a class="headerlink" href="#gcp-route" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id72">
+<h3>Filters<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id73">
+<h3>Actions<a class="headerlink" href="#id73" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-router">
+<span id="id74"></span><h2>gcp.router<a class="headerlink" href="#gcp-router" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id75">
+<h3>Filters<a class="headerlink" href="#id75" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id76">
+<h3>Actions<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-snapshot">
+<span id="id77"></span><h2>gcp.snapshot<a class="headerlink" href="#gcp-snapshot" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id78">
+<h3>Filters<a class="headerlink" href="#id78" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id79">
+<h3>Actions<a class="headerlink" href="#id79" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#gcp-snapshot-actions-delete"><span class="std std-ref">delete</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="gcp-snapshot-actions-delete">
+<span id="id80"></span><h4>delete<a class="headerlink" href="#gcp-snapshot-actions-delete" title="Permalink to this headline">¶</a></h4>
+<p>Invoke an api call on each resource.</p>
+<p>Quite a number of procedural actions are simply invoking an api
+call on a filtered set of resources. The exact handling is mostly
+boilerplate at that point following an 80/20 rule. This class is
+an encapsulation of the 80%.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">delete</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="gcp-subnet">
+<span id="id81"></span><h2>gcp.subnet<a class="headerlink" href="#gcp-subnet" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id82">
+<h3>Filters<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id83">
+<h3>Actions<a class="headerlink" href="#id83" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-subnet-actions-set-flow-log"><span class="std std-ref">set-flow-log</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-subnet-actions-set-gcp-private"><span class="std std-ref">set-gcp-private</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="set-flow-log">
+<span id="gcp-subnet-actions-set-flow-log"></span><h4>set-flow-log<a class="headerlink" href="#set-flow-log" title="Permalink to this headline">¶</a></h4>
+<p>Enable vpc flow logs on a subnet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p>Enable flow logs on all subnets</p>
+</dd>
+</dl>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">state</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">set-flow-log</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="set-gcp-private">
+<span id="gcp-subnet-actions-set-gcp-private"></span><h4>set-gcp-private<a class="headerlink" href="#set-gcp-private" title="Permalink to this headline">¶</a></h4>
+<p>Enable/Disable GCP Private IP Access for a subnet</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">state</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">set-gcp-private</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="gcp-vpc">
+<span id="id84"></span><h2>gcp.vpc<a class="headerlink" href="#gcp-vpc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id85">
+<h3>Filters<a class="headerlink" href="#id85" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id86">
+<h3>Actions<a class="headerlink" href="#id86" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="container.html" class="btn btn-neutral float-right" title="gcp.container resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cloudresourcemanager.html" class="btn btn-neutral float-left" title="gcp.cloudresourcemanager resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Capital One Services, LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

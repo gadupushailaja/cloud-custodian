@@ -1,0 +1,329 @@
+aws.glue resources
+##################
+
+
+
+  - :ref:`aws.glue-connection <aws.glue-connection>`
+
+  - :ref:`aws.glue-crawler <aws.glue-crawler>`
+
+  - :ref:`aws.glue-dev-endpoint <aws.glue-dev-endpoint>`
+
+  - :ref:`aws.glue-job <aws.glue-job>`
+
+
+
+
+.. _aws.glue-connection:
+
+aws.glue-connection
+===================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`security-group <aws.common.filters.security-group>`
+  
+  - :ref:`subnet <aws.common.filters.subnet>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`delete <aws.glue-connection.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.glue-connection.actions.delete:
+
+delete
+++++++
+Delete a connection from the data catalog
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: delete-jdbc-connections
+        resource: glue-connection
+        filters:
+          - ConnectionType: JDBC
+        actions:
+          - type: delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+
+.. _aws.glue-crawler:
+
+aws.glue-crawler
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <aws.glue-crawler.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.glue-crawler.actions.delete:
+
+delete
+++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+
+.. _aws.glue-dev-endpoint:
+
+aws.glue-dev-endpoint
+=====================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <aws.glue-dev-endpoint.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.glue-dev-endpoint.actions.delete:
+
+delete
+++++++
+Deletes public Glue Dev Endpoints
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: delete-public-dev-endpoints
+        resource: glue-dev-endpoint
+        filters:
+          - PublicAddress: present
+        actions:
+          - type: delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+
+.. _aws.glue-job:
+
+aws.glue-job
+============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <aws.glue-job.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.glue-job.actions.delete:
+
+delete
+++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+

@@ -1,0 +1,87 @@
+aws.gamelift resources
+######################
+
+
+
+  - :ref:`aws.gamelift-build <aws.gamelift-build>`
+
+  - :ref:`aws.gamelift-fleet <aws.gamelift-fleet>`
+
+
+
+
+.. _aws.gamelift-build:
+
+aws.gamelift-build
+==================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.gamelift-fleet:
+
+aws.gamelift-fleet
+==================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+

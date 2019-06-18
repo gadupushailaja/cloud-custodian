@@ -1,0 +1,6438 @@
+aws.ec2 resources
+#################
+
+
+
+  - :ref:`aws.ami <aws.ami>`
+
+  - :ref:`aws.customer-gateway <aws.customer-gateway>`
+
+  - :ref:`aws.ebs <aws.ebs>`
+
+  - :ref:`aws.ebs-snapshot <aws.ebs-snapshot>`
+
+  - :ref:`aws.ec2 <aws.ec2>`
+
+  - :ref:`aws.ec2-reserved <aws.ec2-reserved>`
+
+  - :ref:`aws.eni <aws.eni>`
+
+  - :ref:`aws.internet-gateway <aws.internet-gateway>`
+
+  - :ref:`aws.key-pair <aws.key-pair>`
+
+  - :ref:`aws.launch-template-version <aws.launch-template-version>`
+
+  - :ref:`aws.nat-gateway <aws.nat-gateway>`
+
+  - :ref:`aws.network-acl <aws.network-acl>`
+
+  - :ref:`aws.network-addr <aws.network-addr>`
+
+  - :ref:`aws.peering-connection <aws.peering-connection>`
+
+  - :ref:`aws.route-table <aws.route-table>`
+
+  - :ref:`aws.security-group <aws.security-group>`
+
+  - :ref:`aws.subnet <aws.subnet>`
+
+  - :ref:`aws.transit-attachment <aws.transit-attachment>`
+
+  - :ref:`aws.transit-gateway <aws.transit-gateway>`
+
+  - :ref:`aws.vpc <aws.vpc>`
+
+  - :ref:`aws.vpc-endpoint <aws.vpc-endpoint>`
+
+  - :ref:`aws.vpn-connection <aws.vpn-connection>`
+
+  - :ref:`aws.vpn-gateway <aws.vpn-gateway>`
+
+
+
+
+.. _aws.ami:
+
+aws.ami
+=======
+
+
+
+Filters
+-------
+
+
+  - :ref:`cross-account <aws.ami.filters.cross-account>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`image-age <aws.ami.filters.image-age>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`unused <aws.ami.filters.unused>`
+
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.ami.filters.cross-account:
+
+cross-account
++++++++++++++
+Check a resource's embedded iam policy for cross account access.
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - cross-account
+      whitelist:
+        items:
+          type: string
+        type: array
+      whitelist_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+    required:
+    - type
+
+
+.. _aws.ami.filters.image-age:
+
+image-age
++++++++++
+Filters images based on the age (in days)
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: ami-remove-launch-permissions
+            resource: ami
+            filters:
+              - type: image-age
+                days: 30
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      days:
+        minimum: 0
+        type: number
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - image-age
+    required:
+    - type
+
+
+.. _aws.ami.filters.unused:
+
+unused
+++++++
+Filters images based on usage
+
+true: image has no instances spawned from it
+false: image has instances spawned from it
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: ami-unused
+            resource: ami
+            filters:
+              - type: unused
+                value: true
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - unused
+      value:
+        type: boolean
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy <aws.ami.actions.copy>`
+
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`deregister <aws.ami.actions.deregister>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-launch-permissions <aws.ami.actions.remove-launch-permissions>`
+
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.ami.actions.copy:
+
+copy
+++++
+Action to copy AMIs with optional encryption
+
+This action can copy AMIs while optionally encrypting or decrypting
+the target AMI. It is advised to use in conjunction with a filter.
+
+Note there is a max in flight of 5 per account/region.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: ami-ensure-encrypted
+            resource: ami
+            filters:
+              - type: value
+                key: encrypted
+                value: true
+            actions:
+              - type: copy
+                encrypt: true
+                key-id: 00000000-0000-0000-0000-000000000000
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      description:
+        type: string
+      encrypt:
+        type: boolean
+      key-id:
+        type: string
+      name:
+        type: string
+      region:
+        type: string
+      type:
+        enum:
+        - copy
+
+
+.. _aws.ami.actions.deregister:
+
+deregister
+++++++++++
+Action to deregister AMI
+
+To prevent deregistering all AMI, it is advised to use in conjunction with
+a filter (such as image-age)
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: ami-deregister-old
+            resource: ami
+            filters:
+              - type: image-age
+                days: 90
+            actions:
+              - deregister
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      delete-snapshots:
+        type: boolean
+      type:
+        enum:
+        - deregister
+    required:
+    - type
+
+
+.. _aws.ami.actions.remove-launch-permissions:
+
+remove-launch-permissions
++++++++++++++++++++++++++
+Action to remove the ability to launch an instance from an AMI
+
+This action will remove any launch permissions granted to other
+AWS accounts from the image, leaving only the owner capable of
+launching it
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: ami-remove-launch-permissions
+            resource: ami
+            filters:
+              - type: image-age
+                days: 60
+            actions:
+              - remove-launch-permissions
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - remove-launch-permissions
+    required:
+    - type
+
+
+
+.. _aws.customer-gateway:
+
+aws.customer-gateway
+====================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.ebs:
+
+aws.ebs
+=======
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`fault-tolerant <aws.ebs.filters.fault-tolerant>`
+
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`health-event <aws.ebs.filters.health-event>`
+
+  - :ref:`instance <aws.ebs.filters.instance>`
+
+  - :ref:`kms-alias <aws.ebs.filters.kms-alias>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
+  - :ref:`modifyable <aws.ebs.filters.modifyable>`
+
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.ebs.filters.fault-tolerant:
+
+fault-tolerant
+++++++++++++++
+This filter will return any EBS volume that does/does not have a
+snapshot within the last 7 days. 'Fault-Tolerance' in this instance
+means that, in the event of a failure, the volume can be restored
+from a snapshot with (reasonable) data loss
+
+.. code-block:: yaml
+
+  policies:
+   - name: ebs-volume-tolerance
+     resource: ebs
+     filters:
+       - type: fault-tolerant
+         tolerant: True
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      tolerant:
+        type: boolean
+      type:
+        enum:
+        - fault-tolerant
+    required:
+    - type
+
+
+.. _aws.ebs.filters.health-event:
+
+health-event
+++++++++++++
+Check if there are operations health events (phd) related to the resources
+
+https://aws.amazon.com/premiumsupport/technology/personal-health-dashboard/
+
+Health events are stored as annotation on a resource.
+
+Custodian also supports responding to phd events via a lambda execution mode.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      statuses:
+        items:
+          enum:
+          - open
+          - upcoming
+          - closed
+          type: string
+        type: array
+      type:
+        enum:
+        - health-event
+      types:
+        items:
+          enum:
+          - AWS_EBS_DEGRADED_EBS_VOLUME_PERFORMANCE
+          - AWS_EBS_VOLUME_LOST
+          type: string
+        type: array
+    required:
+    - type
+
+
+.. _aws.ebs.filters.instance:
+
+instance
+++++++++
+Filter volumes based on filtering on their attached instance
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: instance-ebs-volumes
+            resource: ebs
+            filters:
+              - instance
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - instance
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.ebs.filters.kms-alias:
+
+kms-alias
++++++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - kms-alias
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.ebs.filters.modifyable:
+
+modifyable
+++++++++++
+Check if an ebs volume is modifyable online.
+
+Considerations:
+ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/limitations.html
+
+Consideration Summary
+  - only current instance types are supported (one exception m3.medium)
+    Current Generation Instances (2017-2)
+    https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#current-gen-instances
+
+  - older magnetic volume types are not supported
+  - shrinking volumes is not supported
+  - must wait at least 6hrs between modifications to the same volume.
+  - volumes must have been attached after nov 1st, 2016.
+
+See :ref:`modify action <aws.ebs.actions.modify>` for examples.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - modifyable
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-instance-tags <aws.ebs.actions.copy-instance-tags>`
+
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`delete <aws.ebs.actions.delete>`
+
+  - :ref:`detach <aws.ebs.actions.detach>`
+
+  - :ref:`encrypt-instance-volumes <aws.ebs.actions.encrypt-instance-volumes>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`modify <aws.ebs.actions.modify>`
+
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`snapshot <aws.ebs.actions.snapshot>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.ebs.actions.copy-instance-tags:
+
+copy-instance-tags
+++++++++++++++++++
+Copy instance tags to its attached volume.
+
+Useful for cost allocation to ebs volumes and tracking usage
+info for volumes.
+
+Mostly useful for volumes not set to delete on termination, which
+are otherwise candidates for garbage collection, copying the
+instance tags gives us more semantic information to determine if
+their useful, as well letting us know the last time the volume
+was actually used.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: ebs-copy-instance-tags
+            resource: ebs
+            filters:
+              - type: value
+                key: "Attachments[0].Device"
+                value: not-null
+            actions:
+              - type: copy-instance-tags
+                tags:
+                  - Name
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      tags:
+        items:
+          type: string
+        type: array
+      type:
+        enum:
+        - copy-instance-tags
+    required:
+    - type
+
+
+.. _aws.ebs.actions.delete:
+
+delete
+++++++
+Delete an ebs volume.
+
+If the force boolean is true, we will detach an attached volume
+from an instance. Note this cannot be done for running instance
+root volumes.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: delete-unattached-volumes
+            resource: ebs
+            filters:
+              - Attachments: []
+              - State: available
+            actions:
+              - delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      force:
+        type: boolean
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.ebs.actions.detach:
+
+detach
+++++++
+Detach an EBS volume from an Instance.
+
+If 'Force' Param is True, then we'll do a forceful detach
+of the Volume. The default value for 'Force' is False.
+
+ :example:
+
+ .. code-block:: yaml
+
+         policies:
+           - name: instance-ebs-volumes
+             resource: ebs
+             filters:
+               - VolumeId :  volumeid
+             actions:
+               - detach
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      force:
+        type: boolean
+      type:
+        enum:
+        - detach
+    required:
+    - type
+
+
+.. _aws.ebs.actions.encrypt-instance-volumes:
+
+encrypt-instance-volumes
+++++++++++++++++++++++++
+Encrypt extant volumes attached to an instance
+
+- Requires instance restart
+- Not suitable for autoscale groups.
+
+Multistep process:
+
+- Stop instance (if running)
+- For each volume
+   - Create snapshot
+   - Wait on snapshot creation
+   - Copy Snapshot to create encrypted snapshot
+   - Wait on snapshot creation
+   - Create encrypted volume from snapshot
+   - Wait on volume creation
+   - Delete transient snapshots
+   - Detach Unencrypted Volume
+   - Attach Encrypted Volume
+   - Set DeleteOnTermination instance attribute equal to source volume
+- For each volume
+   - Delete unencrypted volume
+- Start Instance (if originally running)
+- For each newly encrypted volume
+   - Delete transient tags
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: encrypt-unencrypted-ebs
+            resource: ebs
+            filters:
+              - Encrypted: false
+            actions:
+              - type: encrypt-instance-volumes
+                key: alias/encrypted
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      delay:
+        type: number
+      key:
+        type: string
+      type:
+        enum:
+        - encrypt-instance-volumes
+      verbose:
+        type: boolean
+    required:
+    - key
+    - type
+
+
+.. _aws.ebs.actions.modify:
+
+modify
+++++++
+Modify an ebs volume online.
+
+**Note this action requires use of modifyable filter**
+
+Intro Blog & Use Cases:
+ https://aws.amazon.com/blogs/aws/amazon-ebs-update-new-elastic-volumes-change-everything/
+Docs:
+ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html
+Considerations:
+ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/limitations.html
+
+:example:
+
+  Find under utilized provisioned iops volumes older than a week
+  and change their type.
+
+.. code-block:: yaml
+
+       policies:
+        - name: ebs-remove-piops
+          resource: ebs
+          filters:
+           - type: value
+             key: CreateDate
+             value_type: age
+             value: 7
+             op: greater-than
+           - VolumeType: io1
+           - type: metrics
+             name: VolumeConsumedReadWriteOps
+             statistics: Maximum
+             value: 100
+             op: less-than
+             days: 7
+           - modifyable
+          actions:
+           - type: modify
+             volume-type: gp2
+
+`iops-percent` and `size-percent` can be used to modify
+respectively iops on io1 volumes and volume size.
+
+When converting to io1, `iops-percent` is used to set the iops
+allocation for the new volume against the extant value for the old
+volume.
+
+:example:
+
+  Double storage and quadruple iops for all io1 volumes.
+
+.. code-block:: yaml
+
+       policies:
+        - name: ebs-remove-piops
+          resource: ebs
+          filters:
+            - VolumeType: io1
+            - modifyable
+          actions:
+            - type: modify
+              size-percent: 200
+              iops-percent: 400
+
+
+**Note** resizing down aka shrinking requires OS and FS support
+and potentially additional preparation, else data-loss may occur.
+To prevent accidents, shrinking must be explicitly enabled by also
+setting `shrink: true` on the action.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      iops-percent:
+        type: number
+      shrink: false
+      size-percent:
+        type: number
+      type:
+        enum:
+        - modify
+      volume-type:
+        enum:
+        - io1
+        - gp2
+        - st1
+        - sc1
+    required:
+    - type
+
+
+.. _aws.ebs.actions.snapshot:
+
+snapshot
+++++++++
+Snapshot an EBS volume
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: snapshot-volumes
+            resource: ebs
+            filters:
+              - Attachments: []
+              - State: available
+            actions:
+              - snapshot
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - snapshot
+    required:
+    - type
+
+
+
+.. _aws.ebs-snapshot:
+
+aws.ebs-snapshot
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`age <aws.ebs-snapshot.filters.age>`
+
+  - :ref:`cross-account <aws.ebs-snapshot.filters.cross-account>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`skip-ami-snapshots <aws.ebs-snapshot.filters.skip-ami-snapshots>`
+
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`unused <aws.ebs-snapshot.filters.unused>`
+
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.ebs-snapshot.filters.age:
+
+age
++++
+EBS Snapshot Age Filter
+
+Filters an EBS snapshot based on the age of the snapshot (in days)
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: ebs-snapshots-week-old
+            resource: ebs-snapshot
+            filters:
+              - type: age
+                days: 7
+                op: ge
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      days:
+        type: number
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - age
+    required:
+    - type
+
+
+.. _aws.ebs-snapshot.filters.cross-account:
+
+cross-account
++++++++++++++
+Check a resource's embedded iam policy for cross account access.
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      actions:
+        items:
+          type: string
+        type: array
+      everyone_only:
+        type: boolean
+      type:
+        enum:
+        - cross-account
+      whitelist:
+        items:
+          type: string
+        type: array
+      whitelist_conditions:
+        items:
+          type: string
+        type: array
+      whitelist_from: &id001
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      whitelist_orgids:
+        items:
+          type: string
+        type: array
+      whitelist_orgids_from: *id001
+      whitelist_vpc:
+        items:
+          type: string
+        type: array
+      whitelist_vpc_from: *id001
+      whitelist_vpce:
+        items:
+          type: string
+        type: array
+      whitelist_vpce_from: *id001
+    required:
+    - type
+
+
+.. _aws.ebs-snapshot.filters.skip-ami-snapshots:
+
+skip-ami-snapshots
+++++++++++++++++++
+Filter to remove snapshots of AMIs from results
+
+This filter is 'true' by default.
+
+:example:
+
+implicit with no parameters, 'true' by default
+
+.. code-block:: yaml
+
+        policies:
+          - name: delete-stale-snapshots
+            resource: ebs-snapshot
+            filters:
+              - type: age
+                days: 28
+                op: ge
+              - skip-ami-snapshots
+
+:example:
+
+explicit with parameter
+
+.. code-block:: yaml
+
+        policies:
+          - name: delete-snapshots
+            resource: ebs-snapshot
+            filters:
+              - type: age
+                days: 28
+                op: ge
+              - type: skip-ami-snapshots
+                value: false
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - skip-ami-snapshots
+      value:
+        type: boolean
+    required:
+    - type
+
+
+.. _aws.ebs-snapshot.filters.unused:
+
+unused
+++++++
+Filters snapshots based on usage
+
+true: snapshot is not used by launch-template, launch-config, or ami.
+
+false: snapshot is being used by launch-template, launch-config, or ami.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: snapshot-unused
+            resource: ebs-snapshot
+            filters:
+              - type: unused
+                value: true
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - unused
+      value:
+        type: boolean
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy <aws.ebs-snapshot.actions.copy>`
+
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`delete <aws.ebs-snapshot.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.ebs-snapshot.actions.copy:
+
+copy
+++++
+Copy a snapshot across regions
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: copy-snapshot-east-west
+            resource: ebs-snapshot
+            filters:
+              - type: age
+                days: 7
+                op: le
+            actions:
+              - type: copy
+                target_region: us-west-2
+                target_key: target_kms_key
+                encrypted: true
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      encrypted:
+        type: boolean
+      target_key:
+        type: string
+      target_region:
+        type: string
+      type:
+        enum:
+        - copy
+    required:
+    - type
+
+
+.. _aws.ebs-snapshot.actions.delete:
+
+delete
+++++++
+Deletes EBS snapshots
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: delete-stale-snapshots
+            resource: ebs-snapshot
+            filters:
+              - type: age
+                days: 28
+                op: ge
+            actions:
+              - delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      skip-ami-snapshots:
+        type: boolean
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+
+.. _aws.ec2:
+
+aws.ec2
+=======
+
+
+
+Filters
+-------
+
+
+  - :ref:`check-permissions <aws.common.filters.check-permissions>`
+  
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`default-vpc <aws.ec2.filters.default-vpc>`
+
+  - :ref:`ebs <aws.ec2.filters.ebs>`
+
+  - :ref:`ephemeral <aws.ec2.filters.ephemeral>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`health-event <aws.common.filters.health-event>`
+  
+  - :ref:`image <aws.ec2.filters.image>`
+
+  - :ref:`image-age <aws.ec2.filters.image-age>`
+
+  - :ref:`instance-age <aws.ec2.filters.instance-age>`
+
+  - :ref:`instance-attribute <aws.ec2.filters.instance-attribute>`
+
+  - :ref:`instance-uptime <aws.ec2.filters.instance-uptime>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
+  - :ref:`network-location <aws.common.filters.network-location>`
+  
+  - :ref:`offhour <aws.common.filters.offhour>`
+  
+  - :ref:`onhour <aws.common.filters.onhour>`
+  
+  - :ref:`security-group <aws.common.filters.security-group>`
+  
+  - :ref:`singleton <aws.ec2.filters.singleton>`
+
+  - :ref:`ssm <aws.ec2.filters.ssm>`
+
+  - :ref:`state-age <aws.ec2.filters.state-age>`
+
+  - :ref:`subnet <aws.common.filters.subnet>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`termination-protected <aws.ec2.filters.termination-protected>`
+
+  - :ref:`user-data <aws.ec2.filters.user-data>`
+
+  - :ref:`value <aws.common.filters.value>`
+  
+  - :ref:`vpc <aws.common.filters.vpc>`
+  
+
+
+.. _aws.ec2.filters.default-vpc:
+
+default-vpc
++++++++++++
+Matches if an ec2 database is in the default vpc
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - default-vpc
+    required:
+    - type
+
+
+.. _aws.ec2.filters.ebs:
+
+ebs
++++
+EC2 instances with EBS backed volume
+
+Filters EC2 instances with EBS backed storage devices (non ephemeral)
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-encrypted-ebs-volumes
+        resource: ec2
+        filters:
+          - type: ebs
+            key: Encrypted
+            value: true
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      operator:
+        enum:
+        - and
+        - or
+      skip-devices:
+        items:
+          type: string
+        type: array
+      type:
+        enum:
+        - ebs
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.ec2.filters.ephemeral:
+
+ephemeral
++++++++++
+EC2 instances with ephemeral storage
+
+Filters EC2 instances that have ephemeral storage (an instance-store backed
+root device)
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-ephemeral-instances
+        resource: ec2
+        filters:
+          - type: ephemeral
+
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - ephemeral
+    required:
+    - type
+
+
+.. _aws.ec2.filters.image:
+
+image
++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - image
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.ec2.filters.image-age:
+
+image-age
++++++++++
+EC2 AMI age filter
+
+Filters EC2 instances based on the age of their AMI image (in days)
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-ancient-ami
+        resource: ec2
+        filters:
+          - type: image-age
+            op: ge
+            days: 90
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      days:
+        type: number
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - image-age
+    required:
+    - type
+
+
+.. _aws.ec2.filters.instance-age:
+
+instance-age
+++++++++++++
+Filters instances based on their age (in days)
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-30-days-plus
+        resource: ec2
+        filters:
+          - type: instance-age
+            op: ge
+            days: 30
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      days:
+        type: number
+      hours:
+        type: number
+      minutes:
+        type: number
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - instance-age
+    required:
+    - type
+
+
+.. _aws.ec2.filters.instance-attribute:
+
+instance-attribute
+++++++++++++++++++
+EC2 Instance Value FIlter on a given instance attribute.
+
+Filters EC2 Instances with the given instance attribute
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-unoptimized-ebs
+        resource: ec2
+        filters:
+          - type: instance-attribute
+            attribute: ebsOptimized
+            key: "Value"
+            value: false
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      attribute:
+        enum:
+        - instanceType
+        - kernel
+        - ramdisk
+        - userData
+        - disableApiTermination
+        - instanceInitiatedShutdownBehavior
+        - rootDeviceName
+        - blockDeviceMapping
+        - productCodes
+        - sourceDestCheck
+        - groupSet
+        - ebsOptimized
+        - sriovNetSupport
+        - enaSupport
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - instance-attribute
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - attribute
+
+
+.. _aws.ec2.filters.instance-uptime:
+
+instance-uptime
++++++++++++++++
+Automatically filter resources older than a given date.
+
+**Deprecated** use a value filter with `value_type: age` which can be
+done on any attribute.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      days:
+        type: number
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - instance-uptime
+    required:
+    - type
+
+
+.. _aws.ec2.filters.singleton:
+
+singleton
++++++++++
+EC2 instances without autoscaling or a recover alarm
+
+Filters EC2 instances that are not members of an autoscaling group
+and do not have Cloudwatch recover alarms.
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-recover-instances
+        resource: ec2
+        filters:
+          - singleton
+        actions:
+          - type: tag
+            key: problem
+            value: instance is not resilient
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - singleton
+    required:
+    - type
+
+
+.. _aws.ec2.filters.ssm:
+
+ssm
++++
+Filter ec2 instances by their ssm status information.
+
+:Example:
+
+Find ubuntu 18.04 instances are active with ssm.
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-recover-instances
+        resource: ec2
+        filters:
+          - type: ssm
+            key: PingStatus
+            value: Online
+          - type: ssm
+            key: PlatformName
+            value: Ubuntu
+          - type: ssm
+            key: PlatformVersion
+            value: 18.04
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - ssm
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.ec2.filters.state-age:
+
+state-age
++++++++++
+Age an instance has been in the given state.
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-state-running-7-days
+        resource: ec2
+        filters:
+          - type: state-age
+            op: ge
+            days: 7
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      days:
+        type: number
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - state-age
+    required:
+    - type
+
+
+.. _aws.ec2.filters.termination-protected:
+
+termination-protected
++++++++++++++++++++++
+EC2 instances with ``disableApiTermination`` attribute set
+
+Filters EC2 instances with ``disableApiTermination`` attribute set to true.
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: termination-protection-enabled
+        resource: ec2
+        filters:
+          - type: termination-protected
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: termination-protection-NOT-enabled
+        resource: ec2
+        filters:
+          - not:
+            - type: termination-protected
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - termination-protected
+    required:
+    - type
+
+
+.. _aws.ec2.filters.user-data:
+
+user-data
++++++++++
+Filter on EC2 instances which have matching userdata.
+Note: It is highly recommended to use regexes with the ?sm flags, since Custodian
+uses re.match() and userdata spans multiple lines.
+
+    :example:
+
+    .. code-block:: yaml
+
+        policies:
+          - name: ec2_userdata_stop
+            resource: ec2
+            filters:
+              - type: user-data
+                op: regex
+                value: (?smi).*password=
+            actions:
+              - stop
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - user-data
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`autorecover-alarm <aws.ec2.actions.autorecover-alarm>`
+
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`modify-security-groups <aws.common.actions.modify-security-groups>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`propagate-spot-tags <aws.ec2.actions.propagate-spot-tags>`
+
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`reboot <aws.ec2.actions.reboot>`
+
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`resize <aws.ec2.actions.resize>`
+
+  - :ref:`send-command <aws.ec2.actions.send-command>`
+
+  - :ref:`set-instance-profile <aws.ec2.actions.set-instance-profile>`
+
+  - :ref:`snapshot <aws.ec2.actions.snapshot>`
+
+  - :ref:`start <aws.ec2.actions.start>`
+
+  - :ref:`stop <aws.ec2.actions.stop>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`terminate <aws.ec2.actions.terminate>`
+
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.ec2.actions.autorecover-alarm:
+
+autorecover-alarm
++++++++++++++++++
+Adds a cloudwatch metric alarm to recover an EC2 instance.
+
+This action takes effect on instances that are NOT part
+of an ASG.
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-autorecover-alarm
+        resource: ec2
+        filters:
+          - singleton
+        actions:
+          - autorecover-alarm
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - autorecover-alarm
+    required:
+    - type
+
+
+.. _aws.ec2.actions.propagate-spot-tags:
+
+propagate-spot-tags
++++++++++++++++++++
+Propagate Tags that are set at Spot Request level to EC2 instances.
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-spot-instances
+        resource: ec2
+        filters:
+          - State.Name: pending
+          - instanceLifecycle: spot
+        actions:
+          - type: propagate-spot-tags
+            only_tags:
+              - Name
+              - BillingTag
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      only_tags:
+        items:
+          type: string
+        type: array
+      type:
+        enum:
+        - propagate-spot-tags
+    required:
+    - type
+
+
+.. _aws.ec2.actions.reboot:
+
+reboot
+++++++
+reboots a previously running EC2 instance.
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-reboot-instances
+        resource: ec2
+        query:
+          - instance-state-name: running
+        actions:
+          - reboot
+
+http://docs.aws.amazon.com/cli/latest/reference/ec2/reboot-instances.html
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - reboot
+    required:
+    - type
+
+
+.. _aws.ec2.actions.resize:
+
+resize
+++++++
+Change an instance's size.
+
+An instance can only be resized when its stopped, this action
+can optionally restart an instance if needed to effect the instance
+type change. Instances are always left in the run state they were
+found in.
+
+There are a few caveats to be aware of, instance resizing
+needs to maintain compatibility for architecture, virtualization type
+hvm/pv, and ebs optimization at minimum.
+
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: string
+      restart:
+        type: boolean
+      type:
+        enum:
+        - resize
+      type-map:
+        type: object
+    required:
+    - type
+
+
+.. _aws.ec2.actions.send-command:
+
+send-command
+++++++++++++
+Run an SSM Automation Document on an instance.
+
+:Example:
+
+Find ubuntu 18.04 instances are active with ssm.
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-osquery-install
+        resource: ec2
+        filters:
+          - type: ssm
+            key: PingStatus
+            value: Online
+          - type: ssm
+            key: PlatformName
+            value: Ubuntu
+          - type: ssm
+            key: PlatformVersion
+            value: 18.04
+        actions:
+          - type: send-command
+            command:
+              DocumentName: AWS-RunShellScript
+              Parameters:
+                commands:
+                  - wget https://pkg.osquery.io/deb/osquery_3.3.0_1.linux.amd64.deb
+                  - dpkg -i osquery_3.3.0_1.linux.amd64.deb
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      command:
+        type: object
+      type:
+        enum:
+        - send-command
+    required:
+    - command
+
+
+.. _aws.ec2.actions.set-instance-profile:
+
+set-instance-profile
+++++++++++++++++++++
+Sets (add, modify, remove) the instance profile for a running EC2 instance.
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: set-default-instance-profile
+        resource: ec2
+        filters:
+          - IamInstanceProfile: absent
+        actions:
+          - type: set-instance-profile
+            name: default
+
+https://docs.aws.amazon.com/cli/latest/reference/ec2/associate-iam-instance-profile.html
+https://docs.aws.amazon.com/cli/latest/reference/ec2/disassociate-iam-instance-profile.html
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      name:
+        type: string
+      type:
+        enum:
+        - set-instance-profile
+    required:
+    - type
+
+
+.. _aws.ec2.actions.snapshot:
+
+snapshot
+++++++++
+Snapshots volumes attached to an EC2 instance
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-snapshots
+        resource: ec2
+        actions:
+          - type: snapshot
+            copy-tags:
+              - Name
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      copy-tags:
+        items:
+          type: string
+        type: array
+      copy-volume-tags:
+        type: boolean
+      exclude-boot:
+        default: false
+        type: boolean
+      type:
+        enum:
+        - snapshot
+    required:
+    - type
+
+
+.. _aws.ec2.actions.start:
+
+start
++++++
+Starts a previously stopped EC2 instance.
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-start-stopped-instances
+        resource: ec2
+        query:
+          - instance-state-name: stopped
+        actions:
+          - start
+
+http://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - start
+    required:
+    - type
+
+
+.. _aws.ec2.actions.stop:
+
+stop
+++++
+Stops a running EC2 instances
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-stop-running-instances
+        resource: ec2
+        query:
+          - instance-state-name: running
+        actions:
+          - stop
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      terminate-ephemeral:
+        type: boolean
+      type:
+        enum:
+        - stop
+    required:
+    - type
+
+
+.. _aws.ec2.actions.terminate:
+
+terminate
++++++++++
+Terminate a set of instances.
+
+While ec2 offers a bulk delete api, any given instance can be configured
+with api deletion termination protection, so we can't use the bulk call
+reliabily, we need to process the instances individually. Additionally
+If we're configured with 'force' then we'll turn off instance termination
+protection.
+
+:Example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: ec2-process-termination
+        resource: ec2
+        filters:
+          - type: marked-for-op
+            op: terminate
+        actions:
+          - terminate
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      force:
+        type: boolean
+      type:
+        enum:
+        - terminate
+    required:
+    - type
+
+
+
+.. _aws.ec2-reserved:
+
+aws.ec2-reserved
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.eni:
+
+aws.eni
+=======
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`flow-logs <aws.eni.filters.flow-logs>`
+
+  - :ref:`json-diff <aws.eni.filters.json-diff>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`network-location <aws.common.filters.network-location>`
+  
+  - :ref:`security-group <aws.common.filters.security-group>`
+  
+  - :ref:`subnet <aws.common.filters.subnet>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+  - :ref:`vpc <aws.common.filters.vpc>`
+  
+
+
+.. _aws.eni.filters.flow-logs:
+
+flow-logs
++++++++++
+Are flow logs enabled on the resource.
+
+ie to find all vpcs with flows logs disabled we can do this
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: flow-logs-enabled
+            resource: vpc
+            filters:
+              - flow-logs
+
+or to find all vpcs with flow logs but that don't match a
+particular configuration.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: flow-mis-configured
+            resource: vpc
+            filters:
+              - not:
+                - type: flow-logs
+                  enabled: true
+                  set-op: or
+                  op: equal
+                  # equality operator applies to following keys
+                  traffic-type: all
+                  status: active
+                  log-group: vpc-logs
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      deliver-status:
+        enum:
+        - success
+        - failure
+      destination:
+        type: string
+      destination-type:
+        enum:
+        - s3
+        - cloud-watch-logs
+      enabled:
+        default: false
+        type: boolean
+      log-group:
+        type: string
+      op:
+        default: equal
+        enum:
+        - equal
+        - not-equal
+      set-op:
+        default: or
+        enum:
+        - or
+        - and
+      status:
+        enum:
+        - active
+      traffic-type:
+        enum:
+        - accept
+        - reject
+        - all
+      type:
+        enum:
+        - flow-logs
+    required:
+    - type
+
+
+.. _aws.eni.filters.json-diff:
+
+json-diff
++++++++++
+Compute the diff from the current resource to a previous version.
+
+A resource matches the filter if a diff exists between the current
+resource and the selected revision.
+
+Utilizes config as a resource revision database.
+
+Revisions can be selected by date, against the previous version, and
+against a locked version (requires use of is-locked filter).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      selector:
+        enum:
+        - previous
+        - date
+        - locked
+      selector_value:
+        type: string
+      type:
+        enum:
+        - json-diff
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`delete <aws.eni.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`modify-security-groups <aws.common.actions.modify-security-groups>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`set-flow-log <aws.eni.actions.set-flow-log>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.eni.actions.delete:
+
+delete
+++++++
+Delete a network interface.
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: mark-orphaned-enis
+        comment: Flag abandoned Lambda VPC ENIs for deletion
+        resource: eni
+        filters:
+          - Status: available
+          - type: value
+            op: glob
+            key: Description
+            value: "AWS Lambda VPC ENI*"
+          - "tag:custodian_status": absent
+        actions:
+          - type: mark-for-op
+            tag: custodian_status
+            msg: "Orphaned Lambda VPC ENI: {op}@{action_date}"
+            op: delete
+            days: 1
+
+      - name: delete-marked-enis
+        comment: Delete flagged ENIs that have not been cleaned up naturally
+        resource: eni
+        filters:
+          - type: marked-for-op
+            tag: custodian_status
+            op: delete
+        actions:
+          - type: delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.eni.actions.set-flow-log:
+
+set-flow-log
+++++++++++++
+Create flow logs for a network resource
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: vpc-enable-flow-logs
+        resource: vpc
+        filters:
+          - type: flow-logs
+            enabled: false
+        actions:
+          - type: set-flow-log
+            DeliverLogsPermissionArn: arn:iam:role
+            LogGroupName: /custodian/vpc/flowlogs/
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      DeliverLogsPermissionArn:
+        type: string
+      LogDestination:
+        type: string
+      LogDestinationType:
+        enum:
+        - s3
+        - cloud-watch-logs
+      LogGroupName:
+        type: string
+      TrafficType:
+        enum:
+        - ACCEPT
+        - REJECT
+        - ALL
+        type: string
+      state:
+        type: boolean
+      type:
+        enum:
+        - set-flow-log
+
+
+
+.. _aws.internet-gateway:
+
+aws.internet-gateway
+====================
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`json-diff <aws.internet-gateway.filters.json-diff>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.internet-gateway.filters.json-diff:
+
+json-diff
++++++++++
+Compute the diff from the current resource to a previous version.
+
+A resource matches the filter if a diff exists between the current
+resource and the selected revision.
+
+Utilizes config as a resource revision database.
+
+Revisions can be selected by date, against the previous version, and
+against a locked version (requires use of is-locked filter).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      selector:
+        enum:
+        - previous
+        - date
+        - locked
+      selector_value:
+        type: string
+      type:
+        enum:
+        - json-diff
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.key-pair:
+
+aws.key-pair
+============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.launch-template-version:
+
+aws.launch-template-version
+===========================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.nat-gateway:
+
+aws.nat-gateway
+===============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`delete <aws.nat-gateway.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.nat-gateway.actions.delete:
+
+delete
+++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+
+.. _aws.network-acl:
+
+aws.network-acl
+===============
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`json-diff <aws.network-acl.filters.json-diff>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`s3-cidr <aws.network-acl.filters.s3-cidr>`
+
+  - :ref:`subnet <aws.common.filters.subnet>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.network-acl.filters.json-diff:
+
+json-diff
++++++++++
+Compute the diff from the current resource to a previous version.
+
+A resource matches the filter if a diff exists between the current
+resource and the selected revision.
+
+Utilizes config as a resource revision database.
+
+Revisions can be selected by date, against the previous version, and
+against a locked version (requires use of is-locked filter).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      selector:
+        enum:
+        - previous
+        - date
+        - locked
+      selector_value:
+        type: string
+      type:
+        enum:
+        - json-diff
+    required:
+    - type
+
+
+.. _aws.network-acl.filters.s3-cidr:
+
+s3-cidr
++++++++
+Filter network acls by those that allow access to s3 cidrs.
+
+Defaults to filtering those nacls that do not allow s3 communication.
+
+:example:
+
+    Find all nacls that do not allow communication with s3.
+
+.. code-block:: yaml
+
+        policies:
+          - name: s3-not-allowed-nacl
+            resource: network-acl
+            filters:
+              - s3-cidr
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      egress:
+        default: true
+        type: boolean
+      ingress:
+        default: true
+        type: boolean
+      present:
+        default: false
+        type: boolean
+      type:
+        enum:
+        - s3-cidr
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.network-addr:
+
+aws.network-addr
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`json-diff <aws.network-addr.filters.json-diff>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`shield-enabled <aws.network-addr.filters.shield-enabled>`
+
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.network-addr.filters.json-diff:
+
+json-diff
++++++++++
+Compute the diff from the current resource to a previous version.
+
+A resource matches the filter if a diff exists between the current
+resource and the selected revision.
+
+Utilizes config as a resource revision database.
+
+Revisions can be selected by date, against the previous version, and
+against a locked version (requires use of is-locked filter).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      selector:
+        enum:
+        - previous
+        - date
+        - locked
+      selector_value:
+        type: string
+      type:
+        enum:
+        - json-diff
+    required:
+    - type
+
+
+.. _aws.network-addr.filters.shield-enabled:
+
+shield-enabled
+++++++++++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      state:
+        type: boolean
+      type:
+        enum:
+        - shield-enabled
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`release <aws.network-addr.actions.release>`
+
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`set-shield <aws.network-addr.actions.set-shield>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.network-addr.actions.release:
+
+release
++++++++
+Action to release elastic IP address(es)
+
+Use the force option to cause any attached elastic IPs to
+also be released.  Otherwise, only unattached elastic IPs
+will be released.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: release-network-addr
+            resource: network-addr
+            filters:
+              - AllocationId: ...
+            actions:
+              - type: release
+                force: True
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      force:
+        type: boolean
+      type:
+        enum:
+        - release
+    required:
+    - type
+
+
+.. _aws.network-addr.actions.set-shield:
+
+set-shield
+++++++++++
+Enable shield protection on applicable resource.
+
+setting `sync` parameter will also clear out stale shield protections
+for resources that no longer exist.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      state:
+        type: boolean
+      sync:
+        type: boolean
+      type:
+        enum:
+        - set-shield
+    required:
+    - type
+
+
+
+.. _aws.peering-connection:
+
+aws.peering-connection
+======================
+
+
+
+Filters
+-------
+
+
+  - :ref:`cross-account <aws.peering-connection.filters.cross-account>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`missing-route <aws.peering-connection.filters.missing-route>`
+
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.peering-connection.filters.cross-account:
+
+cross-account
++++++++++++++
+Check a resource's embedded iam policy for cross account access.
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - cross-account
+      whitelist:
+        items:
+          type: string
+        type: array
+      whitelist_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+    required:
+    - type
+
+
+.. _aws.peering-connection.filters.missing-route:
+
+missing-route
++++++++++++++
+Return peers which are missing a route in route tables.
+
+If the peering connection is between two vpcs in the same account,
+the connection is returned unless it is in present route tables in
+each vpc.
+
+If the peering connection is between accounts, then the local vpc's
+route table is checked.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - missing-route
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.route-table:
+
+aws.route-table
+===============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`route <aws.route-table.filters.route>`
+
+  - :ref:`subnet <aws.common.filters.subnet>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.route-table.filters.route:
+
+route
++++++
+Filter a route table by its routes' attributes.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - route
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.security-group:
+
+aws.security-group
+==================
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`default-vpc <aws.security-group.filters.default-vpc>`
+
+  - :ref:`diff <aws.security-group.filters.diff>`
+
+  - :ref:`egress <aws.security-group.filters.egress>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`ingress <aws.security-group.filters.ingress>`
+
+  - :ref:`json-diff <aws.security-group.filters.json-diff>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`stale <aws.security-group.filters.stale>`
+
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`unused <aws.security-group.filters.unused>`
+
+  - :ref:`used <aws.security-group.filters.used>`
+
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.security-group.filters.default-vpc:
+
+default-vpc
++++++++++++
+Filter that returns any security group that exists within the default vpc
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: security-group-default-vpc
+            resource: security-group
+            filters:
+              - default-vpc
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - default-vpc
+    required:
+    - type
+
+
+.. _aws.security-group.filters.diff:
+
+diff
+++++
+Compute the diff from the current resource to a previous version.
+
+A resource matches the filter if a diff exists between the current
+resource and the selected revision.
+
+Utilizes config as a resource revision database.
+
+Revisions can be selected by date, against the previous version, and
+against a locked version (requires use of is-locked filter).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      selector:
+        enum:
+        - previous
+        - date
+        - locked
+      selector_value:
+        type: string
+      type:
+        enum:
+        - diff
+    required:
+    - type
+
+
+.. _aws.security-group.filters.egress:
+
+egress
+++++++
+Filter for verifying security group ingress and egress permissions
+
+All attributes of a security group permission are available as
+value filters.
+
+If multiple attributes are specified the permission must satisfy
+all of them. Note that within an attribute match against a list value
+of a permission we default to or.
+
+If a group has any permissions that match all conditions, then it
+matches the filter.
+
+Permissions that match on the group are annotated onto the group and
+can subsequently be used by the remove-permission action.
+
+We have specialized handling for matching `Ports` in ingress/egress
+permission From/To range. The following example matches on ingress
+rules which allow for a range that includes all of the given ports.
+
+.. code-block:: yaml
+
+  - type: ingress
+    Ports: [22, 443, 80]
+
+As well for verifying that a rule only allows for a specific set of ports
+as in the following example. The delta between this and the previous
+example is that if the permission allows for any ports not specified here,
+then the rule will match. ie. OnlyPorts is a negative assertion match,
+it matches when a permission includes ports outside of the specified set.
+
+.. code-block:: yaml
+
+  - type: ingress
+    OnlyPorts: [22]
+
+For simplifying ipranges handling which is specified as a list on a rule
+we provide a `Cidr` key which can be used as a value type filter evaluated
+against each of the rules. If any iprange cidr match then the permission
+matches.
+
+.. code-block:: yaml
+
+  - type: ingress
+    IpProtocol: -1
+    FromPort: 445
+
+We also have specialized handling for matching self-references in
+ingress/egress permissions. The following example matches on ingress
+rules which allow traffic its own same security group.
+
+.. code-block:: yaml
+
+  - type: ingress
+    SelfReference: True
+
+As well for assertions that a ingress/egress permission only matches
+a given set of ports, *note* OnlyPorts is an inverse match.
+
+.. code-block:: yaml
+
+  - type: egress
+    OnlyPorts: [22, 443, 80]
+
+  - type: egress
+    Cidr:
+      value_type: cidr
+      op: in
+      value: x.y.z
+
+`Cidr` can match ipv4 rules and `CidrV6` can match ipv6 rules.  In
+this example we are blocking global inbound connections to SSH or
+RDP.
+
+.. code-block:: yaml
+
+  - type: ingress
+    Ports: [22, 3389]
+    Cidr:
+      value:
+        - "0.0.0.0/0"
+        - "::/0"
+      op: in
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      Cidr: {}
+      CidrV6: {}
+      Description: {}
+      FromPort:
+        type: integer
+      IpProtocol:
+        enum:
+        - -1
+        - tcp
+        - udp
+        - icmp
+        - icmpv6
+      IpRanges: {}
+      OnlyPorts:
+        items:
+          type: integer
+        type: array
+      PrefixListIds: {}
+      SelfReference:
+        type: boolean
+      ToPort:
+        type: integer
+      UserIdGroupPairs: {}
+      match-operator:
+        enum:
+        - or
+        - and
+        type: string
+      type:
+        enum:
+        - egress
+    required:
+    - type
+
+
+.. _aws.security-group.filters.ingress:
+
+ingress
++++++++
+Filter for verifying security group ingress and egress permissions
+
+All attributes of a security group permission are available as
+value filters.
+
+If multiple attributes are specified the permission must satisfy
+all of them. Note that within an attribute match against a list value
+of a permission we default to or.
+
+If a group has any permissions that match all conditions, then it
+matches the filter.
+
+Permissions that match on the group are annotated onto the group and
+can subsequently be used by the remove-permission action.
+
+We have specialized handling for matching `Ports` in ingress/egress
+permission From/To range. The following example matches on ingress
+rules which allow for a range that includes all of the given ports.
+
+.. code-block:: yaml
+
+  - type: ingress
+    Ports: [22, 443, 80]
+
+As well for verifying that a rule only allows for a specific set of ports
+as in the following example. The delta between this and the previous
+example is that if the permission allows for any ports not specified here,
+then the rule will match. ie. OnlyPorts is a negative assertion match,
+it matches when a permission includes ports outside of the specified set.
+
+.. code-block:: yaml
+
+  - type: ingress
+    OnlyPorts: [22]
+
+For simplifying ipranges handling which is specified as a list on a rule
+we provide a `Cidr` key which can be used as a value type filter evaluated
+against each of the rules. If any iprange cidr match then the permission
+matches.
+
+.. code-block:: yaml
+
+  - type: ingress
+    IpProtocol: -1
+    FromPort: 445
+
+We also have specialized handling for matching self-references in
+ingress/egress permissions. The following example matches on ingress
+rules which allow traffic its own same security group.
+
+.. code-block:: yaml
+
+  - type: ingress
+    SelfReference: True
+
+As well for assertions that a ingress/egress permission only matches
+a given set of ports, *note* OnlyPorts is an inverse match.
+
+.. code-block:: yaml
+
+  - type: egress
+    OnlyPorts: [22, 443, 80]
+
+  - type: egress
+    Cidr:
+      value_type: cidr
+      op: in
+      value: x.y.z
+
+`Cidr` can match ipv4 rules and `CidrV6` can match ipv6 rules.  In
+this example we are blocking global inbound connections to SSH or
+RDP.
+
+.. code-block:: yaml
+
+  - type: ingress
+    Ports: [22, 3389]
+    Cidr:
+      value:
+        - "0.0.0.0/0"
+        - "::/0"
+      op: in
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      Cidr: {}
+      CidrV6: {}
+      Description: {}
+      FromPort:
+        type: integer
+      IpProtocol:
+        enum:
+        - -1
+        - tcp
+        - udp
+        - icmp
+        - icmpv6
+      IpRanges: {}
+      OnlyPorts:
+        items:
+          type: integer
+        type: array
+      Ports:
+        items:
+          type: integer
+        type: array
+      PrefixListIds: {}
+      SelfReference:
+        type: boolean
+      ToPort:
+        type: integer
+      UserIdGroupPairs: {}
+      match-operator:
+        enum:
+        - or
+        - and
+        type: string
+      type:
+        enum:
+        - ingress
+    required:
+    - type
+
+
+.. _aws.security-group.filters.json-diff:
+
+json-diff
++++++++++
+Compute the diff from the current resource to a previous version.
+
+A resource matches the filter if a diff exists between the current
+resource and the selected revision.
+
+Utilizes config as a resource revision database.
+
+Revisions can be selected by date, against the previous version, and
+against a locked version (requires use of is-locked filter).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      selector:
+        enum:
+        - previous
+        - date
+        - locked
+      selector_value:
+        type: string
+      type:
+        enum:
+        - json-diff
+    required:
+    - type
+
+
+.. _aws.security-group.filters.stale:
+
+stale
++++++
+Filter to find security groups that contain stale references
+to other groups that are either no longer present or traverse
+a broken vpc peering connection. Note this applies to VPC
+Security groups only and will implicitly filter security groups.
+
+AWS Docs:
+  https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: stale-security-groups
+            resource: security-group
+            filters:
+              - stale
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - stale
+    required:
+    - type
+
+
+.. _aws.security-group.filters.unused:
+
+unused
+++++++
+Filter to just vpc security groups that are not used.
+
+We scan all extant enis in the vpc to get a baseline set of groups
+in use. Then augment with those referenced by launch configs, and
+lambdas as they may not have extant resources in the vpc at a
+given moment. We also find any security group with references from
+other security group either within the vpc or across peered
+connections.
+
+Note this filter does not support classic security groups atm.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: security-groups-unused
+            resource: security-group
+            filters:
+              - unused
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - unused
+    required:
+    - type
+
+
+.. _aws.security-group.filters.used:
+
+used
+++++
+Filter to security groups that are used.
+
+This operates as a complement to the unused filter for multi-step
+workflows.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: security-groups-in-use
+            resource: security-group
+            filters:
+              - used
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - used
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`delete <aws.security-group.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`patch <aws.security-group.actions.patch>`
+
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-permissions <aws.security-group.actions.remove-permissions>`
+
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.security-group.actions.delete:
+
+delete
+++++++
+Action to delete security group(s)
+
+It is recommended to apply a filter to the delete policy to avoid the
+deletion of all security groups returned.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: security-groups-unused-delete
+            resource: security-group
+            filters:
+              - type: unused
+            actions:
+              - delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.security-group.actions.patch:
+
+patch
++++++
+Modify a resource via application of a reverse delta.
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - patch
+    required:
+    - type
+
+
+.. _aws.security-group.actions.remove-permissions:
+
+remove-permissions
+++++++++++++++++++
+Action to remove ingress/egress rule(s) from a security group
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: security-group-revoke-8080
+            resource: security-group
+            filters:
+              - type: ingress
+                IpProtocol: tcp
+                Ports: [8080]
+            actions:
+              - type: remove-permissions
+                ingress: matched
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      egress:
+        enum:
+        - matched
+        - all
+        type: string
+      ingress:
+        enum:
+        - matched
+        - all
+        type: string
+      type:
+        enum:
+        - remove-permissions
+    required:
+    - type
+
+
+
+.. _aws.subnet:
+
+aws.subnet
+==========
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`flow-logs <aws.subnet.filters.flow-logs>`
+
+  - :ref:`json-diff <aws.subnet.filters.json-diff>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.subnet.filters.flow-logs:
+
+flow-logs
++++++++++
+Are flow logs enabled on the resource.
+
+ie to find all vpcs with flows logs disabled we can do this
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: flow-logs-enabled
+            resource: vpc
+            filters:
+              - flow-logs
+
+or to find all vpcs with flow logs but that don't match a
+particular configuration.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: flow-mis-configured
+            resource: vpc
+            filters:
+              - not:
+                - type: flow-logs
+                  enabled: true
+                  set-op: or
+                  op: equal
+                  # equality operator applies to following keys
+                  traffic-type: all
+                  status: active
+                  log-group: vpc-logs
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      deliver-status:
+        enum:
+        - success
+        - failure
+      destination:
+        type: string
+      destination-type:
+        enum:
+        - s3
+        - cloud-watch-logs
+      enabled:
+        default: false
+        type: boolean
+      log-group:
+        type: string
+      op:
+        default: equal
+        enum:
+        - equal
+        - not-equal
+      set-op:
+        default: or
+        enum:
+        - or
+        - and
+      status:
+        enum:
+        - active
+      traffic-type:
+        enum:
+        - accept
+        - reject
+        - all
+      type:
+        enum:
+        - flow-logs
+    required:
+    - type
+
+
+.. _aws.subnet.filters.json-diff:
+
+json-diff
++++++++++
+Compute the diff from the current resource to a previous version.
+
+A resource matches the filter if a diff exists between the current
+resource and the selected revision.
+
+Utilizes config as a resource revision database.
+
+Revisions can be selected by date, against the previous version, and
+against a locked version (requires use of is-locked filter).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      selector:
+        enum:
+        - previous
+        - date
+        - locked
+      selector_value:
+        type: string
+      type:
+        enum:
+        - json-diff
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`set-flow-log <aws.subnet.actions.set-flow-log>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.subnet.actions.set-flow-log:
+
+set-flow-log
+++++++++++++
+Create flow logs for a network resource
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: vpc-enable-flow-logs
+        resource: vpc
+        filters:
+          - type: flow-logs
+            enabled: false
+        actions:
+          - type: set-flow-log
+            DeliverLogsPermissionArn: arn:iam:role
+            LogGroupName: /custodian/vpc/flowlogs/
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      DeliverLogsPermissionArn:
+        type: string
+      LogDestination:
+        type: string
+      LogDestinationType:
+        enum:
+        - s3
+        - cloud-watch-logs
+      LogGroupName:
+        type: string
+      TrafficType:
+        enum:
+        - ACCEPT
+        - REJECT
+        - ALL
+        type: string
+      state:
+        type: boolean
+      type:
+        enum:
+        - set-flow-log
+
+
+
+.. _aws.transit-attachment:
+
+aws.transit-attachment
+======================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.transit-gateway:
+
+aws.transit-gateway
+===================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.vpc:
+
+aws.vpc
+=======
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`dhcp-options <aws.vpc.filters.dhcp-options>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`flow-logs <aws.vpc.filters.flow-logs>`
+
+  - :ref:`internet-gateway <aws.vpc.filters.internet-gateway>`
+
+  - :ref:`json-diff <aws.vpc.filters.json-diff>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`nat-gateway <aws.vpc.filters.nat-gateway>`
+
+  - :ref:`security-group <aws.vpc.filters.security-group>`
+
+  - :ref:`subnet <aws.vpc.filters.subnet>`
+
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+  - :ref:`vpc-attributes <aws.vpc.filters.vpc-attributes>`
+
+
+
+.. _aws.vpc.filters.dhcp-options:
+
+dhcp-options
+++++++++++++
+Filter VPCs based on their dhcp options
+
+ :example:
+
+ .. code-block:: yaml
+
+      policies:
+         - name: vpcs-in-domain
+           resource: vpc
+           filters:
+             - type: dhcp-options
+               domain-name: ec2.internal
+
+if an option value is specified as a list, then all elements must be present.
+if an option value is specified as a string, then that string must be present.
+
+vpcs not matching a given option value can be found via specifying
+a `present: false` parameter.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      domain-name:
+        oneOf:
+        - items:
+            type: string
+          type: array
+        - type: string
+      domain-name-servers:
+        oneOf:
+        - items:
+            type: string
+          type: array
+        - type: string
+      ntp-servers:
+        oneOf:
+        - items:
+            type: string
+          type: array
+        - type: string
+      present:
+        type: boolean
+      type:
+        enum:
+        - dhcp-options
+    required:
+    - type
+
+
+.. _aws.vpc.filters.flow-logs:
+
+flow-logs
++++++++++
+Are flow logs enabled on the resource.
+
+ie to find all vpcs with flows logs disabled we can do this
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: flow-logs-enabled
+            resource: vpc
+            filters:
+              - flow-logs
+
+or to find all vpcs with flow logs but that don't match a
+particular configuration.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: flow-mis-configured
+            resource: vpc
+            filters:
+              - not:
+                - type: flow-logs
+                  enabled: true
+                  set-op: or
+                  op: equal
+                  # equality operator applies to following keys
+                  traffic-type: all
+                  status: active
+                  log-group: vpc-logs
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      deliver-status:
+        enum:
+        - success
+        - failure
+      destination:
+        type: string
+      destination-type:
+        enum:
+        - s3
+        - cloud-watch-logs
+      enabled:
+        default: false
+        type: boolean
+      log-group:
+        type: string
+      op:
+        default: equal
+        enum:
+        - equal
+        - not-equal
+      set-op:
+        default: or
+        enum:
+        - or
+        - and
+      status:
+        enum:
+        - active
+      traffic-type:
+        enum:
+        - accept
+        - reject
+        - all
+      type:
+        enum:
+        - flow-logs
+    required:
+    - type
+
+
+.. _aws.vpc.filters.internet-gateway:
+
+internet-gateway
+++++++++++++++++
+Filter VPCs based on Internet Gateway attributes
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: gray-vpcs
+            resource: vpc
+            filters:
+              - type: internet-gateway
+                key: tag:Color
+                value: Gray
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      match-resource:
+        type: boolean
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      operator:
+        enum:
+        - and
+        - or
+      type:
+        enum:
+        - internet-gateway
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.vpc.filters.json-diff:
+
+json-diff
++++++++++
+Compute the diff from the current resource to a previous version.
+
+A resource matches the filter if a diff exists between the current
+resource and the selected revision.
+
+Utilizes config as a resource revision database.
+
+Revisions can be selected by date, against the previous version, and
+against a locked version (requires use of is-locked filter).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      selector:
+        enum:
+        - previous
+        - date
+        - locked
+      selector_value:
+        type: string
+      type:
+        enum:
+        - json-diff
+    required:
+    - type
+
+
+.. _aws.vpc.filters.nat-gateway:
+
+nat-gateway
++++++++++++
+Filter VPCs based on NAT Gateway attributes
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: gray-vpcs
+            resource: vpc
+            filters:
+              - type: nat-gateway
+                key: tag:Color
+                value: Gray
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      match-resource:
+        type: boolean
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      operator:
+        enum:
+        - and
+        - or
+      type:
+        enum:
+        - nat-gateway
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.vpc.filters.security-group:
+
+security-group
+++++++++++++++
+Filter VPCs based on Security Group attributes
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: gray-vpcs
+            resource: vpc
+            filters:
+              - type: security-group
+                key: tag:Color
+                value: Gray
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      match-resource:
+        type: boolean
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      operator:
+        enum:
+        - and
+        - or
+      type:
+        enum:
+        - security-group
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.vpc.filters.subnet:
+
+subnet
+++++++
+Filter VPCs based on Subnet attributes
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: gray-vpcs
+            resource: vpc
+            filters:
+              - type: subnet
+                key: tag:Color
+                value: Gray
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      match-resource:
+        type: boolean
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      operator:
+        enum:
+        - and
+        - or
+      type:
+        enum:
+        - subnet
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.vpc.filters.vpc-attributes:
+
+vpc-attributes
+++++++++++++++
+Filters VPCs based on their DNS attributes
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: dns-hostname-enabled
+            resource: vpc
+            filters:
+              - type: vpc-attributes
+                dnshostnames: True
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      dnshostnames:
+        type: boolean
+      dnssupport:
+        type: boolean
+      type:
+        enum:
+        - vpc-attributes
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`set-flow-log <aws.vpc.actions.set-flow-log>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.vpc.actions.set-flow-log:
+
+set-flow-log
+++++++++++++
+Create flow logs for a network resource
+
+:example:
+
+.. code-block:: yaml
+
+    policies:
+      - name: vpc-enable-flow-logs
+        resource: vpc
+        filters:
+          - type: flow-logs
+            enabled: false
+        actions:
+          - type: set-flow-log
+            DeliverLogsPermissionArn: arn:iam:role
+            LogGroupName: /custodian/vpc/flowlogs/
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      DeliverLogsPermissionArn:
+        type: string
+      LogDestination:
+        type: string
+      LogDestinationType:
+        enum:
+        - s3
+        - cloud-watch-logs
+      LogGroupName:
+        type: string
+      TrafficType:
+        enum:
+        - ACCEPT
+        - REJECT
+        - ALL
+        type: string
+      state:
+        type: boolean
+      type:
+        enum:
+        - set-flow-log
+
+
+
+.. _aws.vpc-endpoint:
+
+aws.vpc-endpoint
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`cross-account <aws.vpc-endpoint.filters.cross-account>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`security-group <aws.common.filters.security-group>`
+  
+  - :ref:`subnet <aws.common.filters.subnet>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+  - :ref:`vpc <aws.common.filters.vpc>`
+  
+
+
+.. _aws.vpc-endpoint.filters.cross-account:
+
+cross-account
++++++++++++++
+Check a resource's embedded iam policy for cross account access.
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      actions:
+        items:
+          type: string
+        type: array
+      everyone_only:
+        type: boolean
+      type:
+        enum:
+        - cross-account
+      whitelist:
+        items:
+          type: string
+        type: array
+      whitelist_conditions:
+        items:
+          type: string
+        type: array
+      whitelist_from: &id001
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      whitelist_orgids:
+        items:
+          type: string
+        type: array
+      whitelist_orgids_from: *id001
+      whitelist_vpc:
+        items:
+          type: string
+        type: array
+      whitelist_vpc_from: *id001
+      whitelist_vpce:
+        items:
+          type: string
+        type: array
+      whitelist_vpce_from: *id001
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.vpn-connection:
+
+aws.vpn-connection
+==================
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`json-diff <aws.vpn-connection.filters.json-diff>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.vpn-connection.filters.json-diff:
+
+json-diff
++++++++++
+Compute the diff from the current resource to a previous version.
+
+A resource matches the filter if a diff exists between the current
+resource and the selected revision.
+
+Utilizes config as a resource revision database.
+
+Revisions can be selected by date, against the previous version, and
+against a locked version (requires use of is-locked filter).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      selector:
+        enum:
+        - previous
+        - date
+        - locked
+      selector_value:
+        type: string
+      type:
+        enum:
+        - json-diff
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.vpn-gateway:
+
+aws.vpn-gateway
+===============
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`json-diff <aws.vpn-gateway.filters.json-diff>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.vpn-gateway.filters.json-diff:
+
+json-diff
++++++++++
+Compute the diff from the current resource to a previous version.
+
+A resource matches the filter if a diff exists between the current
+resource and the selected revision.
+
+Utilizes config as a resource revision database.
+
+Revisions can be selected by date, against the previous version, and
+against a locked version (requires use of is-locked filter).
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      selector:
+        enum:
+        - previous
+        - date
+        - locked
+      selector_value:
+        type: string
+      type:
+        enum:
+        - json-diff
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
+  
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`normalize-tag <aws.common.actions.normalize-tag>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`rename-tag <aws.common.actions.rename-tag>`
+  
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+

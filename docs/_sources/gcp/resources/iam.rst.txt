@@ -1,0 +1,112 @@
+gcp.iam resources
+#################
+
+
+
+  - :ref:`gcp.iam-role <gcp.iam-role>`
+
+  - :ref:`gcp.project-role <gcp.project-role>`
+
+  - :ref:`gcp.service-account <gcp.service-account>`
+
+
+
+
+.. _gcp.iam-role:
+
+gcp.iam-role
+============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.project-role:
+
+gcp.project-role
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.service-account:
+
+gcp.service-account
+===================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+

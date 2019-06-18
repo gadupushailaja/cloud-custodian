@@ -1,0 +1,99 @@
+azure.azure.keyvault resources
+##############################
+
+
+
+
+.. _azure.keyvault-keys:
+
+azure.keyvault-keys
+===================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <azure.common.filters.event>`
+  
+  - :ref:`key-type <azure.keyvault-keys.filters.key-type>`
+
+  - :ref:`keyvault <azure.keyvault-keys.filters.keyvault>`
+
+  - :ref:`value <azure.common.filters.value>`
+  
+
+
+.. _azure.keyvault-keys.filters.key-type:
+
+key-type
+++++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      key-types:
+        items:
+          enum:
+          - EC
+          - EC-HSM
+          - RSA
+          - RSA-HSM
+        type: array
+      type:
+        enum:
+        - key-type
+    required:
+    - type
+
+
+.. _azure.keyvault-keys.filters.keyvault:
+
+keyvault
+++++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - keyvault
+      vaults:
+        items:
+          type: string
+        type: array
+    required:
+    - vaults
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`logic-app <azure.common.actions.logic-app>`
+  
+  - :ref:`notify <azure.common.actions.notify>`
+  
+  - :ref:`webhook <azure.common.actions.webhook>`
+  
+
+
+

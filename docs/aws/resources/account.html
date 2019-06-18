@@ -1,0 +1,1468 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aws.account resources &mdash; Cloud Custodian  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/js/expand.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/expand.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="aws.acm resources" href="acm.html" />
+    <link rel="prev" title="AWS Common Filters" href="aws-common-filters.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Cloud Custodian
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filters.html">Generic Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../actions.html">Generic Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/advanced.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/policyStructure.html">Example tag compliance policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deployment.html">Deployment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">AWS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws-modes.html">AWS Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Monitoring your environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lambda.html">Lambda Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AWS Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aws-common-actions.html">AWS Common Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aws-common-filters.html">AWS Common Filters</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">aws.account resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aws-account">aws.account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#filters">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actions">Actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="acm.html">aws.acm resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apigateway.html">aws.apigateway resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoscaling.html">aws.autoscaling resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup.html">aws.backup resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch.html">aws.batch resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clouddirectory.html">aws.clouddirectory resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudformation.html">aws.cloudformation resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudfront.html">aws.cloudfront resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudhsm.html">aws.cloudhsm resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudhsmv2.html">aws.cloudhsmv2 resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudsearch.html">aws.cloudsearch resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudtrail.html">aws.cloudtrail resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudwatch.html">aws.cloudwatch resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codebuild.html">aws.codebuild resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codecommit.html">aws.codecommit resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codepipeline.html">aws.codepipeline resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cognito-identity.html">aws.cognito-identity resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cognito-idp.html">aws.cognito-idp resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">aws.config resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datapipeline.html">aws.datapipeline resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dax.html">aws.dax resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="directconnect.html">aws.directconnect resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dlm.html">aws.dlm resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dms.html">aws.dms resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ds.html">aws.ds resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamodb.html">aws.dynamodb resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamodbstreams.html">aws.dynamodbstreams resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ec2.html">aws.ec2 resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecr.html">aws.ecr resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecs.html">aws.ecs resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="efs.html">aws.efs resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eks.html">aws.eks resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elasticache.html">aws.elasticache resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elasticbeanstalk.html">aws.elasticbeanstalk resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elb.html">aws.elb resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elbv2.html">aws.elbv2 resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emr.html">aws.emr resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="es.html">aws.es resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">aws.events resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firehose.html">aws.firehose resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fsx.html">aws.fsx resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gamelift.html">aws.gamelift resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glacier.html">aws.glacier resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glue.html">aws.glue resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html">aws.health resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iam.html">aws.iam resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iot.html">aws.iot resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">aws.kafka resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinesis.html">aws.kinesis resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinesisanalytics.html">aws.kinesisanalytics resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kms.html">aws.kms resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lambda.html">aws.lambda resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightsail.html">aws.lightsail resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logs.html">aws.logs resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machinelearning.html">aws.machinelearning resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">aws.mq resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opsworks.html">aws.opsworks resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opsworkscm.html">aws.opsworkscm resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rds.html">aws.rds resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redshift.html">aws.redshift resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="route53.html">aws.route53 resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="route53domains.html">aws.route53domains resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s3.html">aws.s3 resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sagemaker.html">aws.sagemaker resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdb.html">aws.sdb resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secretsmanager.html">aws.secretsmanager resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shield.html">aws.shield resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snowball.html">aws.snowball resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sns.html">aws.sns resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqs.html">aws.sqs resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssm.html">aws.ssm resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stepfunctions.html">aws.stepfunctions resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storagegateway.html">aws.storagegateway resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html">aws.support resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="waf.html">aws.waf resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="waf-regional.html">aws.waf-regional resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspaces.html">aws.workspaces resources</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Azure</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/authentication.html#azure-storage-access">Azure Storage access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/policy/index.html">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/azure-modes.html">Azure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/advanced/index.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html#adding-new-azure-resources">Adding New Azure Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/resources/index.html">Azure Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GCP</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/gcp-modes.html">GCP Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/policy/index.html">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/contribute.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/contribute.html#adding-new-gcp-resources">Adding New GCP Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/resources/index.html">GCP Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-org.html">c7n-org: Multi Account Custodian Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-policystream.html">c7n-policystream: Policy Changes from Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-mailer.html">c7n-mailer: Custodian Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-trailcreator.html">AWS Retroactive Tagging Resource Creators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing to Cloud Custodian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/installing.html">Installing for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/tests.html">Testing for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/documentation.html">Documentation For Developers</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cloud Custodian</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">AWS Reference</a> &raquo;</li>
+        
+      <li>aws.account resources</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aws-account-resources">
+<h1>aws.account resources<a class="headerlink" href="#aws-account-resources" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aws-account">
+<span id="id1"></span><h2>aws.account<a class="headerlink" href="#aws-account" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="filters">
+<h3>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#aws-account-filters-check-cloudtrail"><span class="std std-ref">check-cloudtrail</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-check-config"><span class="std std-ref">check-config</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-credential"><span class="std std-ref">credential</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-filters.html#aws-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-filters.html#aws-common-filters-finding"><span class="std std-ref">finding</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-guard-duty"><span class="std std-ref">guard-duty</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-has-virtual-mfa"><span class="std std-ref">has-virtual-mfa</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-iam-summary"><span class="std std-ref">iam-summary</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-missing"><span class="std std-ref">missing</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-password-policy"><span class="std std-ref">password-policy</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-s3-public-block"><span class="std std-ref">s3-public-block</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-service-limit"><span class="std std-ref">service-limit</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-shield-enabled"><span class="std std-ref">shield-enabled</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-filters.html#aws-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-filters-xray-encrypt-key"><span class="std std-ref">xray-encrypt-key</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="check-cloudtrail">
+<span id="aws-account-filters-check-cloudtrail"></span><h4>check-cloudtrail<a class="headerlink" href="#check-cloudtrail" title="Permalink to this headline">¶</a></h4>
+<p>Verify cloud trail enabled for this account per specifications.</p>
+<p>Returns an annotated account resource if trail is not enabled.</p>
+<p>Of particular note, the current-region option will evaluate whether cloudtrail is available
+in the current region, either as a multi region trail or as a trail with it as the home region.</p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account-cloudtrail-enabled</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+    <span class="nt">region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">check-cloudtrail</span>
+        <span class="nt">global-events</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">multi-region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">running</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">current-region</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">file-digest</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">global-events</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">kms</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">kms-key</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">multi-region</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">notifies</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">running</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-cloudtrail</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="check-config">
+<span id="aws-account-filters-check-config"></span><h4>check-config<a class="headerlink" href="#check-config" title="Permalink to this headline">¶</a></h4>
+<p>Is config service enabled for this account</p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account-check-config-services</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+    <span class="nt">region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">check-config</span>
+        <span class="nt">all-resources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">global-resources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">running</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">all-resources</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">global-resources</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">running</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-config</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="credential">
+<span id="aws-account-filters-credential"></span><h4>credential<a class="headerlink" href="#credential" title="Permalink to this headline">¶</a></h4>
+<p>Use IAM Credential report to filter users.</p>
+<p>The IAM Credential report aggregates multiple pieces of
+information on iam users. This makes it highly efficient for
+querying multiple aspects of a user that would otherwise require
+per user api calls.</p>
+<p><a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html</a></p>
+<p>For example if we wanted to retrieve all users with mfa who have
+never used their password but have active access keys from the
+last month</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">iam-mfa-active-keys-no-login</span>
+  <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">iam-user</span>
+  <span class="nt">filters</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">credential</span>
+      <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mfa_active</span>
+      <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">credential</span>
+      <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password_last_used</span>
+      <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">absent</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">credential</span>
+      <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">access_keys.last_used</span>
+      <span class="nt">value_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
+      <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
+      <span class="nt">op</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">less-than</span>
+</pre></div>
+</div>
+<p>Credential Report Transforms</p>
+<p>We perform some default transformations from the raw
+credential report. Sub-objects (access_key_1, cert_2)
+are turned into array of dictionaries for matching
+purposes with their common prefixes stripped.
+N/A values are turned into None, TRUE/FALSE are turned
+into boolean values.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">key</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">arn</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user_creation_time</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">password_enabled</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">password_last_used</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">password_last_changed</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">password_next_rotation</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mfa_active</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">access_keys</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">access_keys.active</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">access_keys.last_used_date</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">access_keys.last_used_region</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">access_keys.last_used_service</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">access_keys.last_rotated</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">certs</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">certs.active</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">certs.last_rotated</span>
+    <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">report key to search</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">op</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">eq</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ne</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">greater-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ge</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">le</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">less-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">glob</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex-case</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ni</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contains</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">difference</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">intersect</span>
+  <span class="nt">report_delay</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+    <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Number of seconds to wait for report generation.</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+  <span class="nt">report_generate</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Generate a report if none is present.</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">report_max_age</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">86400</span>
+    <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Number of seconds to consider a report valid.</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">credential</span>
+  <span class="nt">value</span><span class="p">:</span>
+    <span class="nt">oneOf</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="s">&#39;null&#39;</span>
+  <span class="nt">value_type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expiration</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">normalize</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">swap</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">resource_count</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unique_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="guard-duty">
+<span id="aws-account-filters-guard-duty"></span><h4>guard-duty<a class="headerlink" href="#guard-duty" title="Permalink to this headline">¶</a></h4>
+<p>Check if the guard duty service is enabled.</p>
+<p>This allows looking at account’s detector and its associated
+master if any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p>Check to ensure guard duty is active on account and associated to a master.</p>
+</dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">guardduty-enabled</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">guard-duty</span>
+        <span class="nt">Detector.Status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENABLED</span>
+        <span class="nt">Master.AccountId</span><span class="p">:</span> <span class="s">&quot;00011001&quot;</span>
+        <span class="nt">Master.RelationshipStatus</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENABLED</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">patternProperties</span><span class="p">:</span>
+  <span class="nt">^Detector</span><span class="p">:</span>
+    <span class="nt">oneOf</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">^Master</span><span class="p">:</span>
+    <span class="nt">oneOf</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">match-operator</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">or</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">and</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">guard-duty</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="has-virtual-mfa">
+<span id="aws-account-filters-has-virtual-mfa"></span><h4>has-virtual-mfa<a class="headerlink" href="#has-virtual-mfa" title="Permalink to this headline">¶</a></h4>
+<p>Is the account configured with a virtual MFA device?</p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account-with-virtual-mfa</span>
+      <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+      <span class="nt">region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
+      <span class="nt">filters</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">has-virtual-mfa</span>
+          <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">has-virtual-mfa</span>
+  <span class="nt">value</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="iam-summary">
+<span id="aws-account-filters-iam-summary"></span><h4>iam-summary<a class="headerlink" href="#iam-summary" title="Permalink to this headline">¶</a></h4>
+<p>Return annotated account resource if iam summary filter matches.</p>
+<p>Some use cases include, detecting root api keys or mfa usage.</p>
+<p>Example iam summary wrt to matchable fields:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+      <span class="s2">&quot;AccessKeysPerUserQuota&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;AccountAccessKeysPresent&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;AccountMFAEnabled&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;AccountSigningCertificatesPresent&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;AssumeRolePolicySizeQuota&quot;</span><span class="p">:</span> <span class="mi">2048</span><span class="p">,</span>
+      <span class="s2">&quot;AttachedPoliciesPerGroupQuota&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="s2">&quot;AttachedPoliciesPerRoleQuota&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="s2">&quot;AttachedPoliciesPerUserQuota&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="s2">&quot;GroupPolicySizeQuota&quot;</span><span class="p">:</span> <span class="mi">5120</span><span class="p">,</span>
+      <span class="s2">&quot;Groups&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;GroupsPerUserQuota&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="s2">&quot;GroupsQuota&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+      <span class="s2">&quot;InstanceProfiles&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;InstanceProfilesQuota&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+      <span class="s2">&quot;MFADevices&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="s2">&quot;MFADevicesInUse&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;Policies&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="s2">&quot;PoliciesQuota&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+      <span class="s2">&quot;PolicySizeQuota&quot;</span><span class="p">:</span> <span class="mi">5120</span><span class="p">,</span>
+      <span class="s2">&quot;PolicyVersionsInUse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+      <span class="s2">&quot;PolicyVersionsInUseQuota&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+      <span class="s2">&quot;Providers&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;RolePolicySizeQuota&quot;</span><span class="p">:</span> <span class="mi">10240</span><span class="p">,</span>
+      <span class="s2">&quot;Roles&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="s2">&quot;RolesQuota&quot;</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+      <span class="s2">&quot;ServerCertificates&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;ServerCertificatesQuota&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+      <span class="s2">&quot;SigningCertificatesPerUserQuota&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;UserPolicySizeQuota&quot;</span><span class="p">:</span> <span class="mi">2048</span><span class="p">,</span>
+      <span class="s2">&quot;Users&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+      <span class="s2">&quot;UsersQuota&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+      <span class="s2">&quot;VersionsPerPolicyQuota&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>For example to determine if an account has either not been
+enabled with root mfa or has root api keys.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root-keys-or-no-mfa</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">iam-summary</span>
+        <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AccountMFAEnabled</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">op</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">eq</span>
+        <span class="nt">value_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">swap</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">default</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">key</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">op</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">eq</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ne</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">greater-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ge</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">le</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">less-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">glob</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex-case</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ni</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contains</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">difference</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">intersect</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">iam-summary</span>
+  <span class="nt">value</span><span class="p">:</span>
+    <span class="nt">oneOf</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="s">&#39;null&#39;</span>
+  <span class="nt">value_from</span><span class="p">:</span>
+    <span class="nt">additionalProperties</span><span class="p">:</span> <span class="s">&#39;False&#39;</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">expr</span><span class="p">:</span>
+        <span class="nt">oneOf</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">format</span><span class="p">:</span>
+        <span class="nt">enum</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">json</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">txt</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv2dict</span>
+      <span class="nt">url</span><span class="p">:</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">required</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">value_regex</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">value_type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expiration</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">normalize</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">swap</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">resource_count</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unique_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="missing">
+<span id="aws-account-filters-missing"></span><h4>missing<a class="headerlink" href="#missing" title="Permalink to this headline">¶</a></h4>
+<p>Assert the absence of a particular resource.</p>
+<p>Intended for use at a logical account/subscription/project level</p>
+<p>This works as an effectively an embedded policy thats evaluated.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">policy</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">missing</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">policy</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="password-policy">
+<span id="aws-account-filters-password-policy"></span><h4>password-policy<a class="headerlink" href="#password-policy" title="Permalink to this headline">¶</a></h4>
+<p>Check an account’s password policy.</p>
+<p>Note that on top of the default password policy fields, we also add an extra key,
+PasswordPolicyConfigured which will be set to true or false to signify if the given
+account has attempted to set a policy at all.</p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password-policy-check</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+    <span class="nt">region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password-policy</span>
+        <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MinimumPasswordLength</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+        <span class="nt">op</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ge</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password-policy</span>
+        <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RequireSymbols</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">default</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">key</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">op</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">eq</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ne</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">greater-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ge</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">le</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">less-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">glob</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex-case</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ni</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contains</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">difference</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">intersect</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">password-policy</span>
+  <span class="nt">value</span><span class="p">:</span>
+    <span class="nt">oneOf</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="s">&#39;null&#39;</span>
+  <span class="nt">value_from</span><span class="p">:</span>
+    <span class="nt">additionalProperties</span><span class="p">:</span> <span class="s">&#39;False&#39;</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">expr</span><span class="p">:</span>
+        <span class="nt">oneOf</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">format</span><span class="p">:</span>
+        <span class="nt">enum</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">json</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">txt</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv2dict</span>
+      <span class="nt">url</span><span class="p">:</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">required</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">value_regex</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">value_type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expiration</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">normalize</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">swap</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">resource_count</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unique_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="s3-public-block">
+<span id="aws-account-filters-s3-public-block"></span><h4>s3-public-block<a class="headerlink" href="#s3-public-block" title="Permalink to this headline">¶</a></h4>
+<p>Check for s3 public blocks on an account.</p>
+<p><a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html">https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html</a></p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">default</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">key</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">op</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">eq</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ne</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">greater-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ge</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">le</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">less-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">glob</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex-case</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ni</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contains</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">difference</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">intersect</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">s3-public-block</span>
+  <span class="nt">value</span><span class="p">:</span>
+    <span class="nt">oneOf</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="s">&#39;null&#39;</span>
+  <span class="nt">value_from</span><span class="p">:</span>
+    <span class="nt">additionalProperties</span><span class="p">:</span> <span class="s">&#39;False&#39;</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">expr</span><span class="p">:</span>
+        <span class="nt">oneOf</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">format</span><span class="p">:</span>
+        <span class="nt">enum</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">json</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">txt</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv2dict</span>
+      <span class="nt">url</span><span class="p">:</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">required</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">value_regex</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">value_type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expiration</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">normalize</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">swap</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">resource_count</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unique_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="service-limit">
+<span id="aws-account-filters-service-limit"></span><h4>service-limit<a class="headerlink" href="#service-limit" title="Permalink to this headline">¶</a></h4>
+<p>Check if account’s service limits are past a given threshold.</p>
+<p>Supported limits are per trusted advisor, which is variable based
+on usage in the account and support level enabled on the account.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>service: AutoScaling limit: Auto Scaling groups</p></li>
+<li><p>service: AutoScaling limit: Launch configurations</p></li>
+<li><p>service: EBS limit: Active snapshots</p></li>
+<li><p>service: EBS limit: Active volumes</p></li>
+<li><p>service: EBS limit: General Purpose (SSD) volume storage (GiB)</p></li>
+<li><p>service: EBS limit: Magnetic volume storage (GiB)</p></li>
+<li><p>service: EBS limit: Provisioned IOPS</p></li>
+<li><p>service: EBS limit: Provisioned IOPS (SSD) storage (GiB)</p></li>
+<li><p>service: EC2 limit: Elastic IP addresses (EIPs)</p></li>
+</ul>
+<p># Note this is extant for each active instance type in the account
+# however the total value is against sum of all instance types.
+# see issue <a class="reference external" href="https://github.com/cloud-custodian/cloud-custodian/issues/516">https://github.com/cloud-custodian/cloud-custodian/issues/516</a></p>
+<ul class="simple">
+<li><p>service: EC2 limit: On-Demand instances - m3.medium</p></li>
+<li><p>service: EC2 limit: Reserved Instances - purchase limit (monthly)</p></li>
+<li><p>service: ELB limit: Active load balancers</p></li>
+<li><p>service: IAM limit: Groups</p></li>
+<li><p>service: IAM limit: Instance profiles</p></li>
+<li><p>service: IAM limit: Roles</p></li>
+<li><p>service: IAM limit: Server certificates</p></li>
+<li><p>service: IAM limit: Users</p></li>
+<li><p>service: RDS limit: DB instances</p></li>
+<li><p>service: RDS limit: DB parameter groups</p></li>
+<li><p>service: RDS limit: DB security groups</p></li>
+<li><p>service: RDS limit: DB snapshots per user</p></li>
+<li><p>service: RDS limit: Storage quota (GB)</p></li>
+<li><p>service: RDS limit: Internet gateways</p></li>
+<li><p>service: SES limit: Daily sending quota</p></li>
+<li><p>service: VPC limit: VPCs</p></li>
+<li><p>service: VPC limit: VPC Elastic IP addresses (EIPs)</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account-service-limits</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">service-limit</span>
+        <span class="nt">services</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">EC2</span>
+        <span class="nt">threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">specify-region-for-global-service</span>
+    <span class="nt">region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">service-limit</span>
+        <span class="nt">services</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">IAM</span>
+        <span class="nt">limits</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Roles</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">limits</span><span class="p">:</span>
+    <span class="nt">items</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+  <span class="nt">refresh_period</span><span class="p">:</span>
+    <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">how long should a check result be considered fresh</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+  <span class="nt">services</span><span class="p">:</span>
+    <span class="nt">items</span><span class="p">:</span>
+      <span class="nt">enum</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">EC2</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ELB</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">VPC</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">AutoScaling</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">RDS</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">EBS</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SES</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">IAM</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+  <span class="nt">threshold</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">service-limit</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="shield-enabled">
+<span id="aws-account-filters-shield-enabled"></span><h4>shield-enabled<a class="headerlink" href="#shield-enabled" title="Permalink to this headline">¶</a></h4>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">state</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">shield-enabled</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="xray-encrypt-key">
+<span id="aws-account-filters-xray-encrypt-key"></span><h4>xray-encrypt-key<a class="headerlink" href="#xray-encrypt-key" title="Permalink to this headline">¶</a></h4>
+<p>Determine if xray is encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xray-encrypt-with-default</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aws.account</span>
+    <span class="nt">filters</span><span class="p">:</span>
+       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xray-encrypt-key</span>
+         <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xray-encrypt-with-kms</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aws.account</span>
+    <span class="nt">filters</span><span class="p">:</span>
+       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xray-encrypt-key</span>
+         <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kms</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xray-encrypt-with-specific-key</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aws.account</span>
+    <span class="nt">filters</span><span class="p">:</span>
+       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xray-encrypt-key</span>
+         <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">alias/my-alias or arn or keyid</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">key</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">xray-encrypt-key</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">key</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="actions">
+<h3>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#aws-account-actions-enable-cloudtrail"><span class="std std-ref">enable-cloudtrail</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-actions-enable-data-events"><span class="std std-ref">enable-data-events</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-put-metric"><span class="std std-ref">put-metric</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-actions-request-limit-increase"><span class="std std-ref">request-limit-increase</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-actions-set-s3-public-block"><span class="std std-ref">set-s3-public-block</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-actions-set-shield-advanced"><span class="std std-ref">set-shield-advanced</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-account-actions-set-xray-encrypt"><span class="std std-ref">set-xray-encrypt</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="enable-cloudtrail">
+<span id="aws-account-actions-enable-cloudtrail"></span><h4>enable-cloudtrail<a class="headerlink" href="#enable-cloudtrail" title="Permalink to this headline">¶</a></h4>
+<p>Enables logging on the trail(s) named in the policy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">trail-test</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ensure CloudTrail logging is enabled</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">enable-cloudtrail</span>
+        <span class="nt">trail</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mytrail</span>
+        <span class="nt">bucket</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">trails</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">bucket</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">bucket-region</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">file-digest</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">global-events</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">kms</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">kms-key</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">multi-region</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">notify</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">trail</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable-cloudtrail</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bucket</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="enable-data-events">
+<span id="aws-account-actions-enable-data-events"></span><h4>enable-data-events<a class="headerlink" href="#enable-data-events" title="Permalink to this headline">¶</a></h4>
+<p>Ensure all buckets in account are setup to log data events.</p>
+<p>Note this works via a single trail for data events per
+<a class="reference external" href="https://aws.amazon.com/about-aws/whats-new/2017/09/aws-cloudtrail-enables-option-to-add-all-amazon-s3-buckets-to-data-events/">https://aws.amazon.com/about-aws/whats-new/2017/09/aws-cloudtrail-enables-option-to-add-all-amazon-s3-buckets-to-data-events/</a></p>
+<p>This trail should NOT be used for api management events, the
+configuration here is soley for data events. If directed to create
+a trail this will do so without management events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3-enable-data-events-logging</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+    <span class="nt">actions</span><span class="p">:</span>
+     <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">enable-data-events</span>
+       <span class="nt">data-trail</span><span class="p">:</span>
+         <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3-events</span>
+         <span class="nt">multi-region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">data-trail</span><span class="p">:</span>
+    <span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">create</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Should we create trail if needed for events?</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+      <span class="nt">key-id</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">If creating, Enable kms on the trail</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">multi-region</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">If creating, use this region for all data trails</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">name</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">The name of the event trail</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">s3-bucket</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">If creating, the bucket to store trail event data</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">s3-prefix</span><span class="p">:</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">topic</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">If creating, the sns topic for the trail to send updates</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">type</span><span class="p">:</span>
+        <span class="nt">enum</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ReadOnly</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">WriteOnly</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">All</span>
+    <span class="nt">required</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable-data-events</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">data-trail</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="request-limit-increase">
+<span id="aws-account-actions-request-limit-increase"></span><h4>request-limit-increase<a class="headerlink" href="#request-limit-increase" title="Permalink to this headline">¶</a></h4>
+<p>File support ticket to raise limit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account-service-limits</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">account</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">service-limit</span>
+        <span class="nt">services</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">EBS</span>
+        <span class="nt">limits</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Provisioned IOPS (SSD) storage (GiB)</span>
+        <span class="nt">threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60.5</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">request-limit-increase</span>
+        <span class="nt">notify</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">email</span><span class="p p-Indicator">,</span> <span class="nv">email2</span><span class="p p-Indicator">]</span>
+        <span class="c1">## You can use one of either percent-increase or an amount-increase.</span>
+        <span class="nt">percent-increase</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">50</span>
+        <span class="nt">message</span><span class="p">:</span> <span class="s">&quot;Please</span><span class="nv"> </span><span class="s">raise</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">below</span><span class="nv"> </span><span class="s">account</span><span class="nv"> </span><span class="s">limit(s);</span><span class="nv"> </span><span class="s">\n</span><span class="nv"> </span><span class="s">{limits}&quot;</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">oneOf</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">required</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">percent-increase</span>
+<span class="p p-Indicator">-</span> <span class="nt">required</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">amount-increase</span>
+<span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">amount-increase</span><span class="p">:</span>
+    <span class="nt">minimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+  <span class="nt">message</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">minimum-increase</span><span class="p">:</span>
+    <span class="nt">minimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+  <span class="nt">notify</span><span class="p">:</span>
+    <span class="nt">items</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+  <span class="nt">percent-increase</span><span class="p">:</span>
+    <span class="nt">minimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+  <span class="nt">severity</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">urgent</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">high</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">normal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">low</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">subject</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">request-limit-increase</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="set-s3-public-block">
+<span id="aws-account-actions-set-s3-public-block"></span><h4>set-s3-public-block<a class="headerlink" href="#set-s3-public-block" title="Permalink to this headline">¶</a></h4>
+<p>Configure S3 Public Access Block on an account.</p>
+<p>All public access block attributes can be set. If not specified they are merged
+with the extant configuration.</p>
+<p><a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html">https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">BlockPublicAcls</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">BlockPublicPolicy</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">IgnorePublicAcls</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">RestrictPublicBuckets</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">state</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">set-s3-public-block</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="set-shield-advanced">
+<span id="aws-account-actions-set-shield-advanced"></span><h4>set-shield-advanced<a class="headerlink" href="#set-shield-advanced" title="Permalink to this headline">¶</a></h4>
+<p>Enable/disable Shield Advanced on an account.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">state</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">set-shield-advanced</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="set-xray-encrypt">
+<span id="aws-account-actions-set-xray-encrypt"></span><h4>set-xray-encrypt<a class="headerlink" href="#set-xray-encrypt" title="Permalink to this headline">¶</a></h4>
+<p>Enable specific xray encryption.</p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xray-default-encrypt</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aws.account</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">set-xray-encrypt</span>
+        <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xray-kms-encrypt</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aws.account</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">set-xray-encrypt</span>
+        <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">alias/some/alias/key</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">key</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">set-xray-encrypt</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">key</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="acm.html" class="btn btn-neutral float-right" title="aws.acm resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aws-common-filters.html" class="btn btn-neutral float-left" title="AWS Common Filters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Capital One Services, LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

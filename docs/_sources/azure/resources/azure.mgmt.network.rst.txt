@@ -1,0 +1,701 @@
+azure.azure.mgmt.network resources
+##################################
+
+
+
+  - :ref:`azure.loadbalancer <azure.loadbalancer>`
+
+  - :ref:`azure.networkinterface <azure.networkinterface>`
+
+  - :ref:`azure.networksecuritygroup <azure.networksecuritygroup>`
+
+  - :ref:`azure.publicip <azure.publicip>`
+
+  - :ref:`azure.routetable <azure.routetable>`
+
+  - :ref:`azure.vnet <azure.vnet>`
+
+
+
+
+.. _azure.loadbalancer:
+
+azure.loadbalancer
+==================
+
+
+
+Filters
+-------
+
+
+  - :ref:`diagnostic-settings <azure.common.filters.diagnostic-settings>`
+  
+  - :ref:`event <azure.common.filters.event>`
+  
+  - :ref:`frontend-public-ip <azure.loadbalancer.filters.frontend-public-ip>`
+
+  - :ref:`marked-for-op <azure.common.filters.marked-for-op>`
+  
+  - :ref:`metric <azure.common.filters.metric>`
+  
+  - :ref:`policy-compliant <azure.common.filters.policy-compliant>`
+  
+  - :ref:`value <azure.common.filters.value>`
+  
+
+
+.. _azure.loadbalancer.filters.frontend-public-ip:
+
+frontend-public-ip
+++++++++++++++++++
+Filters load balancers by frontend public ip.
+
+:Example:
+
+    .. code-block:: yaml
+
+        policies:
+           - name: loadbalancer-with-ipv6-frontend
+             resource: azure.loadbalancer
+             filters:
+                - type: frontend-public-ip
+                  key: properties.publicIPAddressVersion
+                  op: in
+                  value_type: normalize
+                  value: "ipv6"
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - frontend-public-ip
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <azure.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <azure.common.actions.delete>`
+  
+  - :ref:`logic-app <azure.common.actions.logic-app>`
+  
+  - :ref:`mark-for-op <azure.common.actions.mark-for-op>`
+  
+  - :ref:`notify <azure.common.actions.notify>`
+  
+  - :ref:`tag <azure.common.actions.tag>`
+  
+  - :ref:`tag-trim <azure.common.actions.tag-trim>`
+  
+  - :ref:`untag <azure.common.actions.untag>`
+  
+  - :ref:`webhook <azure.common.actions.webhook>`
+  
+
+
+
+
+.. _azure.networkinterface:
+
+azure.networkinterface
+======================
+
+
+
+Filters
+-------
+
+
+  - :ref:`diagnostic-settings <azure.common.filters.diagnostic-settings>`
+  
+  - :ref:`effective-route-table <azure.networkinterface.filters.effective-route-table>`
+
+  - :ref:`event <azure.common.filters.event>`
+  
+  - :ref:`marked-for-op <azure.common.filters.marked-for-op>`
+  
+  - :ref:`metric <azure.common.filters.metric>`
+  
+  - :ref:`policy-compliant <azure.common.filters.policy-compliant>`
+  
+  - :ref:`value <azure.common.filters.value>`
+  
+
+
+.. _azure.networkinterface.filters.effective-route-table:
+
+effective-route-table
++++++++++++++++++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - effective-route-table
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <azure.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <azure.common.actions.delete>`
+  
+  - :ref:`logic-app <azure.common.actions.logic-app>`
+  
+  - :ref:`mark-for-op <azure.common.actions.mark-for-op>`
+  
+  - :ref:`notify <azure.common.actions.notify>`
+  
+  - :ref:`tag <azure.common.actions.tag>`
+  
+  - :ref:`tag-trim <azure.common.actions.tag-trim>`
+  
+  - :ref:`untag <azure.common.actions.untag>`
+  
+  - :ref:`webhook <azure.common.actions.webhook>`
+  
+
+
+
+
+.. _azure.networksecuritygroup:
+
+azure.networksecuritygroup
+==========================
+
+
+
+Filters
+-------
+
+
+  - :ref:`diagnostic-settings <azure.common.filters.diagnostic-settings>`
+  
+  - :ref:`egress <azure.networksecuritygroup.filters.egress>`
+
+  - :ref:`event <azure.common.filters.event>`
+  
+  - :ref:`ingress <azure.networksecuritygroup.filters.ingress>`
+
+  - :ref:`marked-for-op <azure.common.filters.marked-for-op>`
+  
+  - :ref:`metric <azure.common.filters.metric>`
+  
+  - :ref:`policy-compliant <azure.common.filters.policy-compliant>`
+  
+  - :ref:`value <azure.common.filters.value>`
+  
+
+
+.. _azure.networksecuritygroup.filters.egress:
+
+egress
+++++++
+Filter Network Security Groups using opened/closed ports configuration
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      access:
+        enum:
+        - Allow
+        - Deny
+        type: string
+      exceptPorts:
+        type: string
+      ipProtocol:
+        enum:
+        - TCP
+        - UDP
+        - '*'
+        type: string
+      match:
+        enum:
+        - all
+        - any
+        type: string
+      ports:
+        type: string
+      type:
+        enum:
+        - egress
+    required:
+    - type
+
+
+.. _azure.networksecuritygroup.filters.ingress:
+
+ingress
++++++++
+Filter Network Security Groups using opened/closed ports configuration
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      access:
+        enum:
+        - Allow
+        - Deny
+        type: string
+      exceptPorts:
+        type: string
+      ipProtocol:
+        enum:
+        - TCP
+        - UDP
+        - '*'
+        type: string
+      match:
+        enum:
+        - all
+        - any
+        type: string
+      ports:
+        type: string
+      type:
+        enum:
+        - ingress
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <azure.common.actions.auto-tag-user>`
+  
+  - :ref:`close <azure.networksecuritygroup.actions.close>`
+
+  - :ref:`delete <azure.common.actions.delete>`
+  
+  - :ref:`logic-app <azure.common.actions.logic-app>`
+  
+  - :ref:`mark-for-op <azure.common.actions.mark-for-op>`
+  
+  - :ref:`notify <azure.common.actions.notify>`
+  
+  - :ref:`open <azure.networksecuritygroup.actions.open>`
+
+  - :ref:`tag <azure.common.actions.tag>`
+  
+  - :ref:`tag-trim <azure.common.actions.tag-trim>`
+  
+  - :ref:`untag <azure.common.actions.untag>`
+  
+  - :ref:`webhook <azure.common.actions.webhook>`
+  
+
+
+
+.. _azure.networksecuritygroup.actions.close:
+
+close
++++++
+Deny access to Security Rule
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      direction:
+        enum:
+        - Inbound
+        - Outbound
+        type: string
+      exceptPorts:
+        type: string
+      ipProtocol:
+        enum:
+        - TCP
+        - UDP
+        - '*'
+        type: string
+      ports:
+        type: string
+      type:
+        enum:
+        - close
+    required:
+    - type
+
+
+.. _azure.networksecuritygroup.actions.open:
+
+open
+++++
+Allow access to Security Rule
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      direction:
+        enum:
+        - Inbound
+        - Outbound
+        type: string
+      exceptPorts:
+        type: string
+      ipProtocol:
+        enum:
+        - TCP
+        - UDP
+        - '*'
+        type: string
+      ports:
+        type: string
+      type:
+        enum:
+        - open
+    required:
+    - type
+
+
+
+.. _azure.publicip:
+
+azure.publicip
+==============
+
+
+
+Filters
+-------
+
+
+  - :ref:`diagnostic-settings <azure.common.filters.diagnostic-settings>`
+  
+  - :ref:`event <azure.common.filters.event>`
+  
+  - :ref:`marked-for-op <azure.common.filters.marked-for-op>`
+  
+  - :ref:`metric <azure.common.filters.metric>`
+  
+  - :ref:`policy-compliant <azure.common.filters.policy-compliant>`
+  
+  - :ref:`value <azure.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <azure.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <azure.common.actions.delete>`
+  
+  - :ref:`logic-app <azure.common.actions.logic-app>`
+  
+  - :ref:`mark-for-op <azure.common.actions.mark-for-op>`
+  
+  - :ref:`notify <azure.common.actions.notify>`
+  
+  - :ref:`tag <azure.common.actions.tag>`
+  
+  - :ref:`tag-trim <azure.common.actions.tag-trim>`
+  
+  - :ref:`untag <azure.common.actions.untag>`
+  
+  - :ref:`webhook <azure.common.actions.webhook>`
+  
+
+
+
+
+.. _azure.routetable:
+
+azure.routetable
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`diagnostic-settings <azure.common.filters.diagnostic-settings>`
+  
+  - :ref:`event <azure.common.filters.event>`
+  
+  - :ref:`marked-for-op <azure.common.filters.marked-for-op>`
+  
+  - :ref:`metric <azure.common.filters.metric>`
+  
+  - :ref:`policy-compliant <azure.common.filters.policy-compliant>`
+  
+  - :ref:`value <azure.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <azure.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <azure.common.actions.delete>`
+  
+  - :ref:`logic-app <azure.common.actions.logic-app>`
+  
+  - :ref:`mark-for-op <azure.common.actions.mark-for-op>`
+  
+  - :ref:`notify <azure.common.actions.notify>`
+  
+  - :ref:`tag <azure.common.actions.tag>`
+  
+  - :ref:`tag-trim <azure.common.actions.tag-trim>`
+  
+  - :ref:`untag <azure.common.actions.untag>`
+  
+  - :ref:`webhook <azure.common.actions.webhook>`
+  
+
+
+
+
+.. _azure.vnet:
+
+azure.vnet
+==========
+
+
+
+Filters
+-------
+
+
+  - :ref:`diagnostic-settings <azure.common.filters.diagnostic-settings>`
+  
+  - :ref:`event <azure.common.filters.event>`
+  
+  - :ref:`marked-for-op <azure.common.filters.marked-for-op>`
+  
+  - :ref:`metric <azure.common.filters.metric>`
+  
+  - :ref:`policy-compliant <azure.common.filters.policy-compliant>`
+  
+  - :ref:`value <azure.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <azure.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <azure.common.actions.delete>`
+  
+  - :ref:`logic-app <azure.common.actions.logic-app>`
+  
+  - :ref:`mark-for-op <azure.common.actions.mark-for-op>`
+  
+  - :ref:`notify <azure.common.actions.notify>`
+  
+  - :ref:`tag <azure.common.actions.tag>`
+  
+  - :ref:`tag-trim <azure.common.actions.tag-trim>`
+  
+  - :ref:`untag <azure.common.actions.untag>`
+  
+  - :ref:`webhook <azure.common.actions.webhook>`
+  
+
+
+

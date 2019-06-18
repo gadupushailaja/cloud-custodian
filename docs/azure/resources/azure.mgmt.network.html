@@ -1,0 +1,850 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>azure.azure.mgmt.network resources &mdash; Cloud Custodian  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/js/expand.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/expand.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="azure.azure.mgmt.redis resources" href="azure.mgmt.redis.html" />
+    <link rel="prev" title="azure.azure.mgmt.keyvault resources" href="azure.mgmt.keyvault.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Cloud Custodian
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filters.html">Generic Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../actions.html">Generic Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/advanced.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/policyStructure.html">Example tag compliance policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deployment.html">Deployment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">AWS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/examples/index.html">Example Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/aws-modes.html">AWS Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/usage.html">Monitoring your environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/lambda.html">Lambda Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/resources/index.html">AWS Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Azure</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication.html#azure-storage-access">Azure Storage access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../policy/index.html">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../azure-modes.html">Azure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html#adding-new-azure-resources">Adding New Azure Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html#testing">Testing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Azure Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="azure-common-actions.html">Azure Common Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure-common-filters.html">Azure Common Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.keyvault.html">azure.azure.keyvault resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.authorization.html">azure.azure.mgmt.authorization resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.batch.html">azure.azure.mgmt.batch resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.cdn.html">azure.azure.mgmt.cdn resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.cognitiveservices.html">azure.azure.mgmt.cognitiveservices resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.compute.html">azure.azure.mgmt.compute resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.containerregistry.html">azure.azure.mgmt.containerregistry resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.containerservice.html">azure.azure.mgmt.containerservice resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.cosmosdb.html">azure.azure.mgmt.cosmosdb resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.databricks.databricks_client.html">azure.azure.mgmt.databricks.databricks_client resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.datafactory.html">azure.azure.mgmt.datafactory resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.datalake.store.html">azure.azure.mgmt.datalake.store resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.eventgrid.html">azure.azure.mgmt.eventgrid resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.iothub.html">azure.azure.mgmt.iothub resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.keyvault.html">azure.azure.mgmt.keyvault resources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">azure.azure.mgmt.network resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#azure-loadbalancer">azure.loadbalancer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#filters">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actions">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#azure-networkinterface">azure.networkinterface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#azure-networksecuritygroup">azure.networksecuritygroup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#azure-publicip">azure.publicip</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#azure-routetable">azure.routetable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#azure-vnet">azure.vnet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.redis.html">azure.azure.mgmt.redis resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.resource.html">azure.azure.mgmt.resource resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.resource.policy.html">azure.azure.mgmt.resource.policy resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.sql.html">azure.azure.mgmt.sql resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.storage.html">azure.azure.mgmt.storage resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.mgmt.web.html">azure.azure.mgmt.web resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subscription.html">azure.subscription resources</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GCP</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/gcp-modes.html">GCP Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/policy/index.html">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/contribute.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/contribute.html#adding-new-gcp-resources">Adding New GCP Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gcp/resources/index.html">GCP Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-org.html">c7n-org: Multi Account Custodian Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-policystream.html">c7n-policystream: Policy Changes from Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-mailer.html">c7n-mailer: Custodian Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-trailcreator.html">AWS Retroactive Tagging Resource Creators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing to Cloud Custodian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/installing.html">Installing for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/tests.html">Testing for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/documentation.html">Documentation For Developers</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cloud Custodian</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Azure Reference</a> &raquo;</li>
+        
+      <li>azure.azure.mgmt.network resources</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="azure-azure-mgmt-network-resources">
+<h1>azure.azure.mgmt.network resources<a class="headerlink" href="#azure-azure-mgmt-network-resources" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#azure-loadbalancer"><span class="std std-ref">azure.loadbalancer</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-networkinterface"><span class="std std-ref">azure.networkinterface</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-networksecuritygroup"><span class="std std-ref">azure.networksecuritygroup</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-publicip"><span class="std std-ref">azure.publicip</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-routetable"><span class="std std-ref">azure.routetable</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-vnet"><span class="std std-ref">azure.vnet</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="azure-loadbalancer">
+<span id="id1"></span><h2>azure.loadbalancer<a class="headerlink" href="#azure-loadbalancer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="filters">
+<h3>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-diagnostic-settings"><span class="std std-ref">diagnostic-settings</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-loadbalancer-filters-frontend-public-ip"><span class="std std-ref">frontend-public-ip</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-marked-for-op"><span class="std std-ref">marked-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-metric"><span class="std std-ref">metric</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-policy-compliant"><span class="std std-ref">policy-compliant</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="frontend-public-ip">
+<span id="azure-loadbalancer-filters-frontend-public-ip"></span><h4>frontend-public-ip<a class="headerlink" href="#frontend-public-ip" title="Permalink to this headline">¶</a></h4>
+<p>Filters load balancers by frontend public ip.</p>
+<dl class="field-list">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">loadbalancer-with-ipv6-frontend</span>
+     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">azure.loadbalancer</span>
+     <span class="nt">filters</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">frontend-public-ip</span>
+          <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">properties.publicIPAddressVersion</span>
+          <span class="nt">op</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">in</span>
+          <span class="nt">value_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">normalize</span>
+          <span class="nt">value</span><span class="p">:</span> <span class="s">&quot;ipv6&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">default</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">key</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">op</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">eq</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ne</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">greater-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ge</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">le</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">less-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">glob</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex-case</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ni</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contains</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">difference</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">intersect</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">frontend-public-ip</span>
+  <span class="nt">value</span><span class="p">:</span>
+    <span class="nt">oneOf</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="s">&#39;null&#39;</span>
+  <span class="nt">value_from</span><span class="p">:</span>
+    <span class="nt">additionalProperties</span><span class="p">:</span> <span class="s">&#39;False&#39;</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">expr</span><span class="p">:</span>
+        <span class="nt">oneOf</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">format</span><span class="p">:</span>
+        <span class="nt">enum</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">json</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">txt</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv2dict</span>
+      <span class="nt">url</span><span class="p">:</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">required</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">value_regex</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">value_type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expiration</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">normalize</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">swap</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">resource_count</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unique_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="actions">
+<h3>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-delete"><span class="std std-ref">delete</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-logic-app"><span class="std std-ref">logic-app</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag"><span class="std std-ref">tag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag-trim"><span class="std std-ref">tag-trim</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-untag"><span class="std std-ref">untag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="azure-networkinterface">
+<span id="id2"></span><h2>azure.networkinterface<a class="headerlink" href="#azure-networkinterface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Filters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-diagnostic-settings"><span class="std std-ref">diagnostic-settings</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-networkinterface-filters-effective-route-table"><span class="std std-ref">effective-route-table</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-marked-for-op"><span class="std std-ref">marked-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-metric"><span class="std std-ref">metric</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-policy-compliant"><span class="std std-ref">policy-compliant</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="effective-route-table">
+<span id="azure-networkinterface-filters-effective-route-table"></span><h4>effective-route-table<a class="headerlink" href="#effective-route-table" title="Permalink to this headline">¶</a></h4>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">default</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">key</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">op</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">eq</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ne</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-equal</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">greater-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ge</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">le</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lte</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">less-than</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">glob</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">regex-case</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ni</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not-in</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contains</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">difference</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">intersect</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">effective-route-table</span>
+  <span class="nt">value</span><span class="p">:</span>
+    <span class="nt">oneOf</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="s">&#39;null&#39;</span>
+  <span class="nt">value_from</span><span class="p">:</span>
+    <span class="nt">additionalProperties</span><span class="p">:</span> <span class="s">&#39;False&#39;</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">expr</span><span class="p">:</span>
+        <span class="nt">oneOf</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">format</span><span class="p">:</span>
+        <span class="nt">enum</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">json</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">txt</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv2dict</span>
+      <span class="nt">url</span><span class="p">:</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">required</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">value_regex</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">value_type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expiration</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">normalize</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cidr_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">swap</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">resource_count</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">expr</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unique_size</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Actions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-delete"><span class="std std-ref">delete</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-logic-app"><span class="std std-ref">logic-app</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag"><span class="std std-ref">tag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag-trim"><span class="std std-ref">tag-trim</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-untag"><span class="std std-ref">untag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="azure-networksecuritygroup">
+<span id="id5"></span><h2>azure.networksecuritygroup<a class="headerlink" href="#azure-networksecuritygroup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Filters<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-diagnostic-settings"><span class="std std-ref">diagnostic-settings</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-networksecuritygroup-filters-egress"><span class="std std-ref">egress</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-networksecuritygroup-filters-ingress"><span class="std std-ref">ingress</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-marked-for-op"><span class="std std-ref">marked-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-metric"><span class="std std-ref">metric</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-policy-compliant"><span class="std std-ref">policy-compliant</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="egress">
+<span id="azure-networksecuritygroup-filters-egress"></span><h4>egress<a class="headerlink" href="#egress" title="Permalink to this headline">¶</a></h4>
+<p>Filter Network Security Groups using opened/closed ports configuration</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">access</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Allow</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Deny</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">exceptPorts</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">ipProtocol</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TCP</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">UDP</span>
+    <span class="p p-Indicator">-</span> <span class="s">&#39;*&#39;</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">match</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">any</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">ports</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">egress</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ingress">
+<span id="azure-networksecuritygroup-filters-ingress"></span><h4>ingress<a class="headerlink" href="#ingress" title="Permalink to this headline">¶</a></h4>
+<p>Filter Network Security Groups using opened/closed ports configuration</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">access</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Allow</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Deny</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">exceptPorts</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">ipProtocol</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TCP</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">UDP</span>
+    <span class="p p-Indicator">-</span> <span class="s">&#39;*&#39;</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">match</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">any</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">ports</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ingress</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>Actions<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-networksecuritygroup-actions-close"><span class="std std-ref">close</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-delete"><span class="std std-ref">delete</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-logic-app"><span class="std std-ref">logic-app</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="#azure-networksecuritygroup-actions-open"><span class="std std-ref">open</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag"><span class="std std-ref">tag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag-trim"><span class="std std-ref">tag-trim</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-untag"><span class="std std-ref">untag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="close">
+<span id="azure-networksecuritygroup-actions-close"></span><h4>close<a class="headerlink" href="#close" title="Permalink to this headline">¶</a></h4>
+<p>Deny access to Security Rule</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">direction</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Inbound</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Outbound</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">exceptPorts</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">ipProtocol</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TCP</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">UDP</span>
+    <span class="p p-Indicator">-</span> <span class="s">&#39;*&#39;</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">ports</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">close</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="open">
+<span id="azure-networksecuritygroup-actions-open"></span><h4>open<a class="headerlink" href="#open" title="Permalink to this headline">¶</a></h4>
+<p>Allow access to Security Rule</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">direction</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Inbound</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Outbound</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">exceptPorts</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">ipProtocol</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TCP</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">UDP</span>
+    <span class="p p-Indicator">-</span> <span class="s">&#39;*&#39;</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">ports</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">open</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="azure-publicip">
+<span id="id8"></span><h2>azure.publicip<a class="headerlink" href="#azure-publicip" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>Filters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-diagnostic-settings"><span class="std std-ref">diagnostic-settings</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-marked-for-op"><span class="std std-ref">marked-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-metric"><span class="std std-ref">metric</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-policy-compliant"><span class="std std-ref">policy-compliant</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h3>Actions<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-delete"><span class="std std-ref">delete</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-logic-app"><span class="std std-ref">logic-app</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag"><span class="std std-ref">tag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag-trim"><span class="std std-ref">tag-trim</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-untag"><span class="std std-ref">untag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="azure-routetable">
+<span id="id11"></span><h2>azure.routetable<a class="headerlink" href="#azure-routetable" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3>Filters<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-diagnostic-settings"><span class="std std-ref">diagnostic-settings</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-marked-for-op"><span class="std std-ref">marked-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-metric"><span class="std std-ref">metric</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-policy-compliant"><span class="std std-ref">policy-compliant</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h3>Actions<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-delete"><span class="std std-ref">delete</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-logic-app"><span class="std std-ref">logic-app</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag"><span class="std std-ref">tag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag-trim"><span class="std std-ref">tag-trim</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-untag"><span class="std std-ref">untag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="azure-vnet">
+<span id="id14"></span><h2>azure.vnet<a class="headerlink" href="#azure-vnet" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h3>Filters<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-diagnostic-settings"><span class="std std-ref">diagnostic-settings</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-marked-for-op"><span class="std std-ref">marked-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-metric"><span class="std std-ref">metric</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-policy-compliant"><span class="std std-ref">policy-compliant</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-filters.html#azure-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id16">
+<h3>Actions<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-delete"><span class="std std-ref">delete</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-logic-app"><span class="std std-ref">logic-app</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag"><span class="std std-ref">tag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-tag-trim"><span class="std std-ref">tag-trim</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-untag"><span class="std std-ref">untag</span></a></p></li>
+<li><p><a class="reference internal" href="azure-common-actions.html#azure-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="azure.mgmt.redis.html" class="btn btn-neutral float-right" title="azure.azure.mgmt.redis resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="azure.mgmt.keyvault.html" class="btn btn-neutral float-left" title="azure.azure.mgmt.keyvault resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Capital One Services, LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

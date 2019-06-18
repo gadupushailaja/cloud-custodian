@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GCP Common Actions &mdash; Cloud Custodian  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/js/expand.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/expand.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="GCP Common Filters" href="gcp-common-filters.html" />
+    <link rel="prev" title="GCP Reference" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Cloud Custodian
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filters.html">Generic Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../actions.html">Generic Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/advanced.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/policyStructure.html">Example tag compliance policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deployment.html">Deployment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">AWS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/examples/index.html">Example Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/aws-modes.html">AWS Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/usage.html">Monitoring your environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/lambda.html">Lambda Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/resources/index.html">AWS Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Azure</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/authentication.html#azure-storage-access">Azure Storage access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/policy/index.html">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/azure-modes.html">Azure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/advanced/index.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html#adding-new-azure-resources">Adding New Azure Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/contribute.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure/resources/index.html">Azure Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GCP</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gcp-modes.html">GCP Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../policy/index.html">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html#adding-new-gcp-resources">Adding New GCP Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html#testing">Testing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">GCP Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GCP Common Actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notify">notify</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-finding">post-finding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webhook">webhook</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gcp-common-filters.html">GCP Common Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appengine.html">gcp.appengine resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigquery.html">gcp.bigquery resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudbilling.html">gcp.cloudbilling resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudbuild.html">gcp.cloudbuild resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudfunctions.html">gcp.cloudfunctions resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudresourcemanager.html">gcp.cloudresourcemanager resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute.html">gcp.compute resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container.html">gcp.container resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflow.html">gcp.dataflow resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploymentmanager.html">gcp.deploymentmanager resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dns.html">gcp.dns resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iam.html">gcp.iam resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">gcp.logging resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml.html">gcp.ml resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pubsub.html">gcp.pubsub resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servicemanagement.html">gcp.servicemanagement resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sourcerepo.html">gcp.sourcerepo resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spanner.html">gcp.spanner resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqladmin.html">gcp.sqladmin resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage.html">gcp.storage resources</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-org.html">c7n-org: Multi Account Custodian Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-policystream.html">c7n-policystream: Policy Changes from Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-mailer.html">c7n-mailer: Custodian Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/c7n-trailcreator.html">AWS Retroactive Tagging Resource Creators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing to Cloud Custodian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/installing.html">Installing for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/tests.html">Testing for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/documentation.html">Documentation For Developers</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cloud Custodian</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">GCP Reference</a> &raquo;</li>
+        
+      <li>GCP Common Actions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gcp-common-actions">
+<h1>GCP Common Actions<a class="headerlink" href="#gcp-common-actions" title="Permalink to this headline">¶</a></h1>
+<p>Actions</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="notify">
+<span id="gcp-common-actions-notify"></span><h2>notify<a class="headerlink" href="#notify" title="Permalink to this headline">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bad-instance-get</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gcp.instance</span>
+    <span class="nt">filters</span><span class="p">:</span>
+     <span class="p p-Indicator">-</span> <span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bad-instance</span>
+    <span class="nt">actions</span><span class="p">:</span>
+     <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">notify</span>
+       <span class="nt">to</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">email@address</span>
+       <span class="c1"># which template for the email should we use</span>
+       <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">policy-template</span>
+       <span class="nt">transport</span><span class="p">:</span>
+         <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pubsub</span>
+         <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">projects/yourproject/topics/yourtopic</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">addtionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">anyOf</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">required</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">transport</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">to</span>
+<span class="p p-Indicator">-</span> <span class="nt">required</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">transport</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">to_from</span>
+<span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">cc</span><span class="p">:</span>
+    <span class="nt">items</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+  <span class="nt">cc_from</span><span class="p">:</span> <span class="nl">&amp;id001</span>
+    <span class="nt">additionalProperties</span><span class="p">:</span> <span class="s">&#39;False&#39;</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">expr</span><span class="p">:</span>
+        <span class="nt">oneOf</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">format</span><span class="p">:</span>
+        <span class="nt">enum</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">json</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">txt</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">csv2dict</span>
+      <span class="nt">url</span><span class="p">:</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">required</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">cc_manager</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">from</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">owner_absent_contact</span><span class="p">:</span>
+    <span class="nt">items</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+  <span class="nt">subject</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">template</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">to</span><span class="p">:</span>
+    <span class="nt">items</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+  <span class="nt">to_from</span><span class="p">:</span> <span class="nv">*id001</span>
+  <span class="nt">transport</span><span class="p">:</span>
+    <span class="nt">oneOf</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">properties</span><span class="p">:</span>
+        <span class="nt">topic</span><span class="p">:</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="nt">type</span><span class="p">:</span>
+          <span class="nt">enum</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pubsub</span>
+      <span class="nt">required</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">topic</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">notify</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="post-finding">
+<span id="gcp-common-actions-post-finding"></span><h2>post-finding<a class="headerlink" href="#post-finding" title="Permalink to this headline">¶</a></h2>
+<p>Post finding for matched resources to Cloud Security Command Center.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gcp-instances-with-label</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gcp.instance</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;tag:name&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;bad-instance&quot;</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">post-finding</span>
+        <span class="nt">org-domain</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example.io</span>
+        <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MEDIUM_INTERNET_SECURITY</span>
+</pre></div>
+</div>
+<p>The source for custodian can either be specified inline to the policy, or
+custodian can generate one at runtime if it doesn’t exist given a org-domain
+or org-id.</p>
+<p>Finding updates are not currently supported, due to upstream api issues.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">category</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">org-domain</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">org-id</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+  <span class="nt">source</span><span class="p">:</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">qualified name of source to post to CSCC as</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">post-finding</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="webhook">
+<span id="gcp-common-actions-webhook"></span><h2>webhook<a class="headerlink" href="#webhook" title="Permalink to this headline">¶</a></h2>
+<p>Calls a webhook with optional parameters and body
+populated from JMESPath queries.</p>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">call-webhook</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ec2</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">Call webhook with list of resource groups</span>
+    <span class="nt">actions</span><span class="p">:</span>
+     <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">webhook</span>
+       <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://foo.com</span>
+       <span class="nt">query-params</span><span class="p">:</span>
+          <span class="nt">resource_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">resource.name</span>
+          <span class="nt">policy_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">policy.name</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">batch</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">batch-size</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
+  <span class="nt">body</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">headers</span><span class="p">:</span>
+    <span class="nt">additionalProperties</span><span class="p">:</span>
+      <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">header values</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">method</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PUT</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">POST</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">GET</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PATCH</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">DELETE</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">query-params</span><span class="p">:</span>
+    <span class="nt">additionalProperties</span><span class="p">:</span>
+      <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">query string values</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">webhook</span>
+  <span class="nt">url</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">url</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gcp-common-filters.html" class="btn btn-neutral float-right" title="GCP Common Filters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="GCP Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Capital One Services, LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

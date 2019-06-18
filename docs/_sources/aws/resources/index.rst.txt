@@ -1,0 +1,173 @@
+.. _AWS:
+
+AWS Reference
+------------------------------------
+
+Reference information about provider resources and their actions and filters.
+See the :ref:`Generic Filters reference <filters>` for filters that can
+be applies for all resources.
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
+
+   aws-common-actions.rst
+
+   aws-common-filters.rst
+
+   account.rst
+
+   acm.rst
+
+   apigateway.rst
+
+   autoscaling.rst
+
+   backup.rst
+
+   batch.rst
+
+   clouddirectory.rst
+
+   cloudformation.rst
+
+   cloudfront.rst
+
+   cloudhsm.rst
+
+   cloudhsmv2.rst
+
+   cloudsearch.rst
+
+   cloudtrail.rst
+
+   cloudwatch.rst
+
+   codebuild.rst
+
+   codecommit.rst
+
+   codepipeline.rst
+
+   cognito-identity.rst
+
+   cognito-idp.rst
+
+   config.rst
+
+   datapipeline.rst
+
+   dax.rst
+
+   directconnect.rst
+
+   dlm.rst
+
+   dms.rst
+
+   ds.rst
+
+   dynamodb.rst
+
+   dynamodbstreams.rst
+
+   ec2.rst
+
+   ecr.rst
+
+   ecs.rst
+
+   efs.rst
+
+   eks.rst
+
+   elasticache.rst
+
+   elasticbeanstalk.rst
+
+   elb.rst
+
+   elbv2.rst
+
+   emr.rst
+
+   es.rst
+
+   events.rst
+
+   firehose.rst
+
+   fsx.rst
+
+   gamelift.rst
+
+   glacier.rst
+
+   glue.rst
+
+   health.rst
+
+   iam.rst
+
+   iot.rst
+
+   kafka.rst
+
+   kinesis.rst
+
+   kinesisanalytics.rst
+
+   kms.rst
+
+   lambda.rst
+
+   lightsail.rst
+
+   logs.rst
+
+   machinelearning.rst
+
+   mq.rst
+
+   opsworks.rst
+
+   opsworkscm.rst
+
+   rds.rst
+
+   redshift.rst
+
+   route53.rst
+
+   route53domains.rst
+
+   s3.rst
+
+   sagemaker.rst
+
+   sdb.rst
+
+   secretsmanager.rst
+
+   shield.rst
+
+   snowball.rst
+
+   sns.rst
+
+   sqs.rst
+
+   ssm.rst
+
+   stepfunctions.rst
+
+   storagegateway.rst
+
+   support.rst
+
+   waf.rst
+
+   waf-regional.rst
+
+   workspaces.rst

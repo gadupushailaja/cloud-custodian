@@ -1,0 +1,111 @@
+aws.eks resources
+#################
+
+
+
+
+.. _aws.eks:
+
+aws.eks
+=======
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`security-group <aws.common.filters.security-group>`
+  
+  - :ref:`subnet <aws.common.filters.subnet>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+  - :ref:`vpc <aws.common.filters.vpc>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`delete <aws.eks.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`update-config <aws.eks.actions.update-config>`
+
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.eks.actions.delete:
+
+delete
+++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.eks.actions.update-config:
+
+update-config
++++++++++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    oneOf:
+    - required:
+      - type
+      - logging
+    - required:
+      - type
+      - resourcesVpcConfig
+    - required:
+      - type
+      - logging
+      - resourcesVpcConfig
+    properties:
+      logging:
+        type: object
+      resourcesVpcConfig:
+        type: object
+      type:
+        enum:
+        - update-config
+
+

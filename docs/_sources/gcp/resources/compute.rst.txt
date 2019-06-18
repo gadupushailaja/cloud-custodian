@@ -1,0 +1,1255 @@
+gcp.compute resources
+#####################
+
+
+
+  - :ref:`gcp.disk <gcp.disk>`
+
+  - :ref:`gcp.firewall <gcp.firewall>`
+
+  - :ref:`gcp.image <gcp.image>`
+
+  - :ref:`gcp.instance <gcp.instance>`
+
+  - :ref:`gcp.interconnect <gcp.interconnect>`
+
+  - :ref:`gcp.interconnect-attachment <gcp.interconnect-attachment>`
+
+  - :ref:`gcp.loadbalancer-address <gcp.loadbalancer-address>`
+
+  - :ref:`gcp.loadbalancer-backend-bucket <gcp.loadbalancer-backend-bucket>`
+
+  - :ref:`gcp.loadbalancer-backend-service <gcp.loadbalancer-backend-service>`
+
+  - :ref:`gcp.loadbalancer-forwarding-rule <gcp.loadbalancer-forwarding-rule>`
+
+  - :ref:`gcp.loadbalancer-global-address <gcp.loadbalancer-global-address>`
+
+  - :ref:`gcp.loadbalancer-global-forwarding-rule <gcp.loadbalancer-global-forwarding-rule>`
+
+  - :ref:`gcp.loadbalancer-health-check <gcp.loadbalancer-health-check>`
+
+  - :ref:`gcp.loadbalancer-http-health-check <gcp.loadbalancer-http-health-check>`
+
+  - :ref:`gcp.loadbalancer-https-health-check <gcp.loadbalancer-https-health-check>`
+
+  - :ref:`gcp.loadbalancer-ssl-certificate <gcp.loadbalancer-ssl-certificate>`
+
+  - :ref:`gcp.loadbalancer-ssl-policy <gcp.loadbalancer-ssl-policy>`
+
+  - :ref:`gcp.loadbalancer-target-http-proxy <gcp.loadbalancer-target-http-proxy>`
+
+  - :ref:`gcp.loadbalancer-target-https-proxy <gcp.loadbalancer-target-https-proxy>`
+
+  - :ref:`gcp.loadbalancer-target-instance <gcp.loadbalancer-target-instance>`
+
+  - :ref:`gcp.loadbalancer-target-pool <gcp.loadbalancer-target-pool>`
+
+  - :ref:`gcp.loadbalancer-target-ssl-proxy <gcp.loadbalancer-target-ssl-proxy>`
+
+  - :ref:`gcp.loadbalancer-target-tcp-proxy <gcp.loadbalancer-target-tcp-proxy>`
+
+  - :ref:`gcp.loadbalancer-url-map <gcp.loadbalancer-url-map>`
+
+  - :ref:`gcp.route <gcp.route>`
+
+  - :ref:`gcp.router <gcp.router>`
+
+  - :ref:`gcp.snapshot <gcp.snapshot>`
+
+  - :ref:`gcp.subnet <gcp.subnet>`
+
+  - :ref:`gcp.vpc <gcp.vpc>`
+
+
+
+
+.. _gcp.disk:
+
+gcp.disk
+========
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`snapshot <gcp.disk.actions.snapshot>`
+
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+.. _gcp.disk.actions.snapshot:
+
+snapshot
+++++++++
+Invoke an api call on each resource.
+
+Quite a number of procedural actions are simply invoking an api
+call on a filtered set of resources. The exact handling is mostly
+boilerplate at that point following an 80/20 rule. This class is
+an encapsulation of the 80%.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - snapshot
+    required:
+    - type
+
+
+
+.. _gcp.firewall:
+
+gcp.firewall
+============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.image:
+
+gcp.image
+=========
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.instance:
+
+gcp.instance
+============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`offhour <gcp.common.filters.offhour>`
+  
+  - :ref:`onhour <gcp.common.filters.onhour>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`delete <gcp.instance.actions.delete>`
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`start <gcp.instance.actions.start>`
+
+  - :ref:`stop <gcp.instance.actions.stop>`
+
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+.. _gcp.instance.actions.delete:
+
+delete
+++++++
+Invoke an api call on each resource.
+
+Quite a number of procedural actions are simply invoking an api
+call on a filtered set of resources. The exact handling is mostly
+boilerplate at that point following an 80/20 rule. This class is
+an encapsulation of the 80%.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _gcp.instance.actions.start:
+
+start
++++++
+Invoke an api call on each resource.
+
+Quite a number of procedural actions are simply invoking an api
+call on a filtered set of resources. The exact handling is mostly
+boilerplate at that point following an 80/20 rule. This class is
+an encapsulation of the 80%.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - start
+    required:
+    - type
+
+
+.. _gcp.instance.actions.stop:
+
+stop
+++++
+Invoke an api call on each resource.
+
+Quite a number of procedural actions are simply invoking an api
+call on a filtered set of resources. The exact handling is mostly
+boilerplate at that point following an 80/20 rule. This class is
+an encapsulation of the 80%.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - stop
+    required:
+    - type
+
+
+
+.. _gcp.interconnect:
+
+gcp.interconnect
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.interconnect-attachment:
+
+gcp.interconnect-attachment
+===========================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-address:
+
+gcp.loadbalancer-address
+========================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/addresses
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-backend-bucket:
+
+gcp.loadbalancer-backend-bucket
+===============================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-backend-service:
+
+gcp.loadbalancer-backend-service
+================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/backendServices
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-forwarding-rule:
+
+gcp.loadbalancer-forwarding-rule
+================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/addresses
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-global-address:
+
+gcp.loadbalancer-global-address
+===============================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/globalAddresses
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-global-forwarding-rule:
+
+gcp.loadbalancer-global-forwarding-rule
+=======================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/forwardingRules
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-health-check:
+
+gcp.loadbalancer-health-check
+=============================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-http-health-check:
+
+gcp.loadbalancer-http-health-check
+==================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/httpHealthChecks
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-https-health-check:
+
+gcp.loadbalancer-https-health-check
+===================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/httpsHealthChecks
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-ssl-certificate:
+
+gcp.loadbalancer-ssl-certificate
+================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-ssl-policy:
+
+gcp.loadbalancer-ssl-policy
+===========================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-target-http-proxy:
+
+gcp.loadbalancer-target-http-proxy
+==================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/targetHttpProxies
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-target-https-proxy:
+
+gcp.loadbalancer-target-https-proxy
+===================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/targetHttpsProxies
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-target-instance:
+
+gcp.loadbalancer-target-instance
+================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/targetInstances
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-target-pool:
+
+gcp.loadbalancer-target-pool
+============================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/targetPools
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-target-ssl-proxy:
+
+gcp.loadbalancer-target-ssl-proxy
+=================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/targetSslProxies
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-target-tcp-proxy:
+
+gcp.loadbalancer-target-tcp-proxy
+=================================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/targetTcpProxies
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.loadbalancer-url-map:
+
+gcp.loadbalancer-url-map
+========================
+
+GCP resource: https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps
+    
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.route:
+
+gcp.route
+=========
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.router:
+
+gcp.router
+==========
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+
+.. _gcp.snapshot:
+
+gcp.snapshot
+============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`delete <gcp.snapshot.actions.delete>`
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+.. _gcp.snapshot.actions.delete:
+
+delete
+++++++
+Invoke an api call on each resource.
+
+Quite a number of procedural actions are simply invoking an api
+call on a filtered set of resources. The exact handling is mostly
+boilerplate at that point following an 80/20 rule. This class is
+an encapsulation of the 80%.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+
+.. _gcp.subnet:
+
+gcp.subnet
+==========
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`set-flow-log <gcp.subnet.actions.set-flow-log>`
+
+  - :ref:`set-gcp-private <gcp.subnet.actions.set-gcp-private>`
+
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+
+.. _gcp.subnet.actions.set-flow-log:
+
+set-flow-log
+++++++++++++
+Enable vpc flow logs on a subnet.
+
+:example: Enable flow logs on all subnets
+
+.. yaml:
+
+ policies:
+   - name: flow-active
+     resource: gcp.subnet
+     filters:
+      - enableFlowLogs: empty
+     actions:
+      - set-flow-log
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      state:
+        default: true
+        type: boolean
+      type:
+        enum:
+        - set-flow-log
+    required:
+    - type
+
+
+.. _gcp.subnet.actions.set-gcp-private:
+
+set-gcp-private
++++++++++++++++
+Enable/Disable GCP Private IP Access for a subnet
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      state:
+        default: true
+        type: boolean
+      type:
+        enum:
+        - set-gcp-private
+    required:
+    - type
+
+
+
+.. _gcp.vpc:
+
+gcp.vpc
+=======
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <gcp.common.filters.event>`
+  
+  - :ref:`value <gcp.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`notify <gcp.common.actions.notify>`
+  
+  - :ref:`post-finding <gcp.common.actions.post-finding>`
+  
+  - :ref:`webhook <gcp.common.actions.webhook>`
+  
+
+
+

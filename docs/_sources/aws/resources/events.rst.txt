@@ -1,0 +1,162 @@
+aws.events resources
+####################
+
+
+
+  - :ref:`aws.event-rule <aws.event-rule>`
+
+  - :ref:`aws.event-rule-target <aws.event-rule-target>`
+
+
+
+
+.. _aws.event-rule:
+
+aws.event-rule
+==============
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.event-rule-target:
+
+aws.event-rule-target
+=====================
+
+
+
+Filters
+-------
+
+
+  - :ref:`cross-account <aws.event-rule-target.filters.cross-account>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.event-rule-target.filters.cross-account:
+
+cross-account
++++++++++++++
+Check a resource's embedded iam policy for cross account access.
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - cross-account
+      whitelist:
+        items:
+          type: string
+        type: array
+      whitelist_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`delete <aws.event-rule-target.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.event-rule-target.actions.delete:
+
+delete
+++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+

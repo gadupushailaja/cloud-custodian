@@ -1,0 +1,2230 @@
+aws.rds resources
+#################
+
+
+
+  - :ref:`aws.rds <aws.rds>`
+
+  - :ref:`aws.rds-cluster <aws.rds-cluster>`
+
+  - :ref:`aws.rds-cluster-param-group <aws.rds-cluster-param-group>`
+
+  - :ref:`aws.rds-cluster-snapshot <aws.rds-cluster-snapshot>`
+
+  - :ref:`aws.rds-param-group <aws.rds-param-group>`
+
+  - :ref:`aws.rds-reserved <aws.rds-reserved>`
+
+  - :ref:`aws.rds-snapshot <aws.rds-snapshot>`
+
+  - :ref:`aws.rds-subnet-group <aws.rds-subnet-group>`
+
+  - :ref:`aws.rds-subscription <aws.rds-subscription>`
+
+
+
+
+.. _aws.rds:
+
+aws.rds
+=======
+
+Resource manager for RDS DB instances.
+    
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`db-parameter <aws.rds.filters.db-parameter>`
+
+  - :ref:`default-vpc <aws.rds.filters.default-vpc>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`health-event <aws.common.filters.health-event>`
+  
+  - :ref:`kms-alias <aws.rds.filters.kms-alias>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
+  - :ref:`network-location <aws.common.filters.network-location>`
+  
+  - :ref:`offhour <aws.common.filters.offhour>`
+  
+  - :ref:`onhour <aws.common.filters.onhour>`
+  
+  - :ref:`security-group <aws.common.filters.security-group>`
+  
+  - :ref:`subnet <aws.common.filters.subnet>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`upgrade-available <aws.rds.filters.upgrade-available>`
+
+  - :ref:`value <aws.common.filters.value>`
+  
+  - :ref:`vpc <aws.common.filters.vpc>`
+  
+
+
+.. _aws.rds.filters.db-parameter:
+
+db-parameter
+++++++++++++
+Applies value type filter on set db parameter values.
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-pg
+            resource: rds
+            filters:
+              - type: db-parameter
+                key: someparam
+                op: eq
+                value: someval
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - db-parameter
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.rds.filters.default-vpc:
+
+default-vpc
++++++++++++
+Matches if an rds database is in the default vpc
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: default-vpc-rds
+            resource: rds
+            filters:
+              - type: default-vpc
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - default-vpc
+    required:
+    - type
+
+
+.. _aws.rds.filters.kms-alias:
+
+kms-alias
++++++++++
+
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      default:
+        type: object
+      key:
+        type: string
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - kms-alias
+      value:
+        oneOf:
+        - type: array
+        - type: string
+        - type: boolean
+        - type: number
+        - type: 'null'
+      value_from:
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      value_regex:
+        type: string
+      value_type:
+        enum:
+        - age
+        - integer
+        - expiration
+        - normalize
+        - size
+        - cidr
+        - cidr_size
+        - swap
+        - resource_count
+        - expr
+        - unique_size
+        - date
+    required:
+    - type
+
+
+.. _aws.rds.filters.upgrade-available:
+
+upgrade-available
++++++++++++++++++
+Scan DB instances for available engine upgrades
+
+This will pull DB instances & check their specific engine for any
+engine version with higher release numbers than the current one
+
+This will also annotate the rds instance with 'target_engine' which is
+the most recent version of the engine available
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-upgrade-available
+            resource: rds
+            filters:
+              - type: upgrade-available
+                major: False
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      major:
+        type: boolean
+      type:
+        enum:
+        - upgrade-available
+      value:
+        type: boolean
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-patch <aws.rds.actions.auto-patch>`
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <aws.rds.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`modify-db <aws.rds.actions.modify-db>`
+
+  - :ref:`modify-security-groups <aws.common.actions.modify-security-groups>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`resize <aws.rds.actions.resize>`
+
+  - :ref:`retention <aws.rds.actions.retention>`
+
+  - :ref:`set-public-access <aws.rds.actions.set-public-access>`
+
+  - :ref:`set-snapshot-copy-tags <aws.rds.actions.set-snapshot-copy-tags>`
+
+  - :ref:`snapshot <aws.rds.actions.snapshot>`
+
+  - :ref:`start <aws.rds.actions.start>`
+
+  - :ref:`stop <aws.rds.actions.stop>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`tag-trim <aws.common.actions.tag-trim>`
+  
+  - :ref:`upgrade <aws.rds.actions.upgrade>`
+
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rds.actions.auto-patch:
+
+auto-patch
+++++++++++
+Toggle AutoMinorUpgrade flag on RDS instance
+
+'window' parameter needs to be in the format 'ddd:hh:mm-ddd:hh:mm' and
+have at least 30 minutes between start & end time.
+If 'window' is not specified, AWS will assign a random maintenance window
+to each instance selected.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: enable-rds-autopatch
+            resource: rds
+            filters:
+              - AutoMinorVersionUpgrade: false
+            actions:
+              - type: auto-patch
+                minor: true
+                window: Mon:23:00-Tue:01:00
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      minor:
+        type: boolean
+      type:
+        enum:
+        - auto-patch
+      window:
+        type: string
+    required:
+    - type
+
+
+.. _aws.rds.actions.delete:
+
+delete
+++++++
+Deletes selected RDS instances
+
+This will delete RDS instances. It is recommended to apply with a filter
+to avoid deleting all RDS instances in the account.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-delete
+            resource: rds
+            filters:
+              - default-vpc
+            actions:
+              - type: delete
+                skip-snapshot: true
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      copy-restore-info:
+        type: boolean
+      skip-snapshot:
+        type: boolean
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.rds.actions.modify-db:
+
+modify-db
++++++++++
+Modifies an RDS instance based on specified parameter
+using ModifyDbInstance.
+
+'Update' is an array with with key value pairs that should be set to
+the property and value you wish to modify.
+'Immediate" determines whether the modification is applied immediately
+or not. If 'immediate' is not specified, default is false.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: disable-rds-deletion-protection
+            resource: rds
+            filters:
+              - DeletionProtection: true
+              - PubliclyAccessible: true
+            actions:
+              - type: modify-db
+                update:
+                  - property: 'DeletionProtection'
+                    value: false
+                  - property: 'PubliclyAccessible'
+                    value: false
+                immediate: true
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      immediate:
+        type: boolean
+      type:
+        enum:
+        - modify-db
+      update:
+        items:
+          properties:
+            property:
+              enum:
+              - AllocatedStorage
+              - DBInstanceClass
+              - DBSubnetGroupName
+              - DBSecurityGroups
+              - VpcSecurityGroupIds
+              - MasterUserPassword
+              - DBParameterGroupName
+              - BackupRetentionPeriod
+              - PreferredBackupWindow
+              - PreferredMaintenanceWindow
+              - MultiAZ
+              - EngineVersion
+              - AllowMajorVersionUpgrade
+              - AutoMinorVersionUpgrade
+              - LicenseModel
+              - Iops
+              - OptionGroupName
+              - NewDBInstanceIdentifier
+              - StorageType
+              - TdeCredentialArn
+              - TdeCredentialPassword
+              - CACertificateIdentifier
+              - Domain
+              - CopyTagsToSnapshot
+              - MonitoringInterval
+              - DBPortNumber
+              - PubliclyAccessible
+              - DomainIAMRoleName
+              - PromotionTier
+              - EnableIAMDatabaseAuthentication
+              - EnablePerformanceInsights
+              - PerformanceInsightsKMSKeyId
+              - PerformanceInsightsRetentionPeriod
+              - CloudwatchLogsExportConfiguration
+              - UseDefaultProcessorFeatures
+              - DeletionProtection
+              type: string
+            value: {}
+          type: object
+        type: array
+    required:
+    - update
+
+
+.. _aws.rds.actions.resize:
+
+resize
+++++++
+Change the allocated storage of an rds instance.
+
+:example:
+
+This will find databases using over 85% of their allocated
+storage, and resize them to have an additional 30% storage
+the resize here is async during the next maintenance.
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-snapshot-retention
+            resource: rds
+            filters:
+              - type: metrics
+                name: FreeStorageSpace
+                percent-attr: AllocatedStorage
+                attr-multiplier: 1073741824
+                value: 90
+                op: greater-than
+            actions:
+              - type: resize
+                percent: 30
+
+
+This will find databases using under 20% of their allocated
+storage, and resize them to be 30% smaller, the resize here
+is configured to be immediate.
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-snapshot-retention
+            resource: rds
+            filters:
+              - type: metrics
+                name: FreeStorageSpace
+                percent-attr: AllocatedStorage
+                attr-multiplier: 1073741824
+                value: 90
+                op: greater-than
+            actions:
+              - type: resize
+                percent: -30
+                immediate: true
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      immediate:
+        type: boolean
+      percent:
+        type: number
+      type:
+        enum:
+        - resize
+    required:
+    - type
+
+
+.. _aws.rds.actions.retention:
+
+retention
++++++++++
+Sets the 'BackupRetentionPeriod' value for automated snapshots,
+enforce (min, max, exact) sets retention days occordingly.
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-snapshot-retention
+            resource: rds
+            filters:
+              - type: value
+                key: BackupRetentionPeriod
+                value: 7
+                op: lt
+            actions:
+              - type: retention
+                days: 7
+                copy-tags: true
+                enforce: exact
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      copy-tags:
+        type: boolean
+      days:
+        type: number
+      enforce:
+        enum:
+        - min
+        - max
+        - exact
+        type: string
+      type:
+        enum:
+        - retention
+    required:
+    - type
+
+
+.. _aws.rds.actions.set-public-access:
+
+set-public-access
++++++++++++++++++
+This action allows for toggling an RDS instance
+'PubliclyAccessible' flag to true or false
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: disable-rds-public-accessibility
+            resource: rds
+            filters:
+              - PubliclyAccessible: true
+            actions:
+              - type: set-public-access
+                state: false
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      state:
+        type: boolean
+      type:
+        enum:
+        - set-public-access
+    required:
+    - type
+
+
+.. _aws.rds.actions.set-snapshot-copy-tags:
+
+set-snapshot-copy-tags
+++++++++++++++++++++++
+Enables copying tags from rds instance to snapshot
+
+DEPRECATED - use modify-db instead with `CopyTagsToSnapshot`
+
+:example:
+
+    .. code-block:: yaml
+
+        policies:
+          - name: enable-rds-snapshot-tags
+            resource: rds
+            filters:
+              - type: value
+                key: Engine
+                value: aurora
+                op: eq
+            actions:
+              - type: set-snapshot-copy-tags
+                enable: True
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      enable:
+        type: boolean
+      type:
+        enum:
+        - set-snapshot-copy-tags
+    required:
+    - type
+
+
+.. _aws.rds.actions.snapshot:
+
+snapshot
+++++++++
+Creates a manual snapshot of a RDS instance
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-snapshot
+            resource: rds
+            actions:
+              - snapshot
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - snapshot
+    required:
+    - type
+
+
+.. _aws.rds.actions.start:
+
+start
++++++
+Start an rds instance.
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - start
+    required:
+    - type
+
+
+.. _aws.rds.actions.stop:
+
+stop
+++++
+Stop an rds instance.
+
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - stop
+    required:
+    - type
+
+
+.. _aws.rds.actions.upgrade:
+
+upgrade
++++++++
+Upgrades a RDS instance to the latest major/minor version available
+
+Use of the 'immediate' flag (default False) will automatically upgrade
+the RDS engine disregarding the existing maintenance window.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: upgrade-rds-minor
+            resource: rds
+            actions:
+              - type: upgrade
+                major: False
+                immediate: False
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      immediate:
+        type: boolean
+      major:
+        type: boolean
+      type:
+        enum:
+        - upgrade
+    required:
+    - type
+
+
+
+.. _aws.rds-cluster:
+
+aws.rds-cluster
+===============
+
+Resource manager for RDS clusters.
+    
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
+  - :ref:`network-location <aws.common.filters.network-location>`
+  
+  - :ref:`offhour <aws.common.filters.offhour>`
+  
+  - :ref:`onhour <aws.common.filters.onhour>`
+  
+  - :ref:`security-group <aws.common.filters.security-group>`
+  
+  - :ref:`subnet <aws.common.filters.subnet>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <aws.rds-cluster.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`modify-db-cluster <aws.rds-cluster.actions.modify-db-cluster>`
+
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`retention <aws.rds-cluster.actions.retention>`
+
+  - :ref:`snapshot <aws.rds-cluster.actions.snapshot>`
+
+  - :ref:`start <aws.rds-cluster.actions.start>`
+
+  - :ref:`stop <aws.rds-cluster.actions.stop>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rds-cluster.actions.delete:
+
+delete
+++++++
+Action to delete a RDS cluster
+
+To prevent unwanted deletion of clusters, it is recommended to apply a
+filter to the rule
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-cluster-delete-unused
+            resource: rds-cluster
+            filters:
+              - type: metrics
+                name: CPUUtilization
+                days: 21
+                value: 1.0
+                op: le
+            actions:
+              - type: delete
+                skip-snapshot: false
+                delete-instances: true
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      delete-instances:
+        type: boolean
+      skip-snapshot:
+        type: boolean
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.rds-cluster.actions.modify-db-cluster:
+
+modify-db-cluster
++++++++++++++++++
+Modifies an RDS instance based on specified parameter
+using ModifyDbInstance.
+
+'Immediate" determines whether the modification is applied immediately
+or not. If 'immediate' is not specified, default is false.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: disable-db-cluster-deletion-protection
+            resource: rds-cluster
+            filters:
+              - DeletionProtection: true
+              - PubliclyAccessible: true
+            actions:
+              - type: modify-db-cluster
+                attributes:
+                    CopyTagsToSnapshot: true
+                    DeletionProtection: false
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      attributes:
+        type: object
+      type:
+        enum:
+        - modify-db-cluster
+    required:
+    - attributes
+
+
+.. _aws.rds-cluster.actions.retention:
+
+retention
++++++++++
+Action to set the retention period on rds cluster snapshots,
+enforce (min, max, exact) sets retention days occordingly.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-cluster-backup-retention
+            resource: rds-cluster
+            filters:
+              - type: value
+                key: BackupRetentionPeriod
+                value: 21
+                op: ne
+            actions:
+              - type: retention
+                days: 21
+                enforce: min
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      days:
+        type: number
+      enforce:
+        enum:
+        - min
+        - max
+        - exact
+        type: string
+      type:
+        enum:
+        - retention
+    required:
+    - type
+
+
+.. _aws.rds-cluster.actions.snapshot:
+
+snapshot
+++++++++
+Action to create a snapshot of a rds cluster
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-cluster-snapshot
+            resource: rds-cluster
+            actions:
+              - snapshot
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - snapshot
+    required:
+    - type
+
+
+.. _aws.rds-cluster.actions.start:
+
+start
++++++
+Start a stopped db cluster
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - start
+    required:
+    - type
+
+
+.. _aws.rds-cluster.actions.stop:
+
+stop
+++++
+Stop a running db cluster
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - stop
+    required:
+    - type
+
+
+
+.. _aws.rds-cluster-param-group:
+
+aws.rds-cluster-param-group
+===========================
+
+Resource manager for RDS cluster parameter groups.
+    
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`copy <aws.rds-cluster-param-group.actions.copy>`
+
+  - :ref:`delete <aws.rds-cluster-param-group.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`modify <aws.rds-cluster-param-group.actions.modify>`
+
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rds-cluster-param-group.actions.copy:
+
+copy
+++++
+Action to copy an RDS cluster parameter group.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-cluster-param-group-copy
+            resource: rds-cluster-param-group
+            filters:
+              - DBClusterParameterGroupName: original_cluster_pg_name
+            actions:
+              - type: copy
+                name: copy_name
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      type:
+        enum:
+        - copy
+    required:
+    - name
+    - type
+
+
+.. _aws.rds-cluster-param-group.actions.delete:
+
+delete
+++++++
+Action to delete an RDS cluster parameter group
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-cluster-param-group-delete
+            resource: rds-cluster-param-group
+            filters:
+              - DBClusterParameterGroupName: cluster_pg_name
+            actions:
+              - type: delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.rds-cluster-param-group.actions.modify:
+
+modify
+++++++
+Action to modify an RDS cluster parameter group
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-cluster-param-group-modify
+            resource: rds-cluster-param-group
+            filters:
+              - DBClusterParameterGroupName: cluster_pg_name
+            actions:
+              - type: modify
+                params:
+                - name: lower_case_table_names
+                  value: "1"
+                - name: master_verify_checksum
+                  value: "1"
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      params:
+        items:
+          apply-method:
+            enum:
+            - immediate
+            - pending-reboot
+            type: string
+          name:
+            type: string
+          required:
+          - name
+          - value
+          type: object
+          value:
+            type: string
+        type: array
+      type:
+        enum:
+        - modify
+    required:
+    - params
+    - type
+
+
+
+.. _aws.rds-cluster-snapshot:
+
+aws.rds-cluster-snapshot
+========================
+
+Resource manager for RDS cluster snapshots.
+    
+
+Filters
+-------
+
+
+  - :ref:`age <aws.rds-cluster-snapshot.filters.age>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.rds-cluster-snapshot.filters.age:
+
+age
++++
+Filters rds cluster snapshots based on age (in days)
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-cluster-snapshots-expired
+            resource: rds-cluster-snapshot
+            filters:
+              - type: age
+                days: 30
+                op: gt
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      days:
+        type: number
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - age
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`delete <aws.rds-cluster-snapshot.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rds-cluster-snapshot.actions.delete:
+
+delete
+++++++
+Action to delete rds cluster snapshots
+
+To prevent unwanted deletion of rds cluster snapshots, it is recommended
+to apply a filter to the rule
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-cluster-snapshots-expired-delete
+            resource: rds-cluster-snapshot
+            filters:
+              - type: age
+                days: 30
+                op: gt
+            actions:
+              - delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+
+.. _aws.rds-param-group:
+
+aws.rds-param-group
+===================
+
+Resource manager for RDS parameter groups.
+    
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`copy <aws.rds-param-group.actions.copy>`
+
+  - :ref:`delete <aws.rds-param-group.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`modify <aws.rds-param-group.actions.modify>`
+
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rds-param-group.actions.copy:
+
+copy
+++++
+Action to copy an RDS parameter group.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-param-group-copy
+            resource: rds-param-group
+            filters:
+              - DBParameterGroupName: original_pg_name
+            actions:
+              - type: copy
+                name: copy_name
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      type:
+        enum:
+        - copy
+    required:
+    - name
+    - type
+
+
+.. _aws.rds-param-group.actions.delete:
+
+delete
+++++++
+Action to delete an RDS parameter group
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-param-group-delete
+            resource: rds-param-group
+            filters:
+              - DBParameterGroupName: pg_name
+            actions:
+              - type: delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.rds-param-group.actions.modify:
+
+modify
+++++++
+Action to modify an RDS parameter group
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-param-group-modify
+            resource: rds-param-group
+            filters:
+              - DBParameterGroupName: pg_name
+            actions:
+              - type: modify
+                params:
+                - name: autocommit
+                  value: "1"
+                - name: max_connections
+                  value: "100"
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      params:
+        items:
+          apply-method:
+            enum:
+            - immediate
+            - pending-reboot
+            type: string
+          name:
+            type: string
+          required:
+          - name
+          - value
+          type: object
+          value:
+            type: string
+        type: array
+      type:
+        enum:
+        - modify
+    required:
+    - params
+    - type
+
+
+
+.. _aws.rds-reserved:
+
+aws.rds-reserved
+================
+
+
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+
+.. _aws.rds-snapshot:
+
+aws.rds-snapshot
+================
+
+Resource manager for RDS DB snapshots.
+    
+
+Filters
+-------
+
+
+  - :ref:`age <aws.rds-snapshot.filters.age>`
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`cross-account <aws.rds-snapshot.filters.cross-account>`
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`latest <aws.rds-snapshot.filters.latest>`
+
+  - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
+  
+  - :ref:`onhour <aws.common.filters.onhour>`
+  
+  - :ref:`tag-count <aws.common.filters.tag-count>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.rds-snapshot.filters.age:
+
+age
++++
+Filters RDS snapshots based on age (in days)
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-snapshot-expired
+            resource: rds-snapshot
+            filters:
+              - type: age
+                days: 28
+                op: ge
+            actions:
+              - delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      days:
+        type: number
+      op:
+        enum:
+        - eq
+        - equal
+        - ne
+        - not-equal
+        - gt
+        - greater-than
+        - ge
+        - gte
+        - le
+        - lte
+        - lt
+        - less-than
+        - glob
+        - regex
+        - regex-case
+        - in
+        - ni
+        - not-in
+        - contains
+        - difference
+        - intersect
+      type:
+        enum:
+        - age
+    required:
+    - type
+
+
+.. _aws.rds-snapshot.filters.cross-account:
+
+cross-account
++++++++++++++
+Check a resource's embedded iam policy for cross account access.
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      actions:
+        items:
+          type: string
+        type: array
+      everyone_only:
+        type: boolean
+      type:
+        enum:
+        - cross-account
+      whitelist:
+        items:
+          type: string
+        type: array
+      whitelist_conditions:
+        items:
+          type: string
+        type: array
+      whitelist_from: &id001
+        additionalProperties: 'False'
+        properties:
+          expr:
+            oneOf:
+            - type: integer
+            - type: string
+          format:
+            enum:
+            - csv
+            - json
+            - txt
+            - csv2dict
+          url:
+            type: string
+        required:
+        - url
+        type: object
+      whitelist_orgids:
+        items:
+          type: string
+        type: array
+      whitelist_orgids_from: *id001
+      whitelist_vpc:
+        items:
+          type: string
+        type: array
+      whitelist_vpc_from: *id001
+      whitelist_vpce:
+        items:
+          type: string
+        type: array
+      whitelist_vpce_from: *id001
+    required:
+    - type
+
+
+.. _aws.rds-snapshot.filters.latest:
+
+latest
+++++++
+Return the latest snapshot for each database.
+    
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      automatic:
+        type: boolean
+      type:
+        enum:
+        - latest
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
+  
+  - :ref:`delete <aws.rds-snapshot.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`region-copy <aws.rds-snapshot.actions.region-copy>`
+
+  - :ref:`remove-tag <aws.common.actions.remove-tag>`
+  
+  - :ref:`restore <aws.rds-snapshot.actions.restore>`
+
+  - :ref:`tag <aws.common.actions.tag>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rds-snapshot.actions.delete:
+
+delete
+++++++
+Deletes a RDS snapshot resource
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-snapshot-delete-stale
+            resource: rds-snapshot
+            filters:
+              - type: age
+                days: 28
+                op: ge
+            actions:
+              - delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+.. _aws.rds-snapshot.actions.region-copy:
+
+region-copy
++++++++++++
+Copy a snapshot across regions.
+
+Note there is a max in flight for cross region rds snapshots
+of 5 per region. This action will attempt to retry automatically
+for an hr.
+
+Example::
+
+  - name: copy-encrypted-snapshots
+    description: |
+      copy snapshots under 1 day old to dr region with kms
+    resource: rdb-snapshot
+    region: us-east-1
+    filters:
+     - Status: available
+     - type: value
+       key: SnapshotCreateTime
+       value_type: age
+       value: 1
+       op: less-than
+    actions:
+      - type: region-copy
+        target_region: us-east-2
+        target_key: arn:aws:kms:us-east-2:0000:key/cb291f53-c9cf61
+        copy_tags: true
+        tags:
+          - OriginRegion: us-east-1
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      copy_tags:
+        type: boolean
+      tags:
+        type: object
+      target_key:
+        type: string
+      target_region:
+        type: string
+      type:
+        enum:
+        - region-copy
+    required:
+    - target_region
+
+
+.. _aws.rds-snapshot.actions.restore:
+
+restore
++++++++
+Restore an rds instance from a snapshot.
+
+Note this requires the snapshot or db deletion be taken
+with the `copy-restore-info` boolean flag set to true, as
+various instance metadata is stored on the snapshot as tags.
+
+additional parameters to restore db instance api call be overriden
+via `restore_options` settings. various modify db instance parameters
+can be specified via `modify_options` settings.
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      modify_options:
+        type: object
+      restore_options:
+        type: object
+      type:
+        enum:
+        - restore
+    required:
+    - type
+
+
+
+.. _aws.rds-subnet-group:
+
+aws.rds-subnet-group
+====================
+
+RDS subnet group.
+
+Filters
+-------
+
+
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`unused <aws.rds-subnet-group.filters.unused>`
+
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+.. _aws.rds-subnet-group.filters.unused:
+
+unused
+++++++
+Filters all launch rds subnet groups that are not in use but exist
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-subnet-group-delete-unused
+            resource: rds-subnet-group
+            filters:
+              - unused
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - unused
+    required:
+    - type
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`delete <aws.rds-subnet-group.actions.delete>`
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
+.. _aws.rds-subnet-group.actions.delete:
+
+delete
+++++++
+Action to delete RDS Subnet Group
+
+It is recommended to apply a filter to the delete policy to avoid unwanted
+deletion of any rds subnet groups.
+
+:example:
+
+.. code-block:: yaml
+
+        policies:
+          - name: rds-subnet-group-delete-unused
+            resource: rds-subnet-group
+            filters:
+              - Instances: []
+            actions:
+              - delete
+
+.. container:: toggle
+
+  .. container:: header
+
+    Schema:
+
+  .. code-block:: yaml
+
+    properties:
+      type:
+        enum:
+        - delete
+    required:
+    - type
+
+
+
+.. _aws.rds-subscription:
+
+aws.rds-subscription
+====================
+
+
+
+Filters
+-------
+
+
+  - :ref:`config-compliance <aws.common.filters.config-compliance>`
+  
+  - :ref:`event <aws.common.filters.event>`
+  
+  - :ref:`finding <aws.common.filters.finding>`
+  
+  - :ref:`value <aws.common.filters.value>`
+  
+
+
+
+
+Actions
+-------
+
+
+  - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`notify <aws.common.actions.notify>`
+  
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
+  - :ref:`put-metric <aws.common.actions.put-metric>`
+  
+  - :ref:`webhook <aws.common.actions.webhook>`
+  
+
+
+
