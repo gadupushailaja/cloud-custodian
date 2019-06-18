@@ -253,22 +253,54 @@
 <span id="azure-cosmosdb"></span><h1>Cosmos DB<a class="headerlink" href="#cosmos-db" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="filters">
 <h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><dl class="simple">
-<dt>Standard Value Filter (see <a class="reference internal" href="../../../filters.html#filters"><span class="std std-ref">Generic Filters</span></a>)</dt><dd><ul>
+<dt>Standard Value Filter (see <a class="reference internal" href="../../../filters.html#filters"><span class="std std-ref">Generic Filters</span></a>)</dt><dd><ul class="simple">
 <li><p>Model: <a class="reference external" href="https://docs.microsoft.com/en-us/python/api/azure.mgmt.cosmosdb.models.databaseaccount?view=azure-python">DatabaseAccount</a></p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>ARM Resource Filters (see <a class="reference internal" href="../genericarmfilter.html#azure-genericarmfilter"><span class="std std-ref">Generic Filters</span></a>)</dt><dd><ul>
+<dt>ARM Resource Filters (see <a class="reference internal" href="../genericarmfilter.html#azure-genericarmfilter"><span class="std std-ref">Generic Filters</span></a>)</dt><dd><ul class="simple">
 <li><p>Metric Filter - Filter on metrics from Azure Monitor - (see <a class="reference external" href="https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftdocumentdbdatabaseaccounts/">Cosmos DB Supported Metrics</a>)</p></li>
 <li><p>Tag Filter - Filter on tag presence and/or values</p></li>
 <li><p>Marked-For-Op Filter - Filter on tag that indicates a scheduled operation for a resource</p></li>
 </ul>
 </dd>
 </dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">firewall-rules</span></code> Firewall Rules Filter</dt><dd><p>Filter based on firewall rules. Rules can be specified as x.x.x.x-y.y.y.y or x.x.x.x or x.x.x.x/y.</p>
+<ul class="simple">
+<li><p><cite>include</cite>: the list of IP ranges or CIDR that firewall rules must include. The list must be a subset of the exact rules as is, the ranges will not be combined.</p></li>
+<li><p><cite>equal</cite>: the list of IP ranges or CIDR that firewall rules must match exactly.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>Schema:</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">equal</span><span class="p">:</span>
+    <span class="nt">items</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+  <span class="nt">include</span><span class="p">:</span>
+    <span class="nt">items</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">firewall-rules</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
+<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+</pre></div>
+</div>
+</div>
 </li>
 </ul>
 </div>
