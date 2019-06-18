@@ -23,6 +23,8 @@ Filters
   
   - :ref:`marked-for-op <aws.common.filters.marked-for-op>`
   
+  - :ref:`metrics <aws.common.filters.metrics>`
+  
   - :ref:`security-group <aws.common.filters.security-group>`
   
   - :ref:`subnet <aws.common.filters.subnet>`

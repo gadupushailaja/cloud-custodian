@@ -15,7 +15,7 @@ aws.elbv2 resources
 aws.app-elb
 ===========
 
-Resource manager for v2 ELBs (AKA ALBs).
+Resource manager for v2 ELBs (AKA ALBs and NLBs).
     
 
 Filters

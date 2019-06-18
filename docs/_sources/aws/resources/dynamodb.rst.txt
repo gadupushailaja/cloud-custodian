@@ -21,13 +21,9 @@ Filters
 -------
 
 
-  - :ref:`config-compliance <aws.common.filters.config-compliance>`
-  
   - :ref:`event <aws.common.filters.event>`
   
   - :ref:`finding <aws.common.filters.finding>`
-  
-  - :ref:`metrics <aws.common.filters.metrics>`
   
   - :ref:`value <aws.common.filters.value>`
   

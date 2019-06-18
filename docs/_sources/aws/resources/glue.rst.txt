@@ -49,6 +49,8 @@ Actions
   
   - :ref:`notify <aws.common.actions.notify>`
   
+  - :ref:`post-finding <aws.common.actions.post-finding>`
+  
   - :ref:`put-metric <aws.common.actions.put-metric>`
   
   - :ref:`webhook <aws.common.actions.webhook>`
