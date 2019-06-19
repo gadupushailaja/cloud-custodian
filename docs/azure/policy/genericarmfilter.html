@@ -109,7 +109,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../authentication.html#azure-storage-access">Azure Storage access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Policies</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="delayedoperation.html">Delayed Operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="genericarmaction.html">Generic Actions</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Generic Filters</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#metric-filter">Metric Filter</a><ul>
@@ -501,8 +500,8 @@ It can be used to filter resources on the presence, absence or value of a tag.</
 </div>
 <div class="section" id="marked-for-op-filter">
 <h2>Marked-For-Op Filter<a class="headerlink" href="#marked-for-op-filter" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">TagActionFilter</span></code>
-Filters Azure resources based on previously scheduled operations via tags.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">marked-for-op</span></code></dt><dd><p>Filters Azure resources based on previously scheduled operations via tags.</p>
 <div class="toggle docutils container">
 <div class="header docutils container">
 <p>Schema:</p>
@@ -528,8 +527,13 @@ Filters Azure resources based on previously scheduled operations via tags.</p>
 </pre></div>
 </div>
 </div>
+</dd>
+</dl>
 <div class="section" id="id2">
 <h3>Example Policies<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../examples/delayedoperation.html#azure-example-delayedoperation"><span class="std std-ref">Delayed Operations</span></a></p></li>
+</ul>
 <p>Find VMs that have been marked for stopping and stop them</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">policies</span>
   <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">find-vms-to-stop</span>
