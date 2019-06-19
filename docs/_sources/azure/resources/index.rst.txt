@@ -18,6 +18,8 @@ be applies for all resources.
 
    azure.keyvault.rst
 
+   azure.mgmt.apimanagement.rst
+
    azure.mgmt.authorization.rst
 
    azure.mgmt.batch.rst

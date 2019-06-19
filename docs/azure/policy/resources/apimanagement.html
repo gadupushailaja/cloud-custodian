@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Key Vault Keys &mdash; Cloud Custodian  documentation</title>
+  <title>API Management &mdash; Cloud Custodian  documentation</title>
   
 
   
@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../../../_static/css/expand.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Load Balancer" href="loadbalancer.html" />
-    <link rel="prev" title="Key Vault" href="keyvault.html" /> 
+    <link rel="next" title="App Service Plan" href="appserviceplan.html" />
+    <link rel="prev" title="Azure Kubernetes Service" href="aks.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -113,7 +113,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../genericarmfilter.html">Generic Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="accesscontrol.html">Access Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="aks.html">Azure Kubernetes Service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="apimanagement.html">API Management</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filters">Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#actions">Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-policies">Example Policies</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="appserviceplan.html">App Service Plan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arm.html">Azure ARM Resource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch.html">Batch</a></li>
@@ -127,11 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="disk.html">Disk</a></li>
 <li class="toctree-l2"><a class="reference internal" href="iothub.html">IoT Hub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="keyvault.html">Key Vault</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Key Vault Keys</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#filters">Filters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example-policies">Example Policies</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="keyvaultkeys.html">Key Vault Keys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="loadbalancer.html">Load Balancer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="networkinterface.html">Network Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nsg.html">Network Security Groups</a></li>
@@ -229,7 +230,7 @@
         
           <li><a href="../index.html">Policies</a> &raquo;</li>
         
-      <li>Key Vault Keys</li>
+      <li>API Management</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -246,81 +247,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="key-vault-keys">
-<span id="azure-keyvaultkeys"></span><h1>Key Vault Keys<a class="headerlink" href="#key-vault-keys" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="api-management">
+<span id="azure-apimanagement"></span><h1>API Management<a class="headerlink" href="#api-management" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="filters">
 <h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt>Standard Value Filter (see <a class="reference internal" href="../../../filters.html#filters"><span class="std std-ref">Generic Filters</span></a>)</dt><dd><ul>
-<li><p>Model: <a class="reference external" href="https://docs.microsoft.com/en-us/python/api/azure-keyvault/azure.keyvault.v7_0.models.keyitem?view=azure-python">Key Vault Key</a></p></li>
+<li><p>Model: <a class="reference external" href="https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/apimanagement/azure-mgmt-apimanagement/azure/mgmt/apimanagement/models/api_management_service_resource.py">API Management</a></p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><cite>keyvault</cite> filter: filters keys from specified list of keyvaults.</dt><dd><ul>
-<li><p><cite>vaults</cite>: array of strings, allowed key vault names</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>key-type</cite> filter: Find all keys with specified types</dt><dd><ul>
-<li><dl class="simple">
-<dt><cite>key-types</cite>: array of types.</dt><dd><ul>
-<li><p>Possible values: <cite>RSA</cite>, <cite>RSA-HSM</cite>, <cite>EC</cite>, <cite>EC-HSM</cite></p></li>
+<dt>ARM Resource Filters (see <a class="reference internal" href="../genericarmfilter.html#azure-genericarmfilter"><span class="std std-ref">Generic Filters</span></a>)</dt><dd><ul>
+<li><p>Tag Filter - Filter on tag presence and/or values</p></li>
+<li><p>Marked-For-Op Filter - Filter on tag that indicates a scheduled operation for a resource</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-</dd>
-</dl>
-</li>
+</div>
+<div class="section" id="actions">
+<h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ARM Resource Actions (see <a class="reference internal" href="../genericarmaction.html#azure-genericarmaction"><span class="std std-ref">Generic Actions</span></a>)</p></li>
 </ul>
 </div>
 <div class="section" id="example-policies">
 <h2>Example Policies<a class="headerlink" href="#example-policies" title="Permalink to this headline">¶</a></h2>
-<p>This policy will find all Keys in <cite>keyvault_test</cite> and <cite>keyvault_prod</cite> KeyVaults</p>
+<p>Returns all API management resources</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">keyvault-keys</span>
-    <span class="nt">description</span><span class="p">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">List all keys from &#39;keyvault_test&#39; and &#39;keyvault_prod&#39; vaults</span>
-    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">azure.keyvault-keys</span>
-    <span class="nt">filters</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">keyvault</span>
-        <span class="nt">vaults</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">keyvault_test</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">keyvault_prod</span>
-</pre></div>
-</div>
-<p>This policy will find all Keys in all KeyVaults that are older than 30 days</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">keyvault-keys</span>
-    <span class="nt">description</span><span class="p">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">List all keys that are older than 30 days</span>
-    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">azure.keyvault-keys</span>
-    <span class="nt">filters</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
-        <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">attributes.created</span>
-        <span class="nt">value_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
-        <span class="nt">op</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gt</span>
-        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
-</pre></div>
-</div>
-<p>If your company wants to enforce usage of HSM-backed keys in the KeyVaults,
-you can use this policy to find all Keys in all KeyVaults not backed by an HSM module.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">keyvault-keys</span>
-    <span class="nt">description</span><span class="p">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">List all non-HSM keys</span>
-    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">azure.keyvault-keys</span>
-    <span class="nt">filters</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">not</span><span class="p">:</span>
-         <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">key-type</span>
-           <span class="nt">key-types</span><span class="p">:</span>
-             <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">RSA-HSM, EC-HSM</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">all-api-management-resources</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">azure.api-management</span>
 </pre></div>
 </div>
 </div>
@@ -334,10 +294,10 @@ you can use this policy to find all Keys in all KeyVaults not backed by an HSM m
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="loadbalancer.html" class="btn btn-neutral float-right" title="Load Balancer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="appserviceplan.html" class="btn btn-neutral float-right" title="App Service Plan" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="keyvault.html" class="btn btn-neutral float-left" title="Key Vault" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="aks.html" class="btn btn-neutral float-left" title="Azure Kubernetes Service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
