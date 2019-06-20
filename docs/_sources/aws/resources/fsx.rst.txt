@@ -55,9 +55,11 @@ of the kms key by using 'c7n:AliasName'
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -216,9 +218,11 @@ Tags are specified in key value pairs, e.g.: BackupSource: CloudCustodian
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -271,9 +275,11 @@ Delete Filesystems
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -321,9 +327,11 @@ Reference: https://docs.aws.amazon.com/fsx/latest/APIReference/API_UpdateFileSys
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -385,9 +393,11 @@ of the kms key by using 'c7n:AliasName'
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -526,9 +536,11 @@ Delete backups
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 

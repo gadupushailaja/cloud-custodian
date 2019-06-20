@@ -41,9 +41,11 @@ notify
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -145,9 +147,11 @@ Finding updates are not currently supported, due to upstream api issues.
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -193,9 +197,11 @@ populated from JMESPath queries.
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 

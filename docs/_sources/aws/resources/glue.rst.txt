@@ -78,9 +78,11 @@ Delete a connection from the data catalog
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -153,9 +155,11 @@ delete
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -240,9 +244,11 @@ Deletes public Glue Dev Endpoints
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -315,9 +321,11 @@ delete
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 

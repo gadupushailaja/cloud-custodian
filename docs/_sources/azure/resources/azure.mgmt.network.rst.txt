@@ -67,9 +67,11 @@ Filters load balancers by frontend public ip.
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -212,9 +214,11 @@ effective-route-table
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -359,9 +363,11 @@ Filter Network Security Groups using opened/closed ports configuration
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -401,9 +407,11 @@ Filter Network Security Groups using opened/closed ports configuration
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -474,9 +482,11 @@ Deny access to Security Rule
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -511,9 +521,11 @@ Allow access to Security Rule
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 

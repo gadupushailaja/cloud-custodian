@@ -65,9 +65,11 @@ Check for existence of S3 bucket referenced by Cloudfront,
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -89,9 +91,11 @@ shield-enabled
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -113,9 +117,11 @@ waf-enabled
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -191,9 +197,11 @@ Action to disable a Distribution
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -229,9 +237,11 @@ Action to set mandatory https-only on a Distribution
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -270,9 +280,11 @@ for resources that no longer exist.
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -296,9 +308,11 @@ set-waf
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 
@@ -398,9 +412,11 @@ Action to disable a Streaming Distribution
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 

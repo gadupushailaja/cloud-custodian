@@ -259,10 +259,7 @@
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Tag</span></code></dt><dd><p>Add/Update tag on a resource</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">tag</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
   <span class="nt">tags</span><span class="p">:</span>
@@ -292,10 +289,7 @@
 <dt><code class="docutils literal notranslate"><span class="pre">AutoTagUser</span></code></dt><dd><p>Create a tag listing name of user who created a resource based on scanning
 activity log history.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">days</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
   <span class="nt">tag</span><span class="p">:</span>
@@ -325,10 +319,7 @@ activity log history.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">RemoveTag</span></code></dt><dd><p>Remove a set of tags.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">tags</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -360,10 +351,7 @@ desired amount of space while preserving a given set of tags.
 Setting the space value to 0 removes all tags but those
 listed to preserve.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">preserve</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -415,10 +403,7 @@ listed to preserve.</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">mark-for-op</span></code></dt><dd><p>Mark Azure resources for a future operations via tags.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">days</span><span class="p">:</span>
     <span class="nt">exclusiveMinimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
     <span class="nt">minimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
@@ -460,10 +445,7 @@ listed to preserve.</p>
 using the resource group and app name.</p>
 <p>This action is based on the <code class="docutils literal notranslate"><span class="pre">webhook</span></code> action and supports the same options.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">batch</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
   <span class="nt">batch-size</span><span class="p">:</span>
@@ -526,10 +508,7 @@ using the resource group and app name.</p>
 generic resource type <cite>armresource</cite> or on any other more specific
 ARM resource type supported by Cloud Custodian.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">type</span><span class="p">:</span>
     <span class="nt">enum</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">delete</span>

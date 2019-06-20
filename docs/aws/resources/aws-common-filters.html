@@ -351,10 +351,7 @@
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">actions</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -409,10 +406,7 @@ custom AWS Config rules.</p>
 <p>Also note, custodian has direct support for deploying policies as config
 rules see <a class="reference external" href="https://bit.ly/2mblVpq">https://bit.ly/2mblVpq</a></p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">eval_filters</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">oneOf</span><span class="p">:</span>
@@ -448,10 +442,7 @@ rules see <a class="reference external" href="https://bit.ly/2mblVpq">https://bi
 <span id="aws-common-filters-event"></span><h2>event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h2>
 <p>Filter a resource based on an event.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">default</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
   <span class="nt">key</span><span class="p">:</span>
@@ -533,10 +524,7 @@ rules see <a class="reference external" href="https://bit.ly/2mblVpq">https://bi
 <span id="aws-common-filters-finding"></span><h2>finding<a class="headerlink" href="#finding" title="Permalink to this headline">¶</a></h2>
 <p>Check if there are Security Hub Findings related to the resources</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">query</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
   <span class="nt">region</span><span class="p">:</span>
@@ -557,10 +545,7 @@ rules see <a class="reference external" href="https://bit.ly/2mblVpq">https://bi
 <p>Health events are stored as annotation on a resource.</p>
 <p>Custodian also supports responding to phd events via a lambda execution mode.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">category</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">enum</span><span class="p">:</span>
@@ -607,10 +592,7 @@ rules see <a class="reference external" href="https://bit.ly/2mblVpq">https://bi
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">default</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
   <span class="nt">key</span><span class="p">:</span>
@@ -720,10 +702,7 @@ in which to interpret the clock (default value is ‘utc’)</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">op</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
   <span class="nt">skew</span><span class="p">:</span>
@@ -774,10 +753,7 @@ period. ie. being stopped for an ec2 instance wouldn’t lower the
 average cpu utilization.</p>
 <p>Note the default statistic for metrics is Average.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">attr-multiplier</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
   <span class="nt">days</span><span class="p">:</span>
@@ -866,10 +842,7 @@ with a given tag value, and that tag was not present on the resource.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">compare</span><span class="p">:</span>
     <span class="nt">default</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">resource</span>
@@ -919,10 +892,7 @@ with a given tag value, and that tag was not present on the resource.</p>
 <p>Schedule offhours for resources see <a class="reference internal" href="../examples/offhours.html#offhours"><span class="std std-ref">offhours</span></a>
 for features and configuration.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">default_tz</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
   <span class="nt">offhour</span><span class="p">:</span>
@@ -976,10 +946,7 @@ for features and configuration.</p>
 <p>Schedule offhours for resources see <a class="reference internal" href="../examples/offhours.html#offhours"><span class="std std-ref">offhours</span></a>
 for features and configuration.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">default_tz</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
   <span class="nt">onhour</span><span class="p">:</span>
@@ -1032,10 +999,7 @@ for features and configuration.</p>
 <span id="aws-common-filters-security-group"></span><h2>security-group<a class="headerlink" href="#security-group" title="Permalink to this headline">¶</a></h2>
 <p>Filter a resource by its associated security groups.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">default</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
   <span class="nt">key</span><span class="p">:</span>
@@ -1123,10 +1087,7 @@ for features and configuration.</p>
 <span id="aws-common-filters-shield-metrics"></span><h2>shield-metrics<a class="headerlink" href="#shield-metrics" title="Permalink to this headline">¶</a></h2>
 <p>Specialized metrics filter for shield</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">attr-multiplier</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
   <span class="nt">days</span><span class="p">:</span>
@@ -1190,10 +1151,7 @@ for features and configuration.</p>
 <span id="aws-common-filters-subnet"></span><h2>subnet<a class="headerlink" href="#subnet" title="Permalink to this headline">¶</a></h2>
 <p>Filter a resource by its associated subnets.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">default</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
   <span class="nt">key</span><span class="p">:</span>
@@ -1292,10 +1250,7 @@ for features and configuration.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">count</span><span class="p">:</span>
     <span class="nt">minimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
@@ -1377,10 +1332,7 @@ means all service access records have to match.</p>
 </div>
 <p><a class="reference external" href="https://aws.amazon.com/blogs/security/automate-analyzing-permissions-using-iam-access-advisor/">https://aws.amazon.com/blogs/security/automate-analyzing-permissions-using-iam-access-advisor/</a></p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">LastAuthenticated</span><span class="p">:</span>
     <span class="nt">oneOf</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -1435,10 +1387,7 @@ means all service access records have to match.</p>
 <span id="aws-common-filters-value"></span><h2>value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
 <p>Generic value filter using jmespath</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">default</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
   <span class="nt">key</span><span class="p">:</span>
@@ -1520,10 +1469,7 @@ means all service access records have to match.</p>
 <span id="aws-common-filters-vpc"></span><h2>vpc<a class="headerlink" href="#vpc" title="Permalink to this headline">¶</a></h2>
 <p>Filter a resource by its associated vpc.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">default</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
   <span class="nt">key</span><span class="p">:</span>

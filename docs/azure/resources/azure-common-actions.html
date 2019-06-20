@@ -277,10 +277,7 @@
 in the activity logs for a particular resource.</p>
 <p>Note: activity logs are only held for the last 90 days.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">days</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
   <span class="nt">tag</span><span class="p">:</span>
@@ -301,10 +298,7 @@ in the activity logs for a particular resource.</p>
 <span id="azure-common-actions-delete"></span><h2>delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
 <p>Delete a resource.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">type</span><span class="p">:</span>
     <span class="nt">enum</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">delete</span>
@@ -334,10 +328,7 @@ and body populated from JMESPath queries.</p>
 </div>
 </div></blockquote>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">batch</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
   <span class="nt">batch-size</span><span class="p">:</span>
@@ -398,10 +389,7 @@ to marking the resource for action 4 days in the future.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">days</span><span class="p">:</span>
     <span class="nt">exclusiveMinimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
     <span class="nt">minimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
@@ -431,10 +419,7 @@ to marking the resource for action 4 days in the future.</p>
 <span id="azure-common-actions-notify"></span><h2>notify<a class="headerlink" href="#notify" title="Permalink to this headline">¶</a></h2>
 <p>Actions which receive lambda event if present</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">anyOf</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">anyOf</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="nt">required</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">transport</span>
@@ -517,10 +502,7 @@ to marking the resource for action 4 days in the future.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">tag</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
   <span class="nt">tags</span><span class="p">:</span>
@@ -575,10 +557,7 @@ listed to preserve.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">preserve</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -608,10 +587,7 @@ listed to preserve.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">tags</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -645,10 +621,7 @@ populated from JMESPath queries.</p>
 </div>
 </div></blockquote>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">batch</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
   <span class="nt">batch-size</span><span class="p">:</span>

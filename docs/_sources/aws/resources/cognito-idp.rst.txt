@@ -64,9 +64,11 @@ It is recommended to use a filter to avoid unwanted deletion of pools
 
 .. container:: toggle
 
-  .. container:: header
+  
 
-    Schema:
+  .. raw:: html
+     
+    <div class="header docutils container" style=""></div>
 
   .. code-block:: yaml
 

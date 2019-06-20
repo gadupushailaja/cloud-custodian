@@ -362,10 +362,7 @@ attempting to tag it.</p>
 <a class="reference external" href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html</a></p>
 </div></blockquote>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">principal_id_tag</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
   <span class="nt">tag</span><span class="p">:</span>
@@ -422,10 +419,7 @@ all tags from the related resource should be copied to the original resource.</p
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">key</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
   <span class="nt">resource</span><span class="p">:</span>
@@ -477,10 +471,7 @@ is 90s, if the lambda doesn’t respond within that time the boto
 sdk will invoke the lambda again with the same
 arguments. Alternatively use async: true</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">async</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
   <span class="nt">batch_size</span><span class="p">:</span>
@@ -525,10 +516,7 @@ arguments. Alternatively use async: true</p>
 </dd>
 </dl>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">days</span><span class="p">:</span>
     <span class="nt">exclusiveMinimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
     <span class="nt">minimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
@@ -580,10 +568,7 @@ arguments. Alternatively use async: true</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">add-statements</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">additionalProperties</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
@@ -708,10 +693,7 @@ that can be specified if there would otherwise be no groups.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">anyOf</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">anyOf</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="nt">required</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">isolation-group</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">remove</span>
@@ -788,10 +770,7 @@ from a tag key.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">action</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">enum</span><span class="p">:</span>
@@ -872,10 +851,7 @@ reserved attribute used by Cloud Custodian.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">anyOf</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">anyOf</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="nt">required</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">transport</span>
@@ -987,10 +963,7 @@ such that further findings generate updates.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">batch_size</span><span class="p">:</span>
     <span class="nt">maximum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
     <span class="nt">minimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -1069,10 +1042,7 @@ such that further findings generate updates.</p>
 </div>
 <p>op and units are optional and will default to simple Counts.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">dimensions</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
@@ -1134,10 +1104,7 @@ such that further findings generate updates.</p>
 <span id="aws-common-actions-remove-tag"></span><h2>remove-tag<a class="headerlink" href="#remove-tag" title="Permalink to this headline">¶</a></h2>
 <p>Removes the specified tags from the specified resources.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">tags</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -1158,10 +1125,7 @@ such that further findings generate updates.</p>
 <span id="aws-common-actions-rename-tag"></span><h2>rename-tag<a class="headerlink" href="#rename-tag" title="Permalink to this headline">¶</a></h2>
 <p>Create a new tag with identical value &amp; remove old tag</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">new_key</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
   <span class="nt">old_key</span><span class="p">:</span>
@@ -1179,10 +1143,7 @@ such that further findings generate updates.</p>
 <span id="aws-common-actions-tag"></span><h2>tag<a class="headerlink" href="#tag" title="Permalink to this headline">¶</a></h2>
 <p>Applies one or more tags to the specified resources.</p>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">key</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
   <span class="nt">tag</span><span class="p">:</span>
@@ -1235,10 +1196,7 @@ space while preserving a given set of tags.</p>
 </pre></div>
 </div>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">preserve</span><span class="p">:</span>
     <span class="nt">items</span><span class="p">:</span>
       <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -1274,10 +1232,7 @@ populated from JMESPath queries.</p>
 </div>
 </div></blockquote>
 <div class="toggle docutils container">
-<div class="header docutils container">
-<p>Schema:</p>
-</div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
   <span class="nt">batch</span><span class="p">:</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
   <span class="nt">batch-size</span><span class="p">:</span>
