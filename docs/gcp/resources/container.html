@@ -141,6 +141,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#actions">Actions</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-gke-nodepool">gcp.gke-nodepool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Filters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Actions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dataflow.html">gcp.dataflow resources</a></li>
@@ -238,8 +243,16 @@
             
   <div class="section" id="gcp-container-resources">
 <h1>gcp.container resources<a class="headerlink" href="#gcp-container-resources" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#gcp-gke-cluster"><span class="std std-ref">gcp.gke-cluster</span></a></p></li>
+<li><p><a class="reference internal" href="#gcp-gke-nodepool"><span class="std std-ref">gcp.gke-nodepool</span></a></p></li>
+</ul>
+</div></blockquote>
 <div class="section" id="gcp-gke-cluster">
 <span id="id1"></span><h2>gcp.gke-cluster<a class="headerlink" href="#gcp-gke-cluster" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource:
+<a class="reference external" href="https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters">https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters</a></p>
 <div class="section" id="filters">
 <h3>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -251,6 +264,30 @@
 </div>
 <div class="section" id="actions">
 <h3>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-webhook"><span class="std std-ref">webhook</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gcp-gke-nodepool">
+<span id="id2"></span><h2>gcp.gke-nodepool<a class="headerlink" href="#gcp-gke-nodepool" title="Permalink to this headline">¶</a></h2>
+<p>GCP resource:
+<a class="reference external" href="https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePools">https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePools</a></p>
+<div class="section" id="id3">
+<h3>Filters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-event"><span class="std std-ref">event</span></a></p></li>
+<li><p><a class="reference internal" href="gcp-common-filters.html#gcp-common-filters-value"><span class="std std-ref">value</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h3>Actions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="gcp-common-actions.html#gcp-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
