@@ -47,6 +47,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`notify <aws.common.actions.notify>`
   
   - :ref:`post-finding <aws.common.actions.post-finding>`
@@ -130,6 +132,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
   - :ref:`notify <aws.common.actions.notify>`
@@ -206,6 +210,8 @@ Actions
   - :ref:`delete <aws.glue-dev-endpoint.actions.delete>`
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
@@ -295,6 +301,8 @@ Actions
   - :ref:`delete <aws.glue-job.actions.delete>`
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   

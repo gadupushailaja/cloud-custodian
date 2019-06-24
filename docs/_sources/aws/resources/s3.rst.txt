@@ -725,6 +725,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
   - :ref:`no-op <aws.s3.actions.no-op>`

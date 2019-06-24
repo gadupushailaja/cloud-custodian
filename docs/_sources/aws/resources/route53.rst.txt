@@ -47,6 +47,8 @@ Actions
   
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
   - :ref:`notify <aws.common.actions.notify>`
@@ -155,6 +157,8 @@ Actions
   - :ref:`copy-related-tag <aws.common.actions.copy-related-tag>`
   
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
@@ -298,6 +302,8 @@ Actions
 
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`notify <aws.common.actions.notify>`
   

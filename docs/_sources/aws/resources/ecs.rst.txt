@@ -49,6 +49,8 @@ Actions
   
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
   - :ref:`notify <aws.common.actions.notify>`
@@ -136,6 +138,8 @@ Actions
   - :ref:`auto-tag-user <aws.common.actions.auto-tag-user>`
   
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
@@ -411,6 +415,8 @@ Actions
   - :ref:`delete <aws.ecs-service.actions.delete>`
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
@@ -718,6 +724,8 @@ Actions
   
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
   - :ref:`notify <aws.common.actions.notify>`
@@ -796,6 +804,8 @@ Actions
   - :ref:`delete <aws.ecs-task-definition.actions.delete>`
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   

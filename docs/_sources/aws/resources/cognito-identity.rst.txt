@@ -33,6 +33,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`notify <aws.common.actions.notify>`
   
   - :ref:`post-finding <aws.common.actions.post-finding>`

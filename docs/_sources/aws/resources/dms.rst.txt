@@ -39,6 +39,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`modify-endpoint <aws.dms-endpoint.actions.modify-endpoint>`
 
   - :ref:`notify <aws.common.actions.notify>`
@@ -385,6 +387,8 @@ Actions
   - :ref:`delete <aws.dms-instance.actions.delete>`
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   

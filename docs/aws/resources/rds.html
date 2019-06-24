@@ -618,6 +618,7 @@ the most recent version of the engine available</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-rds-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-rds-actions-modify-db"><span class="std std-ref">modify-db</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-modify-security-groups"><span class="std std-ref">modify-security-groups</span></a></p></li>
@@ -1077,6 +1078,7 @@ the RDS engine disregarding the existing maintenance window.</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-rds-cluster-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-rds-cluster-actions-modify-db-cluster"><span class="std std-ref">modify-db-cluster</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -1283,6 +1285,7 @@ enforce (min, max, exact) sets retention days occordingly.</p>
 <li><p><a class="reference internal" href="#aws-rds-cluster-param-group-actions-copy"><span class="std std-ref">copy</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-rds-cluster-param-group-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-rds-cluster-param-group-actions-modify"><span class="std std-ref">modify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
@@ -1473,6 +1476,7 @@ enforce (min, max, exact) sets retention days occordingly.</p>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="#aws-rds-cluster-snapshot-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-put-metric"><span class="std std-ref">put-metric</span></a></p></li>
@@ -1533,6 +1537,7 @@ to apply a filter to the rule</p>
 <li><p><a class="reference internal" href="#aws-rds-param-group-actions-copy"><span class="std std-ref">copy</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-rds-param-group-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-rds-param-group-actions-modify"><span class="std std-ref">modify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
@@ -1668,6 +1673,7 @@ to apply a filter to the rule</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-put-metric"><span class="std std-ref">put-metric</span></a></p></li>
@@ -1834,6 +1840,7 @@ to apply a filter to the rule</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-rds-snapshot-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
@@ -1992,6 +1999,7 @@ can be specified via <cite>modify_options</cite> settings.</p>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="#aws-rds-subnet-group-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-put-metric"><span class="std std-ref">put-metric</span></a></p></li>
@@ -2047,6 +2055,7 @@ deletion of any rds subnet groups.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-put-metric"><span class="std std-ref">put-metric</span></a></p></li>

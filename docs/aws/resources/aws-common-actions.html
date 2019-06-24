@@ -105,6 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#auto-tag-user">auto-tag-user</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#copy-related-tag">copy-related-tag</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#invoke-lambda">invoke-lambda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#invoke-sfn">invoke-sfn</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mark-for-op">mark-for-op</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modify-policy">modify-policy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modify-security-groups">modify-security-groups</a></li>
@@ -312,6 +313,7 @@
 <li><p><a class="reference internal" href="#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-common-actions-modify-policy"><span class="std std-ref">modify-policy</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-common-actions-modify-security-groups"><span class="std std-ref">modify-security-groups</span></a></p></li>
@@ -490,6 +492,59 @@ arguments. Alternatively use async: true</p>
 <span class="nt">required</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="invoke-sfn">
+<span id="aws-common-actions-invoke-sfn"></span><h2>invoke-sfn<a class="headerlink" href="#invoke-sfn" title="Permalink to this headline">¶</a></h2>
+<p>Invoke step function on resources.</p>
+<p>By default this will invoke a step function for each resource
+providing both the <cite>policy</cite> and <cite>resource</cite> as input.</p>
+<p>That behavior can be configured setting policy and bulk
+boolean flags on the action.</p>
+<p>If bulk action parameter is set to true, then the step
+function will be invoked in bulk, with a set of resource arns
+under the <cite>resources</cite> key.</p>
+<p>The size of the batch can be configured via the batch-size
+parameter. Note step function state (input, execution, etc)must
+fit within 32k, we default to batch size 250.</p>
+<dl class="field-list simple">
+<dt class="field-odd">example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">invoke-step-function</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">is-log-target</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;tag:IngestSetup&quot;</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">absent</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">invoke-sfn</span>
+        <span class="c1"># This will cause the workflow to be invoked</span>
+        <span class="c1"># with many resources arns in a single execution.</span>
+        <span class="c1"># Note this is *not* the default.</span>
+        <span class="nt">bulk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">batch-size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+        <span class="nt">state-machine</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">LogIngestSetup</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container" style=""></div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">batch-size</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+  <span class="nt">bulk</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">policy</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+  <span class="nt">state-machine</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">type</span><span class="p">:</span>
+    <span class="nt">enum</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">invoke-sfn</span>
+<span class="nt">required</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">state-machine</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span>
 </pre></div>
 </div>
 </div>

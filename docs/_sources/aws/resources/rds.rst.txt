@@ -363,6 +363,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
   - :ref:`modify-db <aws.rds.actions.modify-db>`
@@ -974,6 +976,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
   - :ref:`modify-db-cluster <aws.rds-cluster.actions.modify-db-cluster>`
@@ -1265,6 +1269,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`modify <aws.rds-cluster-param-group.actions.modify>`
 
   - :ref:`notify <aws.common.actions.notify>`
@@ -1508,6 +1514,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`notify <aws.common.actions.notify>`
   
   - :ref:`post-finding <aws.common.actions.post-finding>`
@@ -1594,6 +1602,8 @@ Actions
   - :ref:`delete <aws.rds-param-group.actions.delete>`
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`modify <aws.rds-param-group.actions.modify>`
 
@@ -1771,6 +1781,8 @@ Actions
 
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`notify <aws.common.actions.notify>`
   
@@ -1992,6 +2004,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`mark-for-op <aws.common.actions.mark-for-op>`
   
   - :ref:`notify <aws.common.actions.notify>`
@@ -2211,6 +2225,8 @@ Actions
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
   
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
+  
   - :ref:`notify <aws.common.actions.notify>`
   
   - :ref:`post-finding <aws.common.actions.post-finding>`
@@ -2290,6 +2306,8 @@ Actions
 
 
   - :ref:`invoke-lambda <aws.common.actions.invoke-lambda>`
+  
+  - :ref:`invoke-sfn <aws.common.actions.invoke-sfn>`
   
   - :ref:`notify <aws.common.actions.notify>`
   

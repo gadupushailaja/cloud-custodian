@@ -577,6 +577,7 @@ false: image has instances spawned from it</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-ami-actions-deregister"><span class="std std-ref">deregister</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -718,6 +719,7 @@ launching it</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -1026,6 +1028,7 @@ Current Generation Instances (2017-2)
 <li><p><a class="reference internal" href="#aws-ebs-actions-detach"><span class="std std-ref">detach</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-ebs-actions-encrypt-instance-volumes"><span class="std std-ref">encrypt-instance-volumes</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-ebs-actions-modify"><span class="std std-ref">modify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
@@ -1559,6 +1562,7 @@ setting <cite>shrink: true</cite> on the action.</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-ebs-snapshot-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -2499,6 +2503,7 @@ uses re.match() and userdata spans multiple lines.</p>
 <li><p><a class="reference internal" href="#aws-ec2-actions-autorecover-alarm"><span class="std std-ref">autorecover-alarm</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-modify-security-groups"><span class="std std-ref">modify-security-groups</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
@@ -2869,6 +2874,7 @@ protection.</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -3018,6 +3024,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-eni-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-modify-security-groups"><span class="std std-ref">modify-security-groups</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
@@ -3176,6 +3183,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -3207,6 +3215,7 @@ against a locked version (requires use of is-locked filter).</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-put-metric"><span class="std std-ref">put-metric</span></a></p></li>
@@ -3236,6 +3245,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -3272,6 +3282,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-nat-gateway-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -3386,6 +3397,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -3465,6 +3477,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -3612,6 +3625,7 @@ route table is checked.</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -3731,6 +3745,7 @@ route table is checked.</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -4162,6 +4177,7 @@ workflows.</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="#aws-security-group-actions-delete"><span class="std std-ref">delete</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -4391,6 +4407,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -4473,6 +4490,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -4507,6 +4525,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -5143,6 +5162,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -5286,6 +5306,7 @@ against a locked version (requires use of is-locked filter).</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-post-finding"><span class="std std-ref">post-finding</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-put-metric"><span class="std std-ref">put-metric</span></a></p></li>
@@ -5343,6 +5364,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
@@ -5406,6 +5428,7 @@ against a locked version (requires use of is-locked filter).</p>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-auto-tag-user"><span class="std std-ref">auto-tag-user</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-copy-related-tag"><span class="std std-ref">copy-related-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-lambda"><span class="std std-ref">invoke-lambda</span></a></p></li>
+<li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-invoke-sfn"><span class="std std-ref">invoke-sfn</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-mark-for-op"><span class="std std-ref">mark-for-op</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-normalize-tag"><span class="std std-ref">normalize-tag</span></a></p></li>
 <li><p><a class="reference internal" href="aws-common-actions.html#aws-common-actions-notify"><span class="std std-ref">notify</span></a></p></li>
