@@ -862,6 +862,8 @@ Example generate a finding for accounts that don't have shield enabled.
        - shield-enabled
      actions:
        - type: post-finding
+         description: |
+            Shield should be enabled on account to allow for DDOS protection (1 time 3k USD Charge).
          severity_normalized: 6
          types:
            - "Software and Configuration Checks/Industry and Regulatory Standards/NIST CSF Controls (USA)"
@@ -900,6 +902,8 @@ Example generate a finding for accounts that don't have shield enabled.
         max: 100
         min: 0
         type: number
+      description:
+        type: string
       fields:
         type: object
       recommendation:
