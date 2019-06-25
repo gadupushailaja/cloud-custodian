@@ -9,7 +9,8 @@ gcp.dataflow resources
 gcp.dataflow-job
 ================
 
-
+GCP resource: https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs
+    
 
 Filters
 -------

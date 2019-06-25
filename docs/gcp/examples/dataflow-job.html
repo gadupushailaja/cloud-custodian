@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Cloud SQL - List Unsucessful Backups Older Than N Days &mdash; Cloud Custodian  documentation</title>
+  <title>Dataflow - Check for Hanged Jobs &mdash; Cloud Custodian  documentation</title>
   
 
   
@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../../_static/css/expand.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Cloud SQL - Check Database Names Against a Naming Convention" href="sql-database.html" />
-    <link rel="prev" title="Load Balancer - Network Tiers" href="loadbalancer-network-tiers.html" /> 
+    <link rel="next" title="Load Balancer - Network Tiers" href="loadbalancer-network-tiers.html" />
+    <link rel="prev" title="App Engine - Check if a Firewall Rule is in Place" href="appengine-firewall-ingress-rule.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -124,9 +124,9 @@
 <li class="toctree-l2"><a class="reference internal" href="appengine-certificates.html">App Engine - Check if an SSL Certificate is About to Expire</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appengine-domain.html">App Engine - Check if a blacklisted domain is still in use</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appengine-firewall-ingress-rule.html">App Engine - Check if a Firewall Rule is in Place</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dataflow-job.html">Dataflow -  Check for Hanged Jobs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dataflow -  Check for Hanged Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="loadbalancer-network-tiers.html">Load Balancer - Network Tiers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Cloud SQL - List Unsucessful Backups Older Than N Days</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sql-backupruns.html">Cloud SQL - List Unsucessful Backups Older Than N Days</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sql-database.html">Cloud SQL - Check Database Names Against a Naming Convention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sql-instance.html">Cloud SQL - Check Regions of Instances and Their State</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sql-sslcerts.html">Cloud SQL - Notify on Certificates Which Are About to Expire</a></li>
@@ -200,7 +200,7 @@
         
           <li><a href="index.html">Examples</a> &raquo;</li>
         
-      <li>Cloud SQL - List Unsucessful Backups Older Than N Days</li>
+      <li>Dataflow -  Check for Hanged Jobs</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -217,33 +217,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cloud-sql-list-unsucessful-backups-older-than-n-days">
-<h1>Cloud SQL - List Unsucessful Backups Older Than N Days<a class="headerlink" href="#cloud-sql-list-unsucessful-backups-older-than-n-days" title="Permalink to this headline">¶</a></h1>
-<p>The following example demonstates ability of Cloud Custodian to track backup runs of Cloud SQL instances and list unsucessful backups (if any) older than 5 days.</p>
+  <div class="section" id="dataflow-check-for-hanged-jobs">
+<h1>Dataflow -  Check for Hanged Jobs<a class="headerlink" href="#dataflow-check-for-hanged-jobs" title="Permalink to this headline">¶</a></h1>
+<p>Once started, a job in the Cloud Dataflow service transits from state to state and normally enters a terminal state. Custodian can check if there are any jobs hanging in temporary statuses abnormally long.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">notify</span></code> action requires a Pub/Sub topic to be configured. To configure Cloud Pub/Sub messaging please take a look at the <a class="reference internal" href="../policy/genericgcpactions.html#gcp-genericgcpactions"><span class="std std-ref">Generic Actions</span></a> page.</p>
+<p>In the example below, the policy checks if there are any jobs which started over 1 day ago (configurable period) but not yet transitioned to a certain stable state for some reason (remains in <code class="docutils literal notranslate"><span class="pre">JOB_STATE_RUNNING</span></code>, <code class="docutils literal notranslate"><span class="pre">JOB_STATE_DRAINING</span></code>, <code class="docutils literal notranslate"><span class="pre">JOB_STATE_CANCELLING</span></code> statuses) and therefore may need administrator’s attention.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sql-backup-run</span>
-  <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="no">check basic work of Cloud SQL filter on backup runs: lists unsucessful backups older than 5 days</span>
-  <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gcp.sql-backup-run</span>
-  <span class="nt">filters</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
-      <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">status</span>
-      <span class="nt">op</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">not-equal</span>
-      <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SUCCESSFUL</span>
-    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
-      <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">endTime</span>
-      <span class="nt">op</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">greater-than</span>
-      <span class="nt">value_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
-      <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-  <span class="nt">actions</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">notify</span>
-      <span class="nt">to</span><span class="p">:</span>
-       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">email@address</span>
-      <span class="c1"># address doesnt matter</span>
-      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">txt</span>
-      <span class="nt">transport</span><span class="p">:</span>
-        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pubsub</span>
-        <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">projects/river-oxygen-233508/topics/first</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gcp-dataflow-jobs-update</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gcp.dataflow-job</span>
+    <span class="nt">filters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
+        <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">startTime</span>
+        <span class="nt">op</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">greater-than</span>
+        <span class="nt">value_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
+        <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">currentState</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">JOB_STATE_RUNNING</span><span class="p p-Indicator">,</span> <span class="nv">JOB_STATE_DRAINING</span><span class="p p-Indicator">,</span> <span class="nv">JOB_STATE_CANCELLING</span><span class="p p-Indicator">]</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">notify</span>
+        <span class="nt">to</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">email@address</span>
+        <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">json</span>
+        <span class="nt">transport</span><span class="p">:</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pubsub</span>
+          <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">projects/cloud-custodian/topics/dataflow</span>
 </pre></div>
 </div>
 </div>
@@ -256,10 +254,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sql-database.html" class="btn btn-neutral float-right" title="Cloud SQL - Check Database Names Against a Naming Convention" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="loadbalancer-network-tiers.html" class="btn btn-neutral float-right" title="Load Balancer - Network Tiers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="loadbalancer-network-tiers.html" class="btn btn-neutral float-left" title="Load Balancer - Network Tiers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="appengine-firewall-ingress-rule.html" class="btn btn-neutral float-left" title="App Engine - Check if a Firewall Rule is in Place" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
