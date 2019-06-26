@@ -382,7 +382,7 @@ launching it
 .. code-block:: yaml
 
         policies:
-          - name: ami-remove-launch-permissions
+          - name: ami-stop-share-old
             resource: ami
             filters:
               - type: image-age
@@ -604,7 +604,9 @@ Filter volumes based on filtering on their attached instance
           - name: instance-ebs-volumes
             resource: ebs
             filters:
-              - instance
+              - type: instance
+                key: tag:Name
+                value: OldManBySea
 
 .. container:: toggle
 
@@ -982,7 +984,7 @@ of the Volume. The default value for 'Force' is False.
  .. code-block:: yaml
 
          policies:
-           - name: instance-ebs-volumes
+           - name: detach-ebs-volumes
              resource: ebs
              filters:
                - VolumeId :  volumeid
@@ -1133,7 +1135,7 @@ volume.
 .. code-block:: yaml
 
        policies:
-        - name: ebs-remove-piops
+        - name: ebs-upsize-piops
           resource: ebs
           filters:
             - VolumeType: io1
@@ -1397,7 +1399,7 @@ implicit with no parameters, 'true' by default
 .. code-block:: yaml
 
         policies:
-          - name: delete-stale-snapshots
+          - name: delete-ebs-stale-snapshots
             resource: ebs-snapshot
             filters:
               - type: age
@@ -2311,7 +2313,7 @@ Find ubuntu 18.04 instances are active with ssm.
 .. code-block:: yaml
 
     policies:
-      - name: ec2-recover-instances
+      - name: ec2-ssm-check
         resource: ec2
         filters:
           - type: ssm
@@ -5726,7 +5728,7 @@ Filter VPCs based on Internet Gateway attributes
 .. code-block:: yaml
 
         policies:
-          - name: gray-vpcs
+          - name: vpc-by-igw
             resource: vpc
             filters:
               - type: internet-gateway
@@ -5875,7 +5877,7 @@ Filter VPCs based on NAT Gateway attributes
 .. code-block:: yaml
 
         policies:
-          - name: gray-vpcs
+          - name: vpc-by-nat
             resource: vpc
             filters:
               - type: nat-gateway
@@ -5985,7 +5987,7 @@ Filter VPCs based on Security Group attributes
 .. code-block:: yaml
 
         policies:
-          - name: gray-vpcs
+          - name: vpc-by-sg
             resource: vpc
             filters:
               - type: security-group
@@ -6095,7 +6097,7 @@ Filter VPCs based on Subnet attributes
 .. code-block:: yaml
 
         policies:
-          - name: gray-vpcs
+          - name: vpc-by-subnet
             resource: vpc
             filters:
               - type: subnet

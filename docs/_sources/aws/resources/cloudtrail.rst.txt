@@ -70,7 +70,7 @@ Filter a cloudtrail by its status.
 .. code-block:: yaml
 
     policies:
-      - name: cloudtrail-not-active
+      - name: cloudtrail-check-status
         resource: aws.cloudtrail
         filters:
         - type: status
@@ -199,7 +199,7 @@ Set the logging state of a trail
 .. code-block:: yaml
 
   policies:
-    - name: cloudtrail-not-active
+    - name: cloudtrail-set-active
       resource: aws.cloudtrail
       filters:
        - type: status

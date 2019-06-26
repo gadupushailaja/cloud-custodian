@@ -676,7 +676,7 @@ launching it</p>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ami-remove-launch-permissions</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ami-stop-share-old</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ami</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">image-age</span>
@@ -824,7 +824,9 @@ from a snapshot with (reasonable) data loss</p>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">instance-ebs-volumes</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ebs</span>
     <span class="nt">filters</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">instance</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">instance</span>
+        <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tag:Name</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">OldManBySea</span>
 </pre></div>
 </div>
 <div class="toggle docutils container">
@@ -1129,7 +1131,7 @@ of the Volume. The default value for ‘Force’ is False.</p>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">instance-ebs-volumes</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">detach-ebs-volumes</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ebs</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">VolumeId </span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">volumeid</span>
@@ -1276,7 +1278,7 @@ volume.</p>
 </dd>
 </dl>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
- <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ebs-remove-piops</span>
+ <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ebs-upsize-piops</span>
    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ebs</span>
    <span class="nt">filters</span><span class="p">:</span>
      <span class="p p-Indicator">-</span> <span class="nt">VolumeType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">io1</span>
@@ -1484,7 +1486,7 @@ setting <cite>shrink: true</cite> on the action.</p>
 </dl>
 <p>implicit with no parameters, ‘true’ by default</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">delete-stale-snapshots</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">delete-ebs-stale-snapshots</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ebs-snapshot</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">age</span>
@@ -2214,7 +2216,7 @@ and do not have Cloudwatch recover alarms.</p>
 </dl>
 <p>Find ubuntu 18.04 instances are active with ssm.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ec2-recover-instances</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ec2-ssm-check</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ec2</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ssm</span>
@@ -4702,7 +4704,7 @@ particular configuration.</p>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gray-vpcs</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vpc-by-igw</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vpc</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internet-gateway</span>
@@ -4829,7 +4831,7 @@ against a locked version (requires use of is-locked filter).</p>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gray-vpcs</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vpc-by-nat</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vpc</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nat-gateway</span>
@@ -4930,7 +4932,7 @@ against a locked version (requires use of is-locked filter).</p>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gray-vpcs</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vpc-by-sg</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vpc</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">security-group</span>
@@ -5031,7 +5033,7 @@ against a locked version (requires use of is-locked filter).</p>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gray-vpcs</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vpc-by-subnet</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vpc</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">subnet</span>

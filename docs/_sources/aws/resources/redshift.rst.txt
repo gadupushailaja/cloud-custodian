@@ -206,7 +206,7 @@ Filter redshift clusters based on parameter values
 .. code-block:: yaml
 
         policies:
-          - name: redshift-no-ssl
+          - name: redshift-param-ssl
             resource: redshift
             filters:
               - type: param

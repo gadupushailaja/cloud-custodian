@@ -807,7 +807,7 @@ or not. If ‘immediate’ is not specified, default is false.</p>
 storage, and resize them to have an additional 30% storage
 the resize here is async during the next maintenance.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rds-snapshot-retention</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rds-resize-up</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rds</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">metrics</span>
@@ -825,7 +825,7 @@ the resize here is async during the next maintenance.</p>
 storage, and resize them to be 30% smaller, the resize here
 is configured to be immediate.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rds-snapshot-retention</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rds-resize-down</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rds</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">metrics</span>
@@ -2016,7 +2016,7 @@ deletion of any rds subnet groups.</p>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rds-subnet-group-delete-unused</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rds-subnet-group-delete</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rds-subnet-group</span>
     <span class="nt">filters</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="nt">Instances</span><span class="p">:</span> <span class="p p-Indicator">[]</span>

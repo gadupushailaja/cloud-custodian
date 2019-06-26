@@ -606,7 +606,7 @@ the resize here is async during the next maintenance.
 .. code-block:: yaml
 
         policies:
-          - name: rds-snapshot-retention
+          - name: rds-resize-up
             resource: rds
             filters:
               - type: metrics
@@ -627,7 +627,7 @@ is configured to be immediate.
 .. code-block:: yaml
 
         policies:
-          - name: rds-snapshot-retention
+          - name: rds-resize-down
             resource: rds
             filters:
               - type: metrics
@@ -2252,7 +2252,7 @@ deletion of any rds subnet groups.
 .. code-block:: yaml
 
         policies:
-          - name: rds-subnet-group-delete-unused
+          - name: rds-subnet-group-delete
             resource: rds-subnet-group
             filters:
               - Instances: []

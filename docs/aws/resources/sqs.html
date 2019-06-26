@@ -391,8 +391,8 @@ The KmsMasterId returned for SQS sometimes has the alias name directly in the va
 <dl class="field-list">
 <dt class="field-odd">example</dt>
 <dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">efs-kms-key-filters</span>
-      <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">efs</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sqs-kms-key-filters</span>
+      <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aws.sqs</span>
       <span class="nt">filters</span><span class="p">:</span>
         <span class="p p-Indicator">-</span> <span class="nt">or</span><span class="p">:</span>
           <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
@@ -550,7 +550,7 @@ to include a filter</p>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">policies</span><span class="p">:</span>
-   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sqs-cross-account</span>
+   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">remove-sqs-cross-account</span>
      <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sqs</span>
      <span class="nt">filters</span><span class="p">:</span>
        <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cross-account</span>

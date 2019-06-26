@@ -810,7 +810,7 @@ on usage in the account and support level enabled on the account.
 .. code-block:: yaml
 
         policies:
-          - name: account-service-limits
+          - name: increase-account-service-limits
             resource: account
             filters:
               - type: service-limit
@@ -1115,7 +1115,7 @@ File support ticket to raise limit.
 .. code-block:: yaml
 
     policies:
-      - name: account-service-limits
+      - name: raise-account-service-limits
         resource: account
         filters:
           - type: service-limit
